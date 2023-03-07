@@ -25,3 +25,4 @@ spec:
       prune: true
     syncOptions:
       - CreateNamsepace=true
+      - Validate=false
