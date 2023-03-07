@@ -1,0 +1,32 @@
+base-url: "https://ntfy.juicewizerd.com"
+
+listen-http: ":80"
+
+cache-batch-size: 25
+cache-batch-timeout: "1s"
+cache-startup-queries: |
+    pragma journal_mode = WAL;
+    pragma synchronous = normal;
+    pragma temp_store = memory;
+    pragma busy_timeout = 15000;
+    vacuum;
+
+auth-file: /etc/ntfy/user.db
+auth-default-access: "deny-all"
+
+behind-proxy: true
+
+attachment-cache-dir: "/etc/ntfy/cache"
+attachment-total-size-limit: "5G"
+attachment-file-size-limit: "15M"
+attachment-expiry-duration: "48h"
+
+web-root: app
+
+upstream-base-url: "https://ntfy.sh"
+
+log-level: INFO
+
+# Version 2
+enable-signup: false
+enable-login: true
