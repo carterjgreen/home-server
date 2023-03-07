@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: uptimekuma-svc  
+spec:
+  type: ClusterIP
+  selector:
+    app: uptimekuma-pod
+  ports:
+    - name: http-uptimekuma-out
+      protocol: TCP
+      port: 80
+      targetPort:  http-uptimekuma
