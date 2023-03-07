@@ -1,0 +1,9 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: TLSStore
+metadata:
+  name: default-cloudflare-tls
+  namespace: kube-system
+
+spec:
+  defaultCertificate:
+    secretName: default-cloudflare-tls
