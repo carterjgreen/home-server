@@ -15,6 +15,6 @@ spec:
       kind: Rule
       services:
         - name: grafana-svc
-          port: 3000
+          port: 80
       middlewares:
         - name: default-headers
