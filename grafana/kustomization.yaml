@@ -6,7 +6,7 @@ resources:
   - grafana-pvc.yaml # pvc used to store cache and attachment
   - grafana-ingress.yaml # ingress definition
 configMapGenerator: 
-    - name: server-config
+    - name: grafana-config
       files: 
         - grafana.ini
 namespace: default # select namespace for whole application 
