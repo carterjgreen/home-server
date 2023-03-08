@@ -44,4 +44,17 @@ argocd login <ARGOCD_SERVER_IP>
 argocd account update-password
 ```
 
+Optional: Install Rancher
+```
+helm repo add jetstack https://charts.jetstack.io
+helm install cert-manager jetstack/cert-manager \
+     --namespace cert-manager \
+     --create-namespace \
+     --set installCRDs=true
 
+helm install rancher rancher-stable/rancher \
+  --namespace cattle-system \
+  --set hostname=rancher.juicewizerd.com \
+  --set bootstrapPassword=admin
+
+```
