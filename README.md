@@ -31,7 +31,7 @@ Install helm: https://helm.sh/docs/intro/install/
 
 Install longhorn with helm: https://longhorn.io/docs/1.4.0/deploy/install/install-with-helm/
 ```
-helm install longhorn longhorn/longhorn --namespace longhorn-system --create-namespace --version 1.4.0
+helm install longhorn longhorn/longhorn --namespace longhorn-system --create-namespace --version 1.4.0 --values=longhorn-values.yaml
 ```
 
 Install argocd
