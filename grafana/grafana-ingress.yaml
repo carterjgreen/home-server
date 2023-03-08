@@ -11,7 +11,7 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`grafana.example.com`)
+    - match: Host(`graf.juicewizerd.com`)
       kind: Rule
       services:
         - name: grafana-svc
