@@ -4,7 +4,7 @@ metadata:
   name: uptimekuma-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   storageClassName: longhorn
   resources:
     requests:
