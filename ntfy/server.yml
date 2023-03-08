@@ -4,6 +4,7 @@ listen-http: ":80"
 
 cache-batch-size: 25
 cache-batch-timeout: "1s"
+cache-file: "/var/cache/ntfy/cache.db"
 cache-startup-queries: |
     pragma journal_mode = WAL;
     pragma synchronous = normal;
@@ -11,12 +12,13 @@ cache-startup-queries: |
     pragma busy_timeout = 15000;
     vacuum;
 
-auth-file: /etc/ntfy/user.db
+# auth-file: /etc/ntfy/user.db
+auth-file: "/var/cache/ntfy/user.db"
 auth-default-access: "deny-all"
 
 behind-proxy: true
 
-attachment-cache-dir: "/etc/ntfy/cache"
+attachment-cache-dir: "/var/cache/ntfy/attachments"
 attachment-total-size-limit: "5G"
 attachment-file-size-limit: "15M"
 attachment-expiry-duration: "48h"

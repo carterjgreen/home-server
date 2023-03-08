@@ -41,10 +41,9 @@ spec:
             - mountPath: /etc/ntfy/server.yml
               subPath: server.yml
               name: config-volume
+              readOnly: true
             - mountPath: /var/cache/ntfy
               name: cache-volume
-            - mountPath: /etc/ntfy/user.db
-              name: user-volume
       volumes:
         - name: config-volume
           configMap:
@@ -52,6 +51,4 @@ spec:
         - name: cache-volume
           persistentVolumeClaim:
             claimName: ntfy-pvc
-        - name: user-volume
-          persistentVolumeClaim:
-            claimName: ntfy-pvc
+            
