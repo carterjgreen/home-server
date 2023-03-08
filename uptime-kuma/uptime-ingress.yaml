@@ -1,0 +1,19 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: uptimekuma-ingress
+  namespace: default
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`uptime.juicewizerd.com`)
+      kind: Rule
+      services:
+        - name: uptimekuma-svc
+          port: 80
+      middlewares:
+        - name: default-headers
