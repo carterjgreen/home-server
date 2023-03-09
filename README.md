@@ -13,7 +13,8 @@ Install k3s to server
 export INSTALL_K3S_VERSION="v1.24.10+k3s1"
 export K3S_KUBECONFIG_MODE="644"
 curl -sfL https://get.k3s.io | sh -s - -server \
-  --cluster-init --disable traefik \
+  --cluster-init \
+  --disable traefik \
   --disable servicelb \
   --write-kubeconfig-mode "0644" \
   --tls-san load_balancer_ip
