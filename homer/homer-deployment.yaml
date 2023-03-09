@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homer-deployment
+  labels:
+    app: homer-deployment
+spec:
+  revisionHistoryLimit: 1
+  replicas: 2
+  selector:
+    matchLabels:
+      app: homer-pod
+  template:
+    metadata:
+      labels:
+        app: homer-pod
+    spec:
+      containers:
+        - name: homer
+          image: b4bz/homer:latest
+          env:
+            - name: TZ
+              value: America/Toronto
+          ports:
+            - containerPort: 8080
+              name: http-homer
+          resources:
+            limits:
+              memory: 100Mi
+              cpu:  100m
+            requests:
+              cpu: 50m
+              memory: 50Mi
+          volumeMounts:
+            - mountPath: /www/assets/config.yml
+              subPath: config.yml
+              name: config-volume
+              readOnly: true
+      volumes:
+        - name: config-volume
+          configMap:
+            name: homer-config

@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - homer-deployment.yaml # deployment definition
+  - homer-svc.yaml # service connecting pods to cluster network
+  - homer-pvc.yaml # pvc used to store cache and attachment
+  - homer-ingress.yaml # ingress definition
+configMapGenerator: 
+    - name: homer-config
+      files: 
+        - config.yml
+namespace: default # select namespace for whole application 
