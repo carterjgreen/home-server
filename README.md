@@ -1,11 +1,23 @@
 # home-server
 
 ## Installation
+Make firewall rules if on RHEL/derivatives
+```
+sudo firewall-cmd --permanent --add-port=6443/tcp #apiserver
+sudo firewall-cmd --permanent --zone=trusted --add-source=10.42.0.0/16 #pods
+sudo firewall-cmd --permanent --zone=trusted --add-source=10.43.0.0/16 #services
+sudo firewall-cmd --reload
+```
 Install k3s to server
 ```
 export INSTALL_K3S_VERSION="v1.24.10+k3s1"
 export K3S_KUBECONFIG_MODE="644"
-curl -sfL https://get.k3s.io | sh -s - -server --cluster-init --disable traefik --disable servicelb --write-kubeconfig-mode "0644"
+curl -sfL https://get.k3s.io | sh -s - -server \
+  --cluster-init --disable traefik \
+  --disable servicelb \
+  --write-kubeconfig-mode "0644" \
+  --tls-san load_balancer_ip
+
 sudo chmod 644 /etc/rancher/k3s/k3s.yaml
 sudo cat /var/lib/rancher/k3s/server/node-token
 ```
