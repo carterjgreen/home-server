@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
   - homer-deployment.yaml # deployment definition
   - homer-svc.yaml # service connecting pods to cluster network
-  - homer-pvc.yaml # pvc used to store cache and attachment
   - homer-ingress.yaml # ingress definition
 configMapGenerator: 
     - name: homer-config

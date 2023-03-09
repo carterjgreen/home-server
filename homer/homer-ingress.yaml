@@ -10,7 +10,7 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`homer.example.com`)
+    - match: Host(`homer.juicewizerd.com`)
       kind: Rule
       services:
         - name: homer-svc
