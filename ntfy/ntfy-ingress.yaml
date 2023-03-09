@@ -16,5 +16,9 @@ spec:
       services:
         - name: ntfy-svc
           port: 80
+          sticky:
+            cookie:
+            name: cookie
+            secure: true
       middlewares:
         - name: default-headers

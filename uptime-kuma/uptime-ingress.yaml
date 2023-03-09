@@ -15,5 +15,10 @@ spec:
       services:
         - name: uptimekuma-svc
           port: 80
+          sticky:
+            cookie:
+            name: cookie
+            secure: true
       middlewares:
         - name: default-headers
+        - name: cors-headers
