@@ -71,3 +71,5 @@ helm install rancher rancher-stable/rancher \
   --set bootstrapPassword=admin
 
 ```
+
+kubectl get namespace "stuck" -o json   | tr -d "\n" | sed "s/\"finalizers\": \[[^]]\+\]/\"finalizers\": []/"   | kubectl replace --raw /api/v1/namespaces/"stuck"/finalize -f -
