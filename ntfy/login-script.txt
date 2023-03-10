@@ -1,0 +1,8 @@
+ntfy user add --role=admin carter
+ntfy user add starr
+ntfy user add change
+ntfy user add uptime
+
+ntfy access starr starr write
+ntfy access uptime uptime write
+ntfy access change change write
