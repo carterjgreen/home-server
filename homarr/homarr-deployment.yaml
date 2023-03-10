@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homarr-deployment
+  labels:
+    app: homarr-deployment
+spec:
+  revisionHistoryLimit: 1
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homarr-pod
+  template:
+    metadata:
+      labels:
+        app: homarr-pod
+    spec:
+      containers:
+        - name: homarr
+          image: ghcr.io/ajnart/homarr:latest
+          env:
+            - name: TZ
+              value: America/Toronto
+          ports:
+            - containerPort: 7575
+              name: http-homarr
+          resources:
+            limits:
+              memory: 200Mi
+              cpu:  200m
+            requests:
+              cpu: 50m
+              memory: 50Mi
+          volumeMounts:
+            - mountPath: /app/data/configs/default.json
+              subPath: default.json
+              name: config-volume
+              readOnly: false
+      volumes:
+        - name: config-volume
+          configMap:
+            name: homarr-config

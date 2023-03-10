@@ -1,0 +1,949 @@
+{
+    "schemaVersion": 1,
+    "configProperties": {
+      "name": "default"
+    },
+    "categories": [
+      {
+        "id": "47af36c0-47c1-4e5b-bfc7-ad645ee6a33f",
+        "position": 3,
+        "name": "Welcome to Homarr 🎉",
+        "type": "category"
+      },
+      {
+        "id": "83c5de25-f3d7-4c0a-af38-2e4cdb6e1080",
+        "name": "Starr",
+        "position": 2
+      },
+      {
+        "id": "45297e84-88ba-4410-99e1-c879747fcf09",
+        "name": "Widgets",
+        "position": 1
+      }
+    ],
+    "wrappers": [
+      {
+        "id": "default",
+        "position": 0
+      },
+      {
+        "id": "47af36c0-47c1-4e5b-bfc7-ad645ee6a326",
+        "position": 1
+      },
+      {
+        "id": "f275aaa0-90b9-42f8-9fc4-2a81dae08c34",
+        "position": 2
+      },
+      {
+        "id": "384e297c-f3c8-4953-bb47-0c0925e490be",
+        "position": 3
+      }
+    ],
+    "apps": [
+      {
+        "id": "65f94d59-44c7-4db8-9595-239bc7a61729",
+        "name": "jellyseerr",
+        "url": "http://192.168.1.101:5055",
+        "appearance": {
+          "iconUrl": "https://cdn.jsdelivr.net/gh/loganmarchione/homelab-svg-assets/assets/jellyseerr.svg"
+        },
+        "network": {
+          "enabledStatusChecker": true,
+          "okStatus": [
+            200
+          ]
+        },
+        "behaviour": {
+          "isOpeningNewTab": true,
+          "externalUrl": "http://192.168.1.101:5055"
+        },
+        "area": {
+          "type": "category",
+          "properties": {
+            "id": "83c5de25-f3d7-4c0a-af38-2e4cdb6e1080"
+          }
+        },
+        "shape": {
+          "lg": {
+            "location": {
+              "x": 2,
+              "y": 0
+            },
+            "size": {
+              "width": 2,
+              "height": 1
+            }
+          },
+          "sm": {
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 3,
+              "height": 1
+            }
+          },
+          "md": {
+            "location": {
+              "x": 5,
+              "y": 0
+            },
+            "size": {
+              "width": 1,
+              "height": 1
+            }
+          }
+        },
+        "integration": {
+          "type": null,
+          "properties": []
+        }
+      },
+      {
+        "id": "2d12f7ac-7569-4ae8-a4b8-c332db9ca560",
+        "name": "Sonarr",
+        "url": "http://192.168.1.101:8889",
+        "appearance": {
+          "iconUrl": "https://cdn.jsdelivr.net/gh/loganmarchione/homelab-svg-assets/assets/sonarr.svg"
+        },
+        "network": {
+          "enabledStatusChecker": true,
+          "okStatus": [
+            200
+          ]
+        },
+        "behaviour": {
+          "isOpeningNewTab": true,
+          "externalUrl": "http://192.168.1.101:8889"
+        },
+        "area": {
+          "type": "category",
+          "properties": {
+            "id": "83c5de25-f3d7-4c0a-af38-2e4cdb6e1080"
+          }
+        },
+        "shape": {
+          "lg": {
+            "location": {
+              "x": 6,
+              "y": 0
+            },
+            "size": {
+              "width": 2,
+              "height": 1
+            }
+          },
+          "sm": {
+            "location": {
+              "x": 0,
+              "y": 1
+            },
+            "size": {
+              "width": 3,
+              "height": 1
+            }
+          },
+          "md": {
+            "location": {
+              "x": 2,
+              "y": 0
+            },
+            "size": {
+              "width": 1,
+              "height": 1
+            }
+          }
+        },
+        "integration": {
+          "type": "sonarr",
+          "properties": [
+            {
+              "field": "apiKey",
+              "type": "private",
+              "value": "4418595070ee40c6a02642687f5f89d8"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e5b23594-31ec-489d-bdbc-f375ee5b4467",
+        "name": "Bazarr",
+        "url": "http://192.168.1.101:6767",
+        "appearance": {
+          "iconUrl": "https://cdn.jsdelivr.net/gh/loganmarchione/homelab-svg-assets/assets/bazarr.svg"
+        },
+        "network": {
+          "enabledStatusChecker": true,
+          "okStatus": [
+            200
+          ]
+        },
+        "behaviour": {
+          "isOpeningNewTab": true,
+          "externalUrl": "http://192.168.1.101:6767"
+        },
+        "area": {
+          "type": "category",
+          "properties": {
+            "id": "83c5de25-f3d7-4c0a-af38-2e4cdb6e1080"
+          }
+        },
+        "shape": {
+          "sm": {
+            "location": {
+              "x": 0,
+              "y": 2
+            },
+            "size": {
+              "width": 3,
+              "height": 1
+            }
+          },
+          "md": {
+            "location": {
+              "x": 4,
+              "y": 0
+            },
+            "size": {
+              "width": 1,
+              "height": 1
+            }
+          },
+          "lg": {
+            "location": {
+              "x": 10,
+              "y": 0
+            },
+            "size": {
+              "width": 2,
+              "height": 1
+            }
+          }
+        },
+        "integration": {
+          "type": null,
+          "properties": []
+        }
+      },
+      {
+        "id": "9fbd8fcb-40ff-4b44-a277-357fe13668fd",
+        "name": "qBittorrent",
+        "url": "http://192.168.1.101:8060",
+        "appearance": {
+          "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/qbittorrent.svg"
+        },
+        "network": {
+          "enabledStatusChecker": true,
+          "okStatus": [
+            200
+          ]
+        },
+        "behaviour": {
+          "isOpeningNewTab": true,
+          "externalUrl": "http://192.168.1.101:8060"
+        },
+        "area": {
+          "type": "category",
+          "properties": {
+            "id": "83c5de25-f3d7-4c0a-af38-2e4cdb6e1080"
+          }
+        },
+        "shape": {
+          "lg": {
+            "location": {
+              "x": 4,
+              "y": 1
+            },
+            "size": {
+              "width": 2,
+              "height": 1
+            }
+          },
+          "sm": {
+            "location": {
+              "x": 0,
+              "y": 5
+            },
+            "size": {
+              "width": 3,
+              "height": 1
+            }
+          },
+          "md": {
+            "location": {
+              "x": 2,
+              "y": 1
+            },
+            "size": {
+              "width": 1,
+              "height": 1
+            }
+          }
+        },
+        "integration": {
+          "type": "qBittorrent",
+          "properties": [
+            {
+              "field": "username",
+              "type": "public",
+              "value": "admin"
+            },
+            {
+              "field": "password",
+              "type": "private",
+              "value": "adminadmin"
+            }
+          ]
+        }
+      },
+      {
+        "id": "08b8f9f2-593e-456b-b776-d53512d648cb",
+        "name": "Sabnzbd",
+        "url": "http://192.168.1.101:8080",
+        "appearance": {
+          "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/sabnzbd.png"
+        },
+        "network": {
+          "enabledStatusChecker": true,
+          "okStatus": [
+            200
+          ]
+        },
+        "behaviour": {
+          "isOpeningNewTab": true,
+          "externalUrl": "http://192.168.1.101:8080"
+        },
+        "area": {
+          "type": "category",
+          "properties": {
+            "id": "83c5de25-f3d7-4c0a-af38-2e4cdb6e1080"
+          }
+        },
+        "shape": {
+          "lg": {
+            "location": {
+              "x": 6,
+              "y": 1
+            },
+            "size": {
+              "width": 2,
+              "height": 1
+            }
+          },
+          "sm": {
+            "location": {
+              "x": 1,
+              "y": 7
+            },
+            "size": {
+              "width": 1,
+              "height": 1
+            }
+          },
+          "md": {
+            "location": {
+              "x": 3,
+              "y": 1
+            },
+            "size": {
+              "width": 1,
+              "height": 1
+            }
+          }
+        },
+        "integration": {
+          "type": "sabnzbd",
+          "properties": [
+            {
+              "field": "apiKey",
+              "type": "private",
+              "value": "fa7ad2b38b29436ba2bbd8e49087f0eb"
+            }
+          ]
+        }
+      },
+      {
+        "id": "57b9b75f-eaa9-43ea-b398-1892ef2cf179",
+        "name": "Uptime-Kuma",
+        "url": "http://192.168.1.101:3001",
+        "appearance": {
+          "iconUrl": "https://cdn.jsdelivr.net/gh/loganmarchione/homelab-svg-assets/assets/uptimekuma.svg"
+        },
+        "network": {
+          "enabledStatusChecker": true,
+          "okStatus": [
+            200
+          ]
+        },
+        "behaviour": {
+          "isOpeningNewTab": true,
+          "externalUrl": "https://uptime.juicewizerd.com"
+        },
+        "area": {
+          "type": "category",
+          "properties": {
+            "id": "83c5de25-f3d7-4c0a-af38-2e4cdb6e1080"
+          }
+        },
+        "shape": {
+          "lg": {
+            "location": {
+              "x": 3,
+              "y": 1
+            },
+            "size": {
+              "width": 1,
+              "height": 1
+            }
+          },
+          "md": {
+            "location": {
+              "x": 1,
+              "y": 1
+            },
+            "size": {
+              "width": 1,
+              "height": 1
+            }
+          },
+          "sm": {
+            "location": {
+              "x": 2,
+              "y": 7
+            },
+            "size": {
+              "width": 1,
+              "height": 1
+            }
+          }
+        },
+        "integration": {
+          "type": null,
+          "properties": []
+        }
+      },
+      {
+        "id": "3988cddb-9504-42a9-a9c5-87a1de771065",
+        "name": "Status Page",
+        "url": "https://uptime.juicewizerd.com/status/home",
+        "appearance": {
+          "iconUrl": "https://cdn.jsdelivr.net/gh/loganmarchione/homelab-svg-assets/assets/uptimekuma.svg"
+        },
+        "network": {
+          "enabledStatusChecker": true,
+          "okStatus": [
+            200
+          ]
+        },
+        "behaviour": {
+          "isOpeningNewTab": true,
+          "externalUrl": "https://uptime.juicewizerd.com/status/home"
+        },
+        "area": {
+          "type": "category",
+          "properties": {
+            "id": "83c5de25-f3d7-4c0a-af38-2e4cdb6e1080"
+          }
+        },
+        "shape": {
+          "lg": {
+            "location": {
+              "x": 8,
+              "y": 1
+            },
+            "size": {
+              "width": 1,
+              "height": 1
+            }
+          },
+          "md": {
+            "location": {
+              "x": 4,
+              "y": 1
+            },
+            "size": {
+              "width": 1,
+              "height": 1
+            }
+          },
+          "sm": {
+            "location": {
+              "x": 0,
+              "y": 7
+            },
+            "size": {
+              "width": 1,
+              "height": 1
+            }
+          }
+        },
+        "integration": {
+          "type": null,
+          "properties": []
+        }
+      },
+      {
+        "id": "0d0d3558-efc3-4aa3-9616-4d52c40e997b",
+        "name": "Jellyfin",
+        "url": "http://192.168.1.101:8096",
+        "appearance": {
+          "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/jellyfin.svg"
+        },
+        "network": {
+          "enabledStatusChecker": true,
+          "okStatus": [
+            200
+          ]
+        },
+        "behaviour": {
+          "isOpeningNewTab": true,
+          "externalUrl": "http://192.168.1.101:8096"
+        },
+        "area": {
+          "type": "category",
+          "properties": {
+            "id": "83c5de25-f3d7-4c0a-af38-2e4cdb6e1080"
+          }
+        },
+        "shape": {
+          "lg": {
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 2,
+              "height": 1
+            }
+          },
+          "md": {
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 1,
+              "height": 1
+            }
+          },
+          "sm": {
+            "location": {
+              "x": 0,
+              "y": 3
+            },
+            "size": {
+              "width": 3,
+              "height": 1
+            }
+          }
+        },
+        "integration": {
+          "type": "jellyfin",
+          "properties": [
+            {
+              "field": "username",
+              "type": "public",
+              "value": "carter"
+            },
+            {
+              "field": "password",
+              "type": "private",
+              "value": "giraffelegs"
+            }
+          ]
+        }
+      },
+      {
+        "id": "3bbd181e-1bc4-4bd7-8246-b67237397b3b",
+        "name": "Radarr",
+        "url": "http://192.168.1.101:7878",
+        "appearance": {
+          "iconUrl": "https://cdn.jsdelivr.net/gh/loganmarchione/homelab-svg-assets/assets/radarr.svg"
+        },
+        "network": {
+          "enabledStatusChecker": true,
+          "okStatus": [
+            200
+          ]
+        },
+        "behaviour": {
+          "isOpeningNewTab": true,
+          "externalUrl": "http://192.168.1.101:7878"
+        },
+        "area": {
+          "type": "category",
+          "properties": {
+            "id": "83c5de25-f3d7-4c0a-af38-2e4cdb6e1080"
+          }
+        },
+        "shape": {
+          "lg": {
+            "location": {
+              "x": 4,
+              "y": 0
+            },
+            "size": {
+              "width": 2,
+              "height": 1
+            }
+          },
+          "sm": {
+            "location": {
+              "x": 0,
+              "y": 4
+            },
+            "size": {
+              "width": 3,
+              "height": 1
+            }
+          },
+          "md": {
+            "location": {
+              "x": 1,
+              "y": 0
+            },
+            "size": {
+              "width": 1,
+              "height": 1
+            }
+          }
+        },
+        "integration": {
+          "type": "radarr",
+          "properties": [
+            {
+              "field": "apiKey",
+              "type": "private",
+              "value": "4011babfa3b043df9a824cd986d03f18"
+            }
+          ]
+        }
+      },
+      {
+        "id": "251cd07b-bc51-40ed-9e0e-0e56c7fc144b",
+        "name": "prowlarr",
+        "url": "http://192.168.1.101:9696",
+        "appearance": {
+          "iconUrl": "https://cdn.jsdelivr.net/gh/loganmarchione/homelab-svg-assets/assets/prowlarr.svg"
+        },
+        "network": {
+          "enabledStatusChecker": true,
+          "okStatus": [
+            200
+          ]
+        },
+        "behaviour": {
+          "isOpeningNewTab": true,
+          "externalUrl": "http://192.168.1.101:9696"
+        },
+        "area": {
+          "type": "category",
+          "properties": {
+            "id": "83c5de25-f3d7-4c0a-af38-2e4cdb6e1080"
+          }
+        },
+        "shape": {
+          "lg": {
+            "location": {
+              "x": 8,
+              "y": 0
+            },
+            "size": {
+              "width": 2,
+              "height": 1
+            }
+          },
+          "sm": {
+            "location": {
+              "x": 0,
+              "y": 6
+            },
+            "size": {
+              "width": 3,
+              "height": 1
+            }
+          },
+          "md": {
+            "location": {
+              "x": 3,
+              "y": 0
+            },
+            "size": {
+              "width": 1,
+              "height": 1
+            }
+          }
+        },
+        "integration": {
+          "type": null,
+          "properties": []
+        }
+      },
+      {
+        "id": "5df743d9-5cb1-457c-85d2-64ff86855652",
+        "name": "Documentation",
+        "url": "https://homarr.dev",
+        "behaviour": {
+          "onClickUrl": "https://homarr.dev",
+          "externalUrl": "https://homarr.dev",
+          "isOpeningNewTab": true
+        },
+        "network": {
+          "enabledStatusChecker": false,
+          "okStatus": [
+            200
+          ]
+        },
+        "appearance": {
+          "iconUrl": "/imgs/logo/logo.png"
+        },
+        "integration": {
+          "type": null,
+          "properties": []
+        },
+        "area": {
+          "type": "category",
+          "properties": {
+            "id": "47af36c0-47c1-4e5b-bfc7-ad645ee6a33f"
+          }
+        },
+        "shape": {
+          "md": {
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 6,
+              "height": 1
+            }
+          },
+          "sm": {
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 3,
+              "height": 1
+            }
+          },
+          "lg": {
+            "location": {
+              "x": 4,
+              "y": 0
+            },
+            "size": {
+              "width": 4,
+              "height": 1
+            }
+          }
+        }
+      }
+    ],
+    "widgets": [
+      {
+        "id": "media-server",
+        "properties": {},
+        "area": {
+          "type": "category",
+          "properties": {
+            "id": "45297e84-88ba-4410-99e1-c879747fcf09"
+          }
+        },
+        "shape": {
+          "sm": {
+            "location": {
+              "x": 0,
+              "y": 7
+            },
+            "size": {
+              "width": 3,
+              "height": 2
+            }
+          },
+          "md": {
+            "location": {
+              "x": 0,
+              "y": 2
+            },
+            "size": {
+              "width": 3,
+              "height": 2
+            }
+          },
+          "lg": {
+            "location": {
+              "x": 9,
+              "y": 0
+            },
+            "size": {
+              "width": 3,
+              "height": 3
+            }
+          }
+        }
+      },
+      {
+        "id": "usenet",
+        "properties": {},
+        "area": {
+          "type": "category",
+          "properties": {
+            "id": "45297e84-88ba-4410-99e1-c879747fcf09"
+          }
+        },
+        "shape": {
+          "sm": {
+            "location": {
+              "x": 0,
+              "y": 2
+            },
+            "size": {
+              "width": 3,
+              "height": 3
+            }
+          },
+          "md": {
+            "location": {
+              "x": 3,
+              "y": 0
+            },
+            "size": {
+              "width": 3,
+              "height": 3
+            }
+          },
+          "lg": {
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 4,
+              "height": 3
+            }
+          }
+        }
+      },
+      {
+        "id": "torrents-status",
+        "properties": {
+          "displayCompletedTorrents": true,
+          "displayStaleTorrents": true
+        },
+        "area": {
+          "type": "category",
+          "properties": {
+            "id": "45297e84-88ba-4410-99e1-c879747fcf09"
+          }
+        },
+        "shape": {
+          "sm": {
+            "location": {
+              "x": 0,
+              "y": 5
+            },
+            "size": {
+              "width": 3,
+              "height": 2
+            }
+          },
+          "md": {
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 3,
+              "height": 3
+            }
+          },
+          "lg": {
+            "location": {
+              "x": 4,
+              "y": 0
+            },
+            "size": {
+              "width": 3,
+              "height": 3
+            }
+          }
+        }
+      },
+      {
+        "id": "dlspeed",
+        "properties": {},
+        "area": {
+          "type": "category",
+          "properties": {
+            "id": "45297e84-88ba-4410-99e1-c879747fcf09"
+          }
+        },
+        "shape": {
+          "sm": {
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 3,
+              "height": 2
+            }
+          },
+          "md": {
+            "location": {
+              "x": 3,
+              "y": 3
+            },
+            "size": {
+              "width": 3,
+              "height": 2
+            }
+          },
+          "lg": {
+            "location": {
+              "x": 7,
+              "y": 0
+            },
+            "size": {
+              "width": 2,
+              "height": 3
+            }
+          }
+        }
+      }
+    ],
+    "settings": {
+      "common": {
+        "searchEngine": {
+          "type": "custom",
+          "properties": {
+            "template": "",
+            "openInNewTab": false
+          }
+        }
+      },
+      "customization": {
+        "layout": {
+          "enabledLeftSidebar": false,
+          "enabledRightSidebar": false,
+          "enabledDocker": false,
+          "enabledPing": false,
+          "enabledSearchbar": false
+        },
+        "pageTitle": "Homarr ⭐️",
+        "logoImageUrl": "/imgs/logo/logo.png",
+        "faviconUrl": "/imgs/favicon/favicon-squared",
+        "backgroundImageUrl": "",
+        "customCss": "",
+        "colors": {
+          "primary": "red",
+          "secondary": "yellow",
+          "shade": 7
+        },
+        "appOpacity": 100
+      }
+    }
+  }
