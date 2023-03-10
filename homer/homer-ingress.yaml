@@ -16,5 +16,7 @@ spec:
         - name: homer-svc
           port: 80
       middlewares:
-        - name: default-headers
-        - name: cors-headers
+        - name: authelia-2fa
+  tls:
+    store: 
+      name: default-cloudflare-tls
