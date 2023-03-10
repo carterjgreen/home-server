@@ -17,3 +17,4 @@ spec:
           port: 80
       middlewares:
         - name: default-headers
+        - name: cors-headers
