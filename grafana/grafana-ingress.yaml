@@ -17,4 +17,7 @@ spec:
         - name: grafana-svc
           port: 80
       middlewares:
-        - name: default-headers
+        - name: authelia-2fa
+  tls:
+    store: 
+      name: default-cloudflare-tls

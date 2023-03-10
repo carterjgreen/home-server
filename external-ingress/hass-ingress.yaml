@@ -13,8 +13,19 @@ spec:
     - match: Host(`hass.juicewizerd.com`)
       kind: Rule
       services:
-        - name: api@internal
-          kind: TraefikService
-    
- tls:
-   store: default-cloudflare-tls
+        - kind: Service
+          name: hass 
+  tls:
+    store: 
+      name: default-cloudflare-tls
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hass
+  namespace: traefik
+spec:
+  externalName: 192.168.1.86
+  type: ExternalName
+  ports:
+    - port: 8123

@@ -20,5 +20,7 @@ spec:
               name: cookie
               secure: true
       middlewares:
-        - name: default-headers
-        - name: cors-headers
+        - name: authelia-2fa
+  tls:
+    store: 
+      name: default-cloudflare-tls
