@@ -19,5 +19,4 @@ spec:
       middlewares:
         - name: authelia-2fa
   tls:
-    store: 
-      name: default-cloudflare-tls
+    secretName: juicewizerd-com-tls

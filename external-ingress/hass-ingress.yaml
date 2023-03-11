@@ -16,8 +16,7 @@ spec:
         - kind: Service
           name: hass 
   tls:
-    store: 
-      name: default-cloudflare-tls
+    secretName: juicewizerd-com-tls
 ---
 apiVersion: v1
 kind: Service

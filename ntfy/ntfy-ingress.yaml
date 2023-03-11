@@ -22,3 +22,5 @@ spec:
               secure: true
       middlewares:
         - name: default-headers
+  tls:
+    secretName: juicewizerd-com-tls
