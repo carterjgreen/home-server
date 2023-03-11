@@ -25,7 +25,7 @@ ports:
     middlewares:
       - default-test-compress@kubernetescrd
       - default-floc-block@kubernetescrd
-      - default-securityHeaders@kubernetescrd
+      - default-security-headers@kubernetescrd
       - default-cors-headers@kubernetescrd
       # - crowdsec-bouncer@kubernetescrd
       # - cloudflare-allowlist@kubernetescrd
