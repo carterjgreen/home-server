@@ -150,5 +150,13 @@ metadata:
   namespace: default
 spec:
   headers:
-        customResponseHeaders:
-          Permissions-Policy: interest-cohort=()
+    customResponseHeaders:
+      Permissions-Policy: interest-cohort=()
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: test-compress
+  namespace: default
+spec:
+  compress: {}
