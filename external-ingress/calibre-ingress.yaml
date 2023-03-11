@@ -1,0 +1,35 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: calibre
+  namespace: default
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`books.juicewizerd.com`)
+      kind: Rule
+      services:
+        - kind: Service
+          name: calibre 
+          namespace: default
+          port: 8083
+      middlewares:
+        - name: authelia-2fa
+        - name: kobo-sync-headers
+  tls:
+    secretName: juicewizerd-com-tls
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: calibre
+  namespace: default
+spec:
+  externalName: 192.168.1.101
+  type: ExternalName
+  ports:
+    - port: 8083

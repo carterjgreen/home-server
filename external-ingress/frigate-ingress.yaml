@@ -1,0 +1,34 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: frigate
+  namespace: default
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`frigate.juicewizerd.com`)
+      kind: Rule
+      services:
+        - kind: Service
+          name: frigate 
+          namespace: default
+          port: 5000
+      middlewares:
+        - name: authelia-2fa
+  tls:
+    secretName: juicewizerd-com-tls
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frigate
+  namespace: default
+spec:
+  externalName: 192.168.1.101
+  type: ExternalName
+  ports:
+    - port: 5000
