@@ -28,7 +28,6 @@ ports:
       - default-security-headers@kubernetescrd
       - default-cors-headers@kubernetescrd
       # - crowdsec-bouncer@kubernetescrd
-      # - cloudflare-allowlist@kubernetescrd
     forwardedHeaders:
       trustedIPs:
         - 173.245.48.0/20
