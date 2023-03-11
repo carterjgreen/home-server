@@ -1,7 +1,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: hass
+  name: authelia
   namespace: default
   annotations: 
     kubernetes.io/ingress.class: traefik-external
@@ -10,23 +10,23 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`hass.juicewizerd.com`)
+    - match: Host(`auth.juicewizerd.com`)
       kind: Rule
       services:
         - kind: Service
-          name: hass 
+          name: authelia 
           namespace: default
-          port: 8123
+          port: 9091
   tls:
     secretName: juicewizerd-com-tls
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: hass
+  name: authelia
   namespace: default
 spec:
-  externalName: 192.168.1.86
+  externalName: 192.168.1.101
   type: ExternalName
   ports:
-    - port: 8123
+    - port: 9091

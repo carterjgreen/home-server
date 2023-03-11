@@ -37,7 +37,7 @@ metadata:
   namespace: default
 spec:
   forwardAuth:
-    address: http://authelia:9091/api/verify?rd=https://auth.juicewizerd.com
+    address: http://192.168.1.101:9091/api/verify?rd=https://auth.juicewizerd.com
     trustForwardHeader: true
     authResponseHeaders:
       - Remote-User
