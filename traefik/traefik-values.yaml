@@ -23,10 +23,10 @@ ports:
     tls:
       enabled: true
     middlewares:
-      - test-compress@kubernetescrd
-      - floc-block@kubernetescrd
-      - securityHeaders@kubernetescrd
-      - cors-headers@kubernetescrd
+      - default-test-compress@kubernetescrd
+      - default-floc-block@kubernetescrd
+      - default-securityHeaders@kubernetescrd
+      - default-cors-headers@kubernetescrd
       # - crowdsec-bouncer@kubernetescrd
       # - cloudflare-allowlist@kubernetescrd
     forwardedHeaders:
