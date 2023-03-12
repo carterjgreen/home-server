@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: homebox-svc  
+spec:
+  # type: ClusterIP
+  selector:
+    app: homebox-pod
+  ports:
+    - name: http-homebox-out
+      protocol: TCP
+      port: 80
+      targetPort:  http-homebox

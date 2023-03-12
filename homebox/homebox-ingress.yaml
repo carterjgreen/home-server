@@ -1,0 +1,21 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: homebox-ingress
+  namespace: default
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`homebox.juicewizerd.com`)
+      kind: Rule
+      services:
+        - name: homebox-svc
+          port: 80
+      middlewares:
+        - name: authelia-2fa
+  tls:
+    secretName: juicewizerd-com-tls
