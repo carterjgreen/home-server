@@ -8,25 +8,36 @@ sudo firewall-cmd --permanent --zone=trusted --add-source=10.42.0.0/16 #pods
 sudo firewall-cmd --permanent --zone=trusted --add-source=10.43.0.0/16 #services
 sudo firewall-cmd --reload
 ```
-Install k3s to server
+## Install k3s to server
 ```
-export INSTALL_K3S_VERSION="v1.24.10+k3s1"
+export INSTALL_K3S_VERSION="v1.25.6+k3s1" # or don't add this to use stable
 export K3S_KUBECONFIG_MODE="644"
+export K3S_DATASTORE_ENDPOINT='postgres://username:password@192.168.1.99:5432/k3s?sslmode=disable'
 curl -sfL https://get.k3s.io | sh -s - -server \
   --cluster-init \
   --disable traefik \
   --disable servicelb \
   --write-kubeconfig-mode "0644" \
   --flannel-backend=none \
-  --disable-network-policy
-#  --tls-san load_balancer_ip
+  --disable-network-policy \
+  --tls-san 192.168.1.99
+
+  --token <token>
+
 
 sudo chmod 644 /etc/rancher/k3s/k3s.yaml
+chmod 600 ~/.kube/config
 sudo cat /var/lib/rancher/k3s/server/node-token
 k config view --raw > ~/.kube/config
 ```
 
-Install Cilium
+## Install Other Servers
+```
+curl -sfL https://get.k3s.io | sh -s - server \
+  --token=SECRET \
+  --tls-san load_balancer_ip_or_hostname
+```
+## Install Cilium
 ```
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 CILIUM_CLI_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/cilium-cli/master/stable.txt)
@@ -40,6 +51,7 @@ rm cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}
 cilium install
 cilium status --wait
 cilium connectivity test
+
 ## Hubble
 cilium hubble enable
 export HUBBLE_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/hubble/master/stable.txt)
@@ -55,7 +67,7 @@ hubble status
 
 ```
 
-Install k3s to agent
+## Install k3s to agent
 ```
 export INSTALL_K3S_VERSION="v1.24.10+k3s1"
 curl -sfL https://get.k3s.io | K3S_URL=https://1.2.3.4:6443 sh -s - agent --token mypassword
@@ -68,10 +80,10 @@ sudo cat /etc/rancher/k3s/k3s.yaml
 Copy to .kube/config on other device and run
 ```chmod 600 ~/.kube/config```
 
-Install metallb
+## Install metallb
 ```
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.9/config/manifests/metallb-native.yaml \
-  -f metallb/layer2.yaml \
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.9/config/manifests/metallb-native.yaml
+kubectl apply -f metallb/layer2.yaml \
   -f metallb/advertisement.yaml
 ```
 
@@ -83,7 +95,8 @@ helm repo add jetstack https://charts.jetstack.io
 helm repo update
 ```
 
-Install longhorn with helm: https://longhorn.io/docs/1.4.0/deploy/install/install-with-helm/
+## Install longhorn with helm: 
+https://longhorn.io/docs/1.4.0/deploy/install/install-with-helm/
 ```
 kubectl apply -f longhorn/longhorn-namespace.yaml
 kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/v1.4.0/deploy/prerequisite/longhorn-iscsi-installation.yaml
@@ -95,7 +108,7 @@ kubectl delete -f https://raw.githubusercontent.com/longhorn/longhorn/v1.4.0/dep
 helm install longhorn longhorn/longhorn --namespace longhorn-system --create-namespace --version 1.4.0 --values=longhorn/longhorn-values.yaml
 ```
 
-Install argocd
+## Install argocd
 ```
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -115,7 +128,7 @@ kubectl config get-contexts -o name
 argocd cluster add NAME --in-cluster
 ```
 
-Optional: Install Rancher
+## Install Cert-Manager
 ```
 helm repo add jetstack https://charts.jetstack.io
 helm repo update
@@ -123,12 +136,6 @@ helm install cert-manager jetstack/cert-manager \
      --namespace cert-manager \
      --create-namespace \
      --set installCRDs=true
-
-helm install rancher rancher-stable/rancher \
-  --namespace cattle-system \
-  --set hostname=rancher.juicewizerd.com \
-  --set bootstrapPassword=admin
-
 ```
 
 kubectl get namespace "stuck" -o json   | tr -d "\n" | sed "s/\"finalizers\": \[[^]]\+\]/\"finalizers\": []/"   | kubectl replace --raw /api/v1/namespaces/"stuck"/finalize -f -
