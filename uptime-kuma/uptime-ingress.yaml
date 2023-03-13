@@ -21,5 +21,6 @@ spec:
               secure: true
       middlewares:
         - name: authelia-2fa
+        - name: cors-headers
   tls:
     secretName: juicewizerd-com-tls
