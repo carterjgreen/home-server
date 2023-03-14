@@ -18,7 +18,7 @@ spec:
       ref: myRepo
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: authelia
+    namespace: default
   syncPolicy:
     automated:
       selfHeal: true
