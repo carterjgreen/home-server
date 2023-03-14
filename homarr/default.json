@@ -43,7 +43,7 @@
       {
         "id": "65f94d59-44c7-4db8-9595-239bc7a61729",
         "name": "jellyseerr",
-        "url": "http://192.168.1.101:5055",
+        "url": "http://192.168.1.93:5055",
         "appearance": {
           "iconUrl": "https://cdn.jsdelivr.net/gh/loganmarchione/homelab-svg-assets/assets/jellyseerr.svg"
         },
@@ -55,7 +55,7 @@
         },
         "behaviour": {
           "isOpeningNewTab": true,
-          "externalUrl": "http://192.168.1.101:5055"
+          "externalUrl": "http://192.168.1.93:5055"
         },
         "area": {
           "type": "category",
@@ -103,7 +103,7 @@
       {
         "id": "2d12f7ac-7569-4ae8-a4b8-c332db9ca560",
         "name": "Sonarr",
-        "url": "http://192.168.1.101:8889",
+        "url": "http://192.168.1.93:8989",
         "appearance": {
           "iconUrl": "https://cdn.jsdelivr.net/gh/loganmarchione/homelab-svg-assets/assets/sonarr.svg"
         },
@@ -115,7 +115,7 @@
         },
         "behaviour": {
           "isOpeningNewTab": true,
-          "externalUrl": "http://192.168.1.101:8889"
+          "externalUrl": "http://192.168.1.93:8989"
         },
         "area": {
           "type": "category",
@@ -169,7 +169,7 @@
       {
         "id": "e5b23594-31ec-489d-bdbc-f375ee5b4467",
         "name": "Bazarr",
-        "url": "http://192.168.1.101:6767",
+        "url": "http://192.168.1.93:6767",
         "appearance": {
           "iconUrl": "https://cdn.jsdelivr.net/gh/loganmarchione/homelab-svg-assets/assets/bazarr.svg"
         },
@@ -181,7 +181,7 @@
         },
         "behaviour": {
           "isOpeningNewTab": true,
-          "externalUrl": "http://192.168.1.101:6767"
+          "externalUrl": "http://192.168.1.93:6767"
         },
         "area": {
           "type": "category",
@@ -229,7 +229,7 @@
       {
         "id": "9fbd8fcb-40ff-4b44-a277-357fe13668fd",
         "name": "qBittorrent",
-        "url": "http://192.168.1.101:8060",
+        "url": "http://192.168.1.93:8060",
         "appearance": {
           "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/qbittorrent.svg"
         },
@@ -241,7 +241,7 @@
         },
         "behaviour": {
           "isOpeningNewTab": true,
-          "externalUrl": "http://192.168.1.101:8060"
+          "externalUrl": "http://192.168.1.93:8060"
         },
         "area": {
           "type": "category",
@@ -300,7 +300,7 @@
       {
         "id": "08b8f9f2-593e-456b-b776-d53512d648cb",
         "name": "Sabnzbd",
-        "url": "http://192.168.1.101:8080",
+        "url": "http://192.168.1.93:8080",
         "appearance": {
           "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/sabnzbd.png"
         },
@@ -312,7 +312,7 @@
         },
         "behaviour": {
           "isOpeningNewTab": true,
-          "externalUrl": "http://192.168.1.101:8080"
+          "externalUrl": "http://192.168.1.93:8080"
         },
         "area": {
           "type": "category",
@@ -366,7 +366,7 @@
       {
         "id": "57b9b75f-eaa9-43ea-b398-1892ef2cf179",
         "name": "Uptime-Kuma",
-        "url": "http://192.168.1.101:3001",
+        "url": "https://uptime.juicewizerd.com",
         "appearance": {
           "iconUrl": "https://cdn.jsdelivr.net/gh/loganmarchione/homelab-svg-assets/assets/uptimekuma.svg"
         },
@@ -486,7 +486,7 @@
       {
         "id": "0d0d3558-efc3-4aa3-9616-4d52c40e997b",
         "name": "Jellyfin",
-        "url": "http://192.168.1.101:8096",
+        "url": "http://192.168.1.93:8096",
         "appearance": {
           "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/jellyfin.svg"
         },
@@ -498,7 +498,7 @@
         },
         "behaviour": {
           "isOpeningNewTab": true,
-          "externalUrl": "http://192.168.1.101:8096"
+          "externalUrl": "http://192.168.1.93:8096"
         },
         "area": {
           "type": "category",
@@ -557,7 +557,7 @@
       {
         "id": "3bbd181e-1bc4-4bd7-8246-b67237397b3b",
         "name": "Radarr",
-        "url": "http://192.168.1.101:7878",
+        "url": "http://192.168.1.93:7878",
         "appearance": {
           "iconUrl": "https://cdn.jsdelivr.net/gh/loganmarchione/homelab-svg-assets/assets/radarr.svg"
         },
@@ -569,7 +569,7 @@
         },
         "behaviour": {
           "isOpeningNewTab": true,
-          "externalUrl": "http://192.168.1.101:7878"
+          "externalUrl": "http://192.168.1.93:7878"
         },
         "area": {
           "type": "category",
@@ -623,7 +623,7 @@
       {
         "id": "251cd07b-bc51-40ed-9e0e-0e56c7fc144b",
         "name": "prowlarr",
-        "url": "http://192.168.1.101:9696",
+        "url": "http://192.168.1.93:9696",
         "appearance": {
           "iconUrl": "https://cdn.jsdelivr.net/gh/loganmarchione/homelab-svg-assets/assets/prowlarr.svg"
         },
@@ -635,7 +635,7 @@
         },
         "behaviour": {
           "isOpeningNewTab": true,
-          "externalUrl": "http://192.168.1.101:9696"
+          "externalUrl": "http://192.168.1.93:9696"
         },
         "area": {
           "type": "category",
