@@ -73,7 +73,7 @@ services:
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/jellyfin.svg"
         subtitle: "Media Center"
         tag: "video"
-        url: "http://192.168.1.93:8096/"
+        url: "http://192.168.1.92:8096/"
         target: "_blank"
         type: "Emby"
         apikey: "b5b789751bb848699aaee1790e31aa47"

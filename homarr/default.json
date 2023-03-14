@@ -486,7 +486,7 @@
       {
         "id": "0d0d3558-efc3-4aa3-9616-4d52c40e997b",
         "name": "Jellyfin",
-        "url": "http://192.168.1.93:8096",
+        "url": "http://192.168.1.92:8096",
         "appearance": {
           "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/jellyfin.svg"
         },
@@ -498,7 +498,7 @@
         },
         "behaviour": {
           "isOpeningNewTab": true,
-          "externalUrl": "http://192.168.1.93:8096"
+          "externalUrl": "http://192.168.1.92:8096"
         },
         "area": {
           "type": "category",
@@ -549,7 +549,7 @@
             {
               "field": "password",
               "type": "private",
-              "value": "giraffelegs"
+              "value": "perrytheplatypus"
             }
           ]
         }
