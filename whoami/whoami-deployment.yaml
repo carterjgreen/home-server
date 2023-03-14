@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whoami-deployment
+  namespace: default
+  labels:
+    app: whoami-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: whoami-pod
+  template:
+    metadata:
+      labels:
+        app: whoami-pod
+    spec:
+      containers:
+        - name: whoami
+          image: traefik/whoami
+          env:
+            - name: TZ
+              value: America/Toronto
+          ports:
+            - containerPort: 80
+              name: http-whoami
+

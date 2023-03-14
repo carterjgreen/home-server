@@ -32,6 +32,8 @@ ports:
       # - crowdsec-bouncer@kubernetescrd
     forwardedHeaders:
       trustedIPs:
+        - 127.0.0.1/32
+        - 192.168.1.240
         - 173.245.48.0/20
         - 103.21.244.0/22
         - 103.22.200.0/22

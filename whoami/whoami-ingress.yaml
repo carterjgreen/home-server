@@ -1,0 +1,21 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: whoami-ingress
+  namespace: default
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`whoami.local.juicewizerd.com`) || Host(`whoami.juicewizerd.com`)
+      kind: Rule
+      services:
+        - name: whoami-svc
+          port: 80
+      # middlewares:
+      #   - name: local-allowlist
+  tls:
+    secretName: juicewizerd-com-tls
