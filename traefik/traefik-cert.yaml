@@ -1,10 +1,10 @@
-apiVersion: traefik.containo.us/v1alpha1
-kind: TLSStore
-metadata:
-  name: default-cloudflare-tls
-  namespace: default
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: TLSStore
+# metadata:
+#   name: default-cloudflare-tls
+#   namespace: default
 
-spec:
-  defaultCertificate:
-    secretName: default-cloudflare-tls
+# spec:
+#   defaultCertificate:
+#     secretName: default-cloudflare-tls
     # secrets are only available from the namespace that they're defined in
