@@ -1,0 +1,200 @@
+---
+## @formatter:off
+## values.local.yaml
+##
+## Repository: authelia https://charts.authelia.com
+## Chart: authelia
+##
+## This values file is designed for a StatefulSet deployment with a single pod. It is not intended for production environments
+## It uses the following providers:
+##   - authentication: file (yaml)
+##   - storage: local (SQLite3)
+##   - session: memory
+##   - notification: filesystem (yaml)
+
+domain: juicewizerd.com
+
+ingress:
+  enabled: true
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+  tls:
+    secret: juicewizerd-com-tls
+  traefikCRD:
+    enabled: true
+    entryPoints:
+      - web
+      - websecure
+    sticky: true
+pod:
+  # Must be Deployment, DaemonSet, or StatefulSet.
+  kind: DaemonSet
+  strategy:
+    type: RollingUpdate
+
+  env:
+  - name: TZ
+    value: America/Toronto
+
+  resources:
+    limits: {}
+    # limits:
+    #   cpu: "4.00"
+    #   memory: 125Mi
+    requests: {}
+    # requests:
+    #   cpu: "0.25"
+    #   memory: 50Mi
+
+
+##
+## Authelia Config Map Generator
+##
+configMap:
+  # Enable the configMap source for the Authelia config.
+  # If this is false you need to provide a volumeMount via PV/PVC or other means that mounts to /config.
+  enabled: true
+  key: configuration.yaml
+
+  server:
+    host: 0.0.0.0
+    port: 9091 # if you need this changed make sure it reflects also in the docker-compose.yml
+    buffers:
+      read: 10485760 # Set large for calibre web
+      write: 8192
+  log:
+    level: info #info
+    # file_path: "/var/log/authelia.log"
+    keep_stdout: true
+  # jwt_secret: U4oNRJ5duzYD4KFNV5i!g5#Yz
+  default_redirection_url: https://auth.juicewizerd.com
+  theme: auto   # options: dark, light, grey, auto
+  totp:
+    disable: false
+    issuer: juicewizerd.com
+    algorithm: sha1
+    digits: 6
+    period: 30
+    skew: 1
+    secret_size: 32
+
+  authentication_backend:
+    password_reset:
+      disable: false
+    refresh_interval: 1m
+    ldap:
+      implementation: custom
+      url: ldap://lldap-service.lldap.svc.cluster.local:3890
+      timeout: 5s
+      start_tls: false
+      base_dn: dc=juicewizerd,dc=com
+      username_attribute: uid
+      additional_users_dn: ou=people
+      users_filter: "(&(|({username_attribute}={input})({mail_attribute}={input}))(objectClass=person))"
+      additional_groups_dn: ou=groups
+      groups_filter: "(member={dn})"
+      group_name_attribute: cn
+      mail_attribute: mail
+      display_name_attribute: displayName
+      user: uid=admin,ou=people,dc=juicewizerd,dc=com
+      # Password can also be set using a secret: https://www.authelia.com/docs/configuration/secrets.html
+      # password: 'giraffelegs'
+
+  access_control:
+    default_policy: deny
+    rules:
+      # # Already hass 2FA
+      - domain:
+          - "hass.juicewizerd.com"
+        policy: bypass
+      # Kobo bypass
+      - domain: "books.juicewizerd.com"
+        policy: bypass
+        resources:
+          - "^/kobo([/?].*)?$"
+      # Home assistant app bypass
+      - domain: 
+          - "hass.juicewizerd.com"
+        policy: bypass
+        resources:
+          - '^/api([/?].*)?$'
+          - "^/auth/token.*"
+          - "^/.external_auth=.*"
+          - "^/service_worker.js"
+          - "^/static.*"
+          - "^/local.*"
+          - "^/hacsfiles.*"
+          - "^/frontend_latest.*"
+      # Uptime-Kuma API
+      - domain: 
+          - "uptime.juicewizerd.com"
+        policy: bypass
+        resources:
+          - '^/api([/?].*)?$'
+      ## Two-Factor
+      - domain: 
+          - "homer.juicewizerd.com"
+        policy: two_factor
+      ## One-Factor
+      - domain:
+          - "*.juicewizerd.com"
+          # - "uptime.juicewizerd.com"
+          # - "books.juicewizerd.com"
+          # - "whoami.juicewizerd.com"
+        policy: one_factor 
+          
+  session:
+    name: authelia_session
+    domain: juicewizerd.com 
+    # This secret can also be set using the env variables AUTHELIA_SESSION_SECRET_FILE
+    # secret: BEcQnvjxawGh4U9JgXBMXNVEer
+    expiration: 1h
+    inactivity: 2h
+    redis:
+      host: 192.168.1.99
+
+  regulation:
+    max_retries: 5
+    find_time: 120
+    ban_time: 300
+
+  storage:
+    # local:
+    #   enabled: true
+    #   path: /config/db.sqlite3
+    postgres:
+      host: 192.168.1.99
+      port: 5433
+
+      
+  notifier:
+    filesystem:
+      enabled: true
+      filename: /config/notification.txt
+    smtp:
+      enabled: false
+
+secret:
+  existingSecret: authelia
+    # jwt:
+    #   key: JWT_TOKEN
+    #   value: "U4oNRJ5duzYD4KFNV5i"
+    #   filename: JWT_TOKEN
+    # ldap:
+    #   key: LDAP_PASSWORD
+    #   value: "giraffelegs"
+    #   filename: LDAP_PASSWORD
+    # session:
+    #   key: SESSION_ENCRYPTION_KEY
+    #   value: "BEcQnvjxawGh4U9JgXBMXNVEer"
+    #   filename: SESSION_ENCRYPTION_KEY
+    # storageEncryptionKey:
+    #   key: STORAGE_ENCRYPTION_KEY
+    #   value: "UzOvhwLbVqLrXg5qApGc"
+    #   filename: STORAGE_ENCRYPTION_KEY
+
+
+persistence:
+  enabled: false
+  existingClaim: "authelia-pvc"
+  storageClass: "longhorn"

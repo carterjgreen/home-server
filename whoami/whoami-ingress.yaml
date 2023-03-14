@@ -15,7 +15,7 @@ spec:
       services:
         - name: whoami-svc
           port: 80
-      # middlewares:
-      #   - name: local-allowlist
+      middlewares:
+        - name: chain-authelia-auth
   tls:
     secretName: juicewizerd-com-tls
