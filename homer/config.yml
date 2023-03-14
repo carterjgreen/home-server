@@ -76,7 +76,7 @@ services:
         url: "http://192.168.1.92:8096/"
         target: "_blank"
         type: "Emby"
-        apikey: "b5b789751bb848699aaee1790e31aa47"
+        apikey: "096955377f17481fbfebba9e6a501732"
         libraryType: "series"
       - name: "Zigbee2MQTT"
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/zigbee2mqtt.svg"
