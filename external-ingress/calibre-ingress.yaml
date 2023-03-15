@@ -29,7 +29,7 @@ metadata:
   name: calibre
   namespace: default
 spec:
-  externalName: 192.168.1.101
+  externalName: 192.168.1.93
   type: ExternalName
   ports:
     - port: 8083
