@@ -18,8 +18,8 @@ ingress:
   enabled: true
   annotations: 
     kubernetes.io/ingress.class: traefik-external
-  tls:
-    secret: juicewizerd-com-tls
+  tls: {}
+    # secret: juicewizerd-com-tls
   traefikCRD:
     enabled: true
     entryPoints:

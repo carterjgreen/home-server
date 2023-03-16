@@ -19,8 +19,8 @@ spec:
           port: 5001
       middlewares:
         - name: authelia-2fa
-  tls:
-    secretName: juicewizerd-com-tls
+  tls: {}
+    # secretName: juicewizerd-com-tls
 ---
 apiVersion: v1
 kind: Service

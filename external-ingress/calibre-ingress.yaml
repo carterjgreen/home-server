@@ -20,8 +20,8 @@ spec:
       middlewares:
         - name: authelia-2fa
         - name: kobo-sync-headers
-  tls:
-    secretName: juicewizerd-com-tls
+  tls: {}
+    # secretName: juicewizerd-com-tls
 ---
 apiVersion: v1
 kind: Service
