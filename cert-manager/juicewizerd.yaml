@@ -12,4 +12,3 @@ spec:
   dnsNames:
   - "juicewizerd.com"
   - "*.juicewizerd.com"
-  - "*.local.juicewizerd.com"
