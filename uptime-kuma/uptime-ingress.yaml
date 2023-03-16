@@ -22,5 +22,5 @@ spec:
       middlewares:
         # - name: authelia-2fa
         - name: cors-headers
-  tls: {}
-    # secretName: default-cloudflare-tls
+  tls: 
+    secretName: juicewizerd-com-tls

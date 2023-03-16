@@ -18,5 +18,5 @@ spec:
           port: 80
       middlewares:
         - name: authelia-2fa
-  tls: {}
-    # secretName: juicewizerd-com-tls
+  tls:
+    secretName: juicewizerd-com-tls

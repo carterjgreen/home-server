@@ -17,8 +17,8 @@ spec:
           name: hass 
           namespace: default
           port: 8123
-  tls: {}
-    # secretName: juicewizerd-com-tls
+  tls:
+    secretName: juicewizerd-com-tls
 ---
 apiVersion: v1
 kind: Service
