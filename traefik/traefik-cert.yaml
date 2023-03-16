@@ -1,7 +1,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: TLSStore
 metadata:
-  name: default-cloudflare-tls
+  name: store-cloudflare-tls
   namespace: default
 
 spec:
