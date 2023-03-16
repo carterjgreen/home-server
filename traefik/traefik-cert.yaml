@@ -7,4 +7,5 @@ metadata:
 spec:
   defaultCertificate:
     secretName: default-cloudflare-tls
+    namespace: default
     # secrets are only available from the namespace that they're defined in
