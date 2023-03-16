@@ -10,7 +10,7 @@ sudo firewall-cmd --reload
 ```
 ## Install k3s to server
 ```
-export INSTALL_K3S_VERSION="v1.25.6+k3s1" # or don't add this to use stable
+export INSTALL_K3S_VERSION="v1.25.7+k3s1" # or don't add this to use stable
 export K3S_KUBECONFIG_MODE="644"
 export K3S_DATASTORE_ENDPOINT='postgres://username:password@192.168.1.99:5432/k3s?sslmode=disable'
 curl -sfL https://get.k3s.io | sh -s - -server \
@@ -31,12 +31,6 @@ sudo cat /var/lib/rancher/k3s/server/node-token
 k config view --raw > ~/.kube/config
 ```
 
-## Install Other Servers
-```
-curl -sfL https://get.k3s.io | sh -s - server \
-  --token=SECRET \
-  --tls-san load_balancer_ip_or_hostname
-```
 ## Install Cilium
 ```
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
@@ -105,7 +99,7 @@ kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/v1.4.0/depl
 kubectl delete -f https://raw.githubusercontent.com/longhorn/longhorn/v1.4.0/deploy/prerequisite/longhorn-iscsi-installation.yaml
 kubectl delete -f https://raw.githubusercontent.com/longhorn/longhorn/v1.4.0/deploy/prerequisite/longhorn-nfs-installation.yaml
 
-helm install longhorn longhorn/longhorn --namespace longhorn-system --create-namespace --version 1.4.0 --values=longhorn/longhorn-values.yaml
+helm install longhorn longhorn/longhorn --namespace longhorn-system --create-namespace --version 1.4.1 --values=longhorn/longhorn-values.yaml
 ```
 
 ## Install argocd
