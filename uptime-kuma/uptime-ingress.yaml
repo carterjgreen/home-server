@@ -20,7 +20,7 @@ spec:
               name: cookie
               secure: true
       middlewares:
-        - name: authelia-2fa
+        # - name: authelia-2fa
         - name: cors-headers
-  tls:
-    secretName: juicewizerd-com-tls
+  tls: {}
+    # secretName: default-cloudflare-tls
