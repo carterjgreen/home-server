@@ -26,14 +26,12 @@ pod:
     value: America/Toronto
 
   resources:
-    limits: {}
     limits:
       cpu: "4.00"
       memory: 125Mi
-    requests: {}
-    # requests:
-    #   cpu: "0.25"
-    #   memory: 50Mi
+    requests:
+      cpu: "0.25"
+      memory: 50Mi
 
 ## Authelia Config Map Generator
 configMap:
