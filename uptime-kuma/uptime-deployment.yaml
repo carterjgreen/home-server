@@ -27,9 +27,9 @@ spec:
             limits:
               memory: 300Mi
               cpu:  200m
-            requests:
-              cpu: 150m
-              memory: 150Mi
+            # requests:
+            #   cpu: 150m
+            #   memory: 150Mi
           volumeMounts:
             - mountPath: /app/data
               name: uptimekuma-volume
