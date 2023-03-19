@@ -13,10 +13,12 @@ sudo firewall-cmd --reload
 export INSTALL_K3S_VERSION="v1.25.7+k3s1" # or don't add this to use stable
 export K3S_KUBECONFIG_MODE="644"
 export K3S_DATASTORE_ENDPOINT='postgres://username:password@192.168.1.99:5432/k3s?sslmode=disable'
+export K3S_RESOLV_CONF=/etc/resolv.conf
 curl -sfL https://get.k3s.io | sh -s - -server \
   --cluster-init \
   --disable traefik \
   --disable servicelb \
+  --prefer-bundled-bin \
   --write-kubeconfig-mode "0644" \
   --flannel-backend=none \
   --disable-network-policy \
