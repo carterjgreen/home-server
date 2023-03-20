@@ -9,6 +9,8 @@ spec:
   selector:
     matchLabels:
       app: ntfy-pod
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
