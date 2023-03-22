@@ -15,7 +15,7 @@ ingress:
     entryPoints:
       - web
       - websecure
-    sticky: true
+    # sticky: true
 pod:
   kind: DaemonSet # Must be Deployment, DaemonSet, or StatefulSet.
   strategy:
