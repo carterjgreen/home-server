@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: change-deployment
+  labels:
+    app: change-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: change-pod
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: change-pod
+    spec:
+      containers:
+        - name: change
+          image: dgtlmoon/changedetection.io:0.41
+          env:
+            - name: TZ
+              value: America/Toronto
+          ports:
+            - containerPort: 5000
+              name: http-change
+          resources:
+            limits:
+              memory: 300Mi
+              cpu:  200m
+          volumeMounts:
+            - mountPath: /datastore
+              name: change-volume
+      volumes:
+        - name: change-volume
+          persistentVolumeClaim:
+            claimName: change-pvc
+            
