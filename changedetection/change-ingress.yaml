@@ -1,7 +1,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: changedetection
+  name: change-ingress
   namespace: default
   annotations: 
     kubernetes.io/ingress.class: traefik-external
@@ -13,22 +13,9 @@ spec:
     - match: Host(`change.juicewizerd.com`)
       kind: Rule
       services:
-        - kind: Service
-          name: changedetection 
-          namespace: default
-          port: 5001
+        - name: change-svc
+          port: 80
       middlewares:
         - name: authelia-2fa
   tls:
     secretName: juicewizerd-com-tls
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: changedetection
-  namespace: default
-spec:
-  externalName: 192.168.1.99
-  type: ExternalName
-  ports:
-    - port: 5001
