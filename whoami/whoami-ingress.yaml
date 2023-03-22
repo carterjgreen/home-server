@@ -18,4 +18,4 @@ spec:
       middlewares:
         - name: chain-authelia-auth
   tls: 
-    secretName: juicewizerd-com-tls
+    secretName: juicewizerd-le-com-tls

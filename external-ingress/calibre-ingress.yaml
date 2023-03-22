@@ -21,7 +21,7 @@ spec:
         - name: authelia-2fa
         - name: kobo-sync-headers
   tls:
-    secretName: juicewizerd-com-tls
+    secretName: juicewizerd-le-com-tls
 ---
 apiVersion: v1
 kind: Service

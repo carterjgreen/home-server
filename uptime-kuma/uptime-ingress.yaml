@@ -23,4 +23,4 @@ spec:
         # - name: authelia-2fa
         - name: cors-headers
   tls: 
-    secretName: juicewizerd-com-tls
+    secretName: juicewizerd-le-com-tls

@@ -18,7 +18,7 @@ spec:
           namespace: default
           port: 8123
   tls:
-    secretName: juicewizerd-com-tls
+    secretName: juicewizerd-le-com-tls
 ---
 apiVersion: v1
 kind: Service
