@@ -171,7 +171,7 @@ services:
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/changedetection-io.png"
         subtitle: "Change Detection"
         tag: "utility"
-        url: "http://192.168.1.99:5001"
+        url: "https://change.juicewizerd.com"
         target: "_blank"
       # - name: "Code-Server"
       #   logo: "assets/icons/vscode.png"
