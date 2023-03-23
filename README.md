@@ -83,7 +83,12 @@ kubectl apply -f metallb/layer2.yaml \
   -f metallb/advertisement.yaml
 ```
 
-Install helm: https://helm.sh/docs/intro/install/
+## Apply secrets
+```
+kubectl apply -f secrets
+```
+
+## Install helm: https://helm.sh/docs/intro/install/
 ```
 helm repo add traefik https://traefik.github.io/charts
 helm repo add longhorn https://charts.longhorn.io
