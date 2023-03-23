@@ -117,11 +117,9 @@ sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
 rm argocd-linux-amd64
 
 argocd admin initial-password -n argocd
-argocd login <ARGOCD_SERVER_IP>
+argocd login 192.168.1.241
 argocd account update-password
-
-kubectl config get-contexts -o name
-argocd cluster add NAME --in-cluster
+argocd repo add https://github.com/carterjgreen/home-server.git --username carterjgreen --password <secret>
 ```
 
 ## Install Cert-Manager
