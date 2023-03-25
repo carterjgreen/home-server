@@ -7,7 +7,7 @@ metadata:
     kubernetes.io/ingress.class: traefik-external
 spec:
   entryPoints:
-    - web
+    # - web
     - websecure
   routes:
     - match: Host(`homarr.juicewizerd.com`)
