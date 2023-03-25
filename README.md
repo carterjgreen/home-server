@@ -107,7 +107,7 @@ kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/v1.4.0/depl
 kubectl delete -f https://raw.githubusercontent.com/longhorn/longhorn/v1.4.0/deploy/prerequisite/longhorn-iscsi-installation.yaml
 kubectl delete -f https://raw.githubusercontent.com/longhorn/longhorn/v1.4.0/deploy/prerequisite/longhorn-nfs-installation.yaml
 
-helm install longhorn longhorn/longhorn --namespace longhorn-system --create-namespace --version 1.4.1 --values=longhorn/longhorn-values.yaml
+helm install longhorn longhorn/longhorn --namespace longhorn-system --version 1.4.1 --values=longhorn/longhorn-values.yaml
 ```
 
 ## Install argocd
