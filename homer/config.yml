@@ -272,5 +272,11 @@ services:
         tag: "reverse-proxy"
         url: "http://dash.traefik"
         target: "_blank"    
+      - name: "Longhorn"
+        logo: "https://raw.githubusercontent.com/longhorn/website/master/static/img/icon-longhorn.svg"
+        subtitle: "Kubernetes Volume Manager"
+        tag: "volumes"
+        url: "http://longhorn.example.com"
+        target: "_blank"    
          
       
