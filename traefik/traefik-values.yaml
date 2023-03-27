@@ -28,8 +28,7 @@ ports:
       - default-floc-block@kubernetescrd
       - default-security-headers@kubernetescrd
       - default-cors-headers@kubernetescrd
-      # - default-cloudflare-allowlist@kubernetescrd
-      # - crowdsec-bouncer@kubernetescrd
+      - default-crowdsec-bouncer@kubernetescrd
     forwardedHeaders:
       trustedIPs:
         - 127.0.0.1/32
