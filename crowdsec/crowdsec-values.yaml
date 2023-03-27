@@ -1,4 +1,6 @@
 container_runtime: containerd
+image:
+  tag: "v1.4.6"
 agent:
   acquisition:
     - namespace: traefik
@@ -12,10 +14,6 @@ agent:
       value: "crowdsecurity/traefik LePresidente/authelia crowdsecurity/home-assistant"
     - name: TZ
       value: "America/Toronto"
-  # persistentVolume:
-  #   config:
-  #     enabled: true
-  #     storageClassName: "longhorn"
 lapi:
   env:
     - name: ENROLL_KEY
