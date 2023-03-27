@@ -94,6 +94,7 @@ helm repo add traefik https://traefik.github.io/charts
 helm repo add longhorn https://charts.longhorn.io
 helm repo add jetstack https://charts.jetstack.io
 helm repo add grafana https://grafana.github.io/helm-charts
+helm repo add crowdsec https://crowdsecurity.github.io/helm-charts
 helm repo update
 ```
 
@@ -130,8 +131,6 @@ argocd repo add https://github.com/carterjgreen/home-server.git --username carte
 
 ## Install Cert-Manager
 ```
-helm repo add jetstack https://charts.jetstack.io
-helm repo update
 helm install cert-manager jetstack/cert-manager \
      --namespace cert-manager \
      --create-namespace \
