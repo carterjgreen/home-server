@@ -24,10 +24,6 @@ spec:
           env:
             - name: TZ
               value: America/Toronto
-            - name: NTFY_DEBUG
-              value: "false"
-            - name: NTFY_LOG_LEVEL
-              value: DEBUG
           ports:
             - containerPort: 80
               name: http-ntfy
