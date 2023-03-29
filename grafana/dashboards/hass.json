@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "9.3.8"
+      "version": "9.4.7"
     },
     {
       "type": "datasource",
@@ -75,7 +75,7 @@
             "axisGridShow": true,
             "axisLabel": "",
             "axisPlacement": "left",
-            "axisWidth": 55,
+            "axisWidth": 60,
             "barAlignment": 1,
             "drawStyle": "line",
             "fillOpacity": 0,
@@ -173,6 +173,7 @@
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
+            "axisWidth": 60,
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 0,
@@ -207,7 +208,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "celsius"
         },
         "overrides": []
       },
@@ -383,7 +385,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -520,7 +523,7 @@
   ],
   "refresh": "1m",
   "revision": 1,
-  "schemaVersion": 37,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -534,6 +537,6 @@
   "timezone": "",
   "title": "Home Assistant",
   "uid": "SH5hMcX7k",
-  "version": 2,
+  "version": 3,
   "weekStart": ""
 }
