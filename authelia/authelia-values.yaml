@@ -44,6 +44,9 @@ configMap:
     buffers:
       read: 10485760 # Set large for calibre web
       write: 8192
+    timeouts:
+      read: 6s
+      write: 6s
   log:
     level: info
     keep_stdout: true
