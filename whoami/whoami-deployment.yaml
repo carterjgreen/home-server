@@ -1,10 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: whoami-deployment
-  namespace: default
+  name: whoami
   labels:
-    app: whoami-deployment
+    app: whoami
 spec:
   replicas: 1
   selector:

@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: homer-deployment
+  name: homer
   labels:
-    app: homer-deployment
+    app: homer
 spec:
   revisionHistoryLimit: 1
   replicas: 2

@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: homarr-deployment
+  name: homarr
   labels:
-    app: homarr-deployment
+    app: homarr
 spec:
   revisionHistoryLimit: 1
   replicas: 1
