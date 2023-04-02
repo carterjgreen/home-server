@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: change-deployment
+  name: change-detection
   labels:
-    app: change-deployment
+    app: change-detection
 spec:
   replicas: 1
   selector:
