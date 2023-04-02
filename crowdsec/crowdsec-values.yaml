@@ -1,6 +1,4 @@
 container_runtime: containerd
-image:
-  tag: "v1.4.6"
 agent:
   acquisition:
     - namespace: traefik
