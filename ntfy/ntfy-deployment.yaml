@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ntfy-deployment
+  name: ntfy
   labels:
-    app: ntfy-deployment
+    app: ntfy
 spec:
   replicas: 1
   selector:
