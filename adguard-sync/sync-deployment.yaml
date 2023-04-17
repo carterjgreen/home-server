@@ -23,7 +23,7 @@ spec:
             - name: TZ
               value: America/Toronto
             - name: API_PORT
-              value: 0
+              value: '0'
             - name: ORIGIN_URL
               value: http://192.168.1.93:8070
             - name: ORIGIN_USERNAME
