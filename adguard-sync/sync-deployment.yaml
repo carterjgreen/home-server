@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sync-detection
+  name: adguardhome-sync
   labels:
-    app: sync-detection
+    app: adguardhome-sync
 spec:
   replicas: 1
   selector:
@@ -25,46 +25,38 @@ spec:
             - name: API_PORT
               value: '0'
             - name: CRON
-              value: */10 * * * *
+              value: '*/10 * * * *'
             - name: RUNONSTART
-              value: true
+              value: 'true'
             - name: ORIGIN_URL
-              value: http://192.168.1.93:8070
+              value: 'http://192.168.1.93:8070'
             - name: ORIGIN_USERNAME
-              value: carter
+              value: 'carter'
             - name: ORIGIN_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: adguard
-                  key: ORIGIN_USERNAME
+                  key: ORIGIN_PASSWORD
             - name: REPLICA_URL
-              value: http://192.168.1.99:80
+              value: 'http://192.168.1.99:8070'
             - name: REPLICA_USERNAME
               value: carter
             - name: REPLICA_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: adguard
-                  key: REPLICA_USERNAME
+                  key: REPLICA_PASSWORD
             - name: REPLICA1_URL
-              value: http://192.168.1.86:3010
+              value: 'http://192.168.1.86:3010'
             - name: REPLICA1_USERNAME
-              value: external
+              value: 'external'
             - name: REPLICA1_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: adguard
-                  key: REPLICA1_USERNAME   
+                  key: REPLICA1_PASSWORD 
           resources:
             limits:
               memory: 100Mi
               cpu:  100m
-      #     volumeMounts:
-      #       - mountPath: /config/adguardhome-sync.yaml
-      #         subPath: adguardhome-sync.yaml
-      #         name: config-volume
-      # volumes:
-      #   - name: config-volume
-      #     configMap:
-      #       name: sync-config
             
