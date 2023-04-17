@@ -24,6 +24,10 @@ spec:
               value: America/Toronto
             - name: API_PORT
               value: '0'
+            - name: CRON
+              value: */10 * * * *
+            - name: RUNONSTART
+              value: true
             - name: ORIGIN_URL
               value: http://192.168.1.93:8070
             - name: ORIGIN_USERNAME
@@ -55,12 +59,12 @@ spec:
             limits:
               memory: 100Mi
               cpu:  100m
-          volumeMounts:
-            - mountPath: /config/adguardhome-sync.yaml
-              subPath: adguardhome-sync.yaml
-              name: config-volume
-      volumes:
-        - name: config-volume
-          configMap:
-            name: sync-config
+      #     volumeMounts:
+      #       - mountPath: /config/adguardhome-sync.yaml
+      #         subPath: adguardhome-sync.yaml
+      #         name: config-volume
+      # volumes:
+      #   - name: config-volume
+      #     configMap:
+      #       name: sync-config
             
