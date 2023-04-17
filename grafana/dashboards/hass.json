@@ -54,7 +54,7 @@
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "graphTooltip": 0,
+  "graphTooltip": 2,
   "id": null,
   "links": [],
   "liveNow": false,
@@ -385,8 +385,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -475,8 +474,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -514,7 +512,7 @@
             "type": "influxdb",
             "uid": "${DS_INFLUXDB}"
           },
-          "query": "from(bucket: \"home_assistant\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"hPa\")\n  |> filter(fn: (r) => r[\"_field\"] == \"value\")\n  |> map(fn: (r) => ({\n        _value: r._value, \n        _time: r._time, \n        name: \"${r[\"friendly_name\"]}\"\n    }))\n  |> group(columns: [\"name\"])",
+          "query": "from(bucket: \"home_assistant\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"hPa\")\n  |> filter(fn: (r) => r[\"_field\"] == \"value\")",
           "refId": "A"
         }
       ],
@@ -538,6 +536,6 @@
   "timezone": "",
   "title": "Home Assistant",
   "uid": "SH5hMcX7k",
-  "version": 5,
+  "version": 7,
   "weekStart": ""
 }

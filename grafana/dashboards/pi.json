@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "9.3.8"
+      "version": "9.4.7"
     },
     {
       "type": "datasource",
@@ -111,7 +111,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -171,7 +171,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -231,7 +231,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -291,7 +291,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -352,7 +352,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -413,7 +413,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -1236,7 +1236,7 @@
   ],
   "refresh": "10s",
   "revision": 1,
-  "schemaVersion": 37,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1289,6 +1289,6 @@
   "timezone": "",
   "title": "Raspberry-Pi",
   "uid": "sINozf04k",
-  "version": 3,
+  "version": 1,
   "weekStart": ""
 }
