@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sync-detection
+  labels:
+    app: sync-detection
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sync-pod
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: sync-pod
+    spec:
+      containers:
+        - name: sync
+          image: lscr.io/linuxserver/adguardhome-sync:0.4.14
+          env:
+            - name: TZ
+              value: America/Toronto
+            - name: API_PORT
+              value: 0
+            - name: ORIGIN_URL
+              value: http://192.168.1.93:8070
+            - name: ORIGIN_USERNAME
+              value: carter
+            - name: ORIGIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: adguard
+                  key: ORIGIN_USERNAME
+            - name: REPLICA_URL
+              value: http://192.168.1.99:80
+            - name: REPLICA_USERNAME
+              value: carter
+            - name: REPLICA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: adguard
+                  key: REPLICA_USERNAME
+            - name: REPLICA1_URL
+              value: http://192.168.1.86:3010
+            - name: REPLICA1_USERNAME
+              value: external
+            - name: REPLICA1_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: adguard
+                  key: REPLICA1_USERNAME   
+          resources:
+            limits:
+              memory: 100Mi
+              cpu:  100m
+          volumeMounts:
+            - mountPath: /config/adguardhome-sync.yaml
+              subPath: adguardhome-sync.yaml
+              name: config-volume
+      volumes:
+        - name: config-volume
+          configMap:
+            name: sync-config
+            
