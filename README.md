@@ -28,9 +28,9 @@ curl -sfL https://get.k3s.io | sh -s - -server \
 
 
 sudo chmod 644 /etc/rancher/k3s/k3s.yaml
-chmod 600 ~/.kube/config
 sudo cat /var/lib/rancher/k3s/server/node-token
 k config view --raw > ~/.kube/config
+chmod 600 ~/.kube/config
 ```
 
 ## Install Cilium
@@ -85,6 +85,7 @@ kubectl apply -f metallb/layer2.yaml \
 
 ## Apply secrets
 ```
+
 kubectl apply -f secrets
 ```
 
@@ -99,7 +100,7 @@ helm repo update
 ```
 
 ## Install longhorn with helm: 
-https://longhorn.io/docs/1.4.0/deploy/install/install-with-helm/
+https://longhorn.io/docs/1.4.1/deploy/install/install-with-helm/
 ```
 kubectl apply -f longhorn/longhorn-namespace.yaml
 kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/v1.4.0/deploy/prerequisite/longhorn-iscsi-installation.yaml
