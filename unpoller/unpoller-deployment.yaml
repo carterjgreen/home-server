@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unpoller
+  labels:
+    app: unpoller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: unpoller
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: unpoller
+    spec:
+      containers:
+        - name: unpoller
+          image: ghcr.io/unpoller/unpoller:v2.7.13
+          ports:
+            - containerPort: 9130
+              name: unpoller-prom
+          env:
+            - name: UP_INFLUXDB_DISABLE
+              value: 'true'
+            - name: UP_POLLER_DEBUG
+              value: 'false'
+            - name: UP_UNIFI_DEFAULT_SAVE_DPI
+              value: 'false'
+            - name: UP_UNIFI_DEFAULT_URL
+              value: 'https://192.168.1.1'
+            - name: UP_UNIFI_DEFAULT_USER
+              value: 'up2'
+            - name: UP_UNIFI_DEFAULT_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: unpoller
+                  key: UNIFI_PASS
+          resources:
+            limits:
+              memory: 100Mi
+              cpu:  100m
+            
