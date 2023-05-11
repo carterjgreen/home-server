@@ -7,8 +7,8 @@ metadata:
   namespace: lldap
 spec:
   # storageClassName: longhorn
-  # accessModes:
-  #   - ReadWriteMany
+  accessModes:
+    - ReadWriteOnce
   resources:
     requests:
       storage: 100Mi
