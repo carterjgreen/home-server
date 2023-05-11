@@ -7,14 +7,6 @@
         "type": "datasource",
         "pluginId": "prometheus",
         "pluginName": "Prometheus"
-      },
-      {
-        "name": "DS_INFLUXDB",
-        "label": "InfluxDB",
-        "description": "",
-        "type": "datasource",
-        "pluginId": "influxdb",
-        "pluginName": "InfluxDB"
       }
     ],
     "__elements": {},
