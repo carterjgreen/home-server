@@ -6,7 +6,7 @@ metadata:
   name: lldap-data
   namespace: lldap
 spec:
-  storageClassName: longhorn
+  # storageClassName: longhorn
   accessModes:
     - ReadWriteMany
   resources:

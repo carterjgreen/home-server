@@ -5,7 +5,7 @@ metadata:
     app: change
   name: change-pvc
 spec:
-  storageClassName: longhorn
+  # storageClassName: longhorn
   accessModes:
     - ReadWriteOnce
   resources:
