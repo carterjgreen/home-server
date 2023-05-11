@@ -85,7 +85,7 @@ kubectl apply -f metallb/layer2.yaml \
 
 ## Apply secrets
 ```
-
+kubectl apply -f namespaces
 kubectl apply -f secrets
 ```
 
