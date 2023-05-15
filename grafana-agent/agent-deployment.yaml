@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana-agent
+  labels:
+    app: grafana-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana-agent
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: grafana-agent
+    spec:
+      containers:
+        - name: grafana-agent
+          image: grafana/agent:v0.33.2
+          # resources:
+          #   limits:
+          #     memory: 300Mi
+          #     cpu:  200m
+          #   # requests:
+          #   #   cpu: 150m
+          #   #   memory: 150Mi
+          volumeMounts:
+            - mountPath: /etc/agent/agent.yaml
+              subPath: agent.yaml
+              name: agent-volume
+              readOnly: true
+      volumes:
+        - name: agent-volume
+          configMap:
+            name: agent-config
+            

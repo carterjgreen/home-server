@@ -1,0 +1,171 @@
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: sonarr-exporter
+#   labels:
+#     app: sonarr-exporter
+# spec:
+#   revisionHistoryLimit: 3
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: sonarr-exporter
+#   template:
+#     metadata:
+#       labels:
+#         app: sonarr-exporter
+#     spec:
+#       containers:
+#         - name: sonarr-exporter
+#           image: ghcr.io/onedr0p/exportarr:v1.3.2
+#           args:
+#             - sonarr
+#           env:
+#             - name: PORT
+#               value: '9707'
+#             - name: ENABLE_ADDITIONAL_METRICS
+#               value: 'true'
+#             - name: URL
+#               value: "http://192.168.1.93:8989"
+#             - name: APIKEY
+#               valueFrom:
+#                 secretKeyRef:
+#                   name: exporter
+#                   key: SONARR_API
+#           ports:
+#             - containerPort: 9707
+#               name: sonarr-prom
+#           livenessProbe:
+#             httpGet:
+#               path: /healthz
+#               port: sonarr-prom
+#             failureThreshold: 5
+#             periodSeconds: 10
+#           readinessProbe:
+#             httpGet:
+#               path: /healthz
+#               port: sonarr-prom
+#             failureThreshold: 5
+#             periodSeconds: 10
+#           resources:
+#             limits:
+#               memory: 100Mi
+#               cpu:  100m
+#             # requests:
+#             #   cpu: 50m
+#             #   memory: 50Mi
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: radarr-exporter
+#   labels:
+#     app: radarr-exporter
+# spec:
+#   revisionHistoryLimit: 1
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: radarr-exporter
+#   template:
+#     metadata:
+#       labels:
+#         app: radarr-exporter
+#     spec:
+#       containers:
+#         - name: radarr-exporter
+#           image: ghcr.io/onedr0p/exportarr:v1.3.2
+#           args:
+#             - radarr
+#           env:
+#             - name: PORT
+#               value: '9707'
+#             - name: ENABLE_ADDITIONAL_METRICS
+#               value: 'true'
+#             - name: URL
+#               value: "http://192.168.1.93:8989"
+#             - name: APIKEY
+#               valueFrom:
+#                 secretKeyRef:
+#                   name: exporter
+#                   key: RADARR_API
+#           ports:
+#             - containerPort: 9708
+#               name: radarr-prom
+#           livenessProbe:
+#             httpGet:
+#               path: /healthz
+#               port: radarr-prom
+#             failureThreshold: 5
+#             periodSeconds: 10
+#           readinessProbe:
+#             httpGet:
+#               path: /healthz
+#               port: radarr-prom
+#             failureThreshold: 5
+#             periodSeconds: 10
+#           resources:
+#             limits:
+#               memory: 100Mi
+#               cpu:  100m
+#             # requests:
+#             #   cpu: 50m
+#             #   memory: 50Mi
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: prowlarr-exporter
+#   labels:
+#     app: prowlarr-exporter
+# spec:
+#   revisionHistoryLimit: 1
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: prowlarr-exporter
+#   template:
+#     metadata:
+#       labels:
+#         app: prowlarr-exporter
+#     spec:
+#       containers:
+#         - name: prowlarr-exporter
+#           image: ghcr.io/onedr0p/exportarr:v1.3.2
+#           args:
+#             - prowlarr
+#           env:
+#             - name: PORT
+#               value: '9710'
+#             - name: ENABLE_ADDITIONAL_METRICS
+#               value: 'true'
+#             - name: URL
+#               value: "http://192.168.1.93:8989"
+#             - name: APIKEY
+#               valueFrom:
+#                 secretKeyRef:
+#                   name: exporter
+#                   key: PROWLARR_API
+#           ports:
+#             - containerPort: 9710
+#               name: prowlarr-prom
+#           livenessProbe:
+#             httpGet:
+#               path: /healthz
+#               port: prwolarr-prom
+#             failureThreshold: 5
+#             periodSeconds: 10
+#           readinessProbe:
+#             httpGet:
+#               path: /healthz
+#               port: prowlarr-prom
+#             failureThreshold: 5
+#             periodSeconds: 10
+#           resources:
+#             limits:
+#               memory: 64Mi
+#               cpu:  100m
+#             # requests:
+#             #   cpu: 50m
+#             #   memory: 50Mi

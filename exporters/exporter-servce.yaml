@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: exporters
+spec:
+  type: ClusterIP
+  selector:
+    app: prom-exporters
+  ports:
+    - name: sonarr
+      protocol: TCP
+      port: 9707
+      targetPort: sonarr-prom
+    - name: radarr
+      protocol: TCP
+      port: 9708
+      targetPort: radarr-prom
+    - name: prowlarr
+      protocol: TCP
+      port: 9710
+      targetPort: prowlarr-prom
+    - name: nuts
+      protocol: TCP
+      port: 9199
+      targetPort: nuts-prom
