@@ -70,6 +70,7 @@
             "mode": "thresholds"
           },
           "mappings": [],
+          "noValue": "$0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -133,6 +134,7 @@
             "mode": "thresholds"
           },
           "mappings": [],
+          "noValue": "$0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -286,6 +288,7 @@
             "mode": "thresholds"
           },
           "mappings": [],
+          "noValue": "$0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -349,6 +352,7 @@
             "mode": "thresholds"
           },
           "mappings": [],
+          "noValue": "$0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -412,6 +416,7 @@
             "mode": "thresholds"
           },
           "mappings": [],
+          "noValue": "$0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -475,6 +480,7 @@
             "mode": "thresholds"
           },
           "mappings": [],
+          "noValue": "$0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -625,6 +631,7 @@
             "mode": "thresholds"
           },
           "mappings": [],
+          "noValue": "$0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -688,6 +695,7 @@
             "mode": "thresholds"
           },
           "mappings": [],
+          "noValue": "$0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -751,6 +759,7 @@
             "mode": "thresholds"
           },
           "mappings": [],
+          "noValue": "$0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -807,7 +816,11 @@
   "refresh": "",
   "schemaVersion": 38,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "home",
+    "money",
+    "budget"
+  ],
   "templating": {
     "list": []
   },

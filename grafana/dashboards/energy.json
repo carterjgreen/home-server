@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "9.4.7"
+      "version": "9.5.1"
     },
     {
       "type": "datasource",
@@ -370,7 +370,10 @@
   "revision": 1,
   "schemaVersion": 38,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "home",
+    "energy"
+  ],
   "templating": {
     "list": []
   },
@@ -382,6 +385,6 @@
   "timezone": "",
   "title": "Energy",
   "uid": "v3dvW_KVk",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
