@@ -18,6 +18,7 @@ metrics:
             - targets: ["exporters:9710"]
         - job_name: 'nut'
           metrics_path: /ups_metrics
+          scrape_interval: 30s
           static_configs:
             - targets: ["exporters:9199"]
         - job_name: 'unifipoller'
