@@ -27,6 +27,12 @@ spec:
           ports:
             - containerPort: 80
               name: http-ntfy
+          livenessProbe:
+            httpGet:
+              path: /v1/health
+              port: http-ntfy
+            failureThreshold: 5
+            periodSeconds: 10
           resources:
             limits:
               memory: 300Mi
