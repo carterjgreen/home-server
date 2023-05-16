@@ -47,6 +47,14 @@ spec:
           ports:
             - containerPort: 3890
             - containerPort: 17170
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 17170
+            initialDelaySeconds: 40
+            failureThreshold: 3
+            periodSeconds: 60
+            timeoutSeconds: 10
           volumeMounts:
             - mountPath: /data
               name: lldap-data
