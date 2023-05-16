@@ -31,8 +31,10 @@ spec:
             httpGet:
               path: /v1/health
               port: http-ntfy
-            failureThreshold: 5
-            periodSeconds: 10
+            initialDelaySeconds: 40
+            failureThreshold: 3
+            periodSeconds: 60
+            timeoutSeconds: 10
           resources:
             limits:
               memory: 300Mi
