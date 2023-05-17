@@ -28,7 +28,7 @@ spec:
             - name: UP_POLLER_DEBUG
               value: 'false'
             - name: UP_UNIFI_DEFAULT_SAVE_DPI
-              value: 'false'
+              value: 'true'
             - name: UP_UNIFI_DEFAULT_URL
               value: 'https://192.168.1.1'
             - name: UP_UNIFI_DEFAULT_USER
