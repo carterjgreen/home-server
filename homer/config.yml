@@ -85,7 +85,7 @@ services:
         url: "http://192.168.1.86:8099/"
         target: "_blank"
       - name: "Calibre-Web"
-        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/calibreweb.svg"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/calibre-web.svg"
         subtitle: "Ebook Library"
         tag: "app"
         keywords: "books"
