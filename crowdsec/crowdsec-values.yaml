@@ -14,6 +14,8 @@ agent:
       value: "America/Toronto"
 lapi:
   env:
+    - name: COLLECTIONS
+      value: "crowdsecurity/traefik LePresidente/authelia crowdsecurity/home-assistant"
     - name: ENROLL_KEY
       valueFrom:
         secretKeyRef:
