@@ -130,7 +130,7 @@ configMap:
     expiration: 1h
     inactivity: 2h
     redis:
-      host: 192.168.1.99
+      host: 192.168.1.91
 
   regulation:
     max_retries: 5
@@ -139,7 +139,7 @@ configMap:
 
   storage:
     postgres:
-      host: 192.168.1.99
+      host: 192.168.1.91
       port: 5433
 
       
