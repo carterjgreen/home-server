@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "9.5.1"
+      "version": "9.5.2"
     },
     {
       "type": "datasource",
@@ -119,8 +119,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
-        "w": 12,
+        "h": 10,
+        "w": 24,
         "x": 0,
         "y": 0
       },
@@ -210,9 +210,9 @@
       },
       "gridPos": {
         "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 0
+        "w": 24,
+        "x": 0,
+        "y": 10
       },
       "id": 4,
       "options": {
@@ -258,16 +258,11 @@
           "value": "haku"
         },
         "hide": 0,
-        "includeAll": true,
+        "includeAll": false,
         "label": "Proxmox Host",
         "multi": false,
         "name": "host",
         "options": [
-          {
-            "selected": false,
-            "text": "All",
-            "value": "$__all"
-          },
           {
             "selected": false,
             "text": "chihiro",
@@ -294,6 +289,6 @@
   "timezone": "",
   "title": "Proxmox",
   "uid": "tlGfbYB4z",
-  "version": 2,
+  "version": 3,
   "weekStart": ""
 }
