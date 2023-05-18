@@ -19,6 +19,11 @@ lapi:
         secretKeyRef:
           name: crowdsec
           key: ENROLL_KEY
+    - name: BOUNCER_KEY_traefik
+      valueFrom:
+        secretKeyRef:
+          name: crowdsec
+          key: TRAEFIK
     - name: ENROLL_INSTANCE_NAME
       value: "k3s_cluster"
   persistentVolume:
@@ -27,12 +32,12 @@ lapi:
       enabled: true
       accessModes:
         - ReadWriteOnce
-      storageClassName: "longhorn"
+      # storageClassName: "longhorn"
       size: 1Gi
     # -- Persistent volume for config folder. Stores e.g. online api credentials
     config:
       enabled: true
       accessModes:
         - ReadWriteOnce
-      storageClassName: "longhorn"
+      # storageClassName: "longhorn"
       size: 100Mi
