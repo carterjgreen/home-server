@@ -1,4 +1,4 @@
-apiVersion: traefik.containo.us/v1alpha1
+apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
   name: default-headers
@@ -15,7 +15,7 @@ spec:
     customRequestHeaders:
       X-Forwarded-Proto: https
 ---
-apiVersion: traefik.containo.us/v1alpha1
+apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
   name: authelia-basic
@@ -30,7 +30,7 @@ spec:
       - Remote-Name
       - Remote-Email
 ---
-apiVersion: traefik.containo.us/v1alpha1
+apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
   name: authelia-2fa
@@ -45,7 +45,7 @@ spec:
       - Remote-Name
       - Remote-Email
 ---
-apiVersion: traefik.containo.us/v1alpha1
+apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
   name: kobo-sync-headers
@@ -55,7 +55,7 @@ spec:
     customRequestHeaders:
       X-Scheme: https
 ---
-apiVersion: traefik.containo.us/v1alpha1
+apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
   name: security-headers
@@ -82,7 +82,7 @@ spec:
     stsSeconds: 63072000
     stsPreload: true
 ---
-apiVersion: traefik.containo.us/v1alpha1
+apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
   name: cors-headers
@@ -102,7 +102,7 @@ spec:
     accessControlMaxAge: 100
     addVaryHeader: true
 ---
-apiVersion: traefik.containo.us/v1alpha1
+apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
   name: floc-block
@@ -112,7 +112,7 @@ spec:
     customResponseHeaders:
       Permissions-Policy: interest-cohort=()
 ---
-apiVersion: traefik.containo.us/v1alpha1
+apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
   name: test-compress
