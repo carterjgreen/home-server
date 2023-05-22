@@ -37,24 +37,24 @@ spec:
                 secretKeyRef:
                   name: adguard
                   key: ORIGIN_PASSWORD
-            - name: REPLICA_URL
-              value: 'http://192.168.1.99:8070'
-            - name: REPLICA_USERNAME
-              value: carter
-            - name: REPLICA_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: adguard
-                  key: REPLICA_PASSWORD
             - name: REPLICA1_URL
-              value: 'http://192.168.1.86:3010'
+              value: 'http://192.168.1.99:8070'
             - name: REPLICA1_USERNAME
-              value: 'external'
+              value: carter
             - name: REPLICA1_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: adguard
-                  key: REPLICA1_PASSWORD 
+                  key: REPLICA_PASSWORD
+            - name: REPLICA_URL
+              value: 'http://192.168.1.86:3010'
+            - name: REPLICA_USERNAME
+              value: 'external'
+            - name: REPLICA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: adguard
+                  key: REPLICA1_PASSWORD
           resources:
             limits:
               memory: 100Mi
