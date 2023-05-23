@@ -1,3 +1,5 @@
+image:
+  tag: "v1.5.1"
 container_runtime: containerd
 agent:
   acquisition:
