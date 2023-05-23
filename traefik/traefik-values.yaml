@@ -10,10 +10,10 @@ deployment:
   enabled: true
   # replicas: 2
   kind: DaemonSet
-  annotations: {}
-  podAnnotations: {}
-  additionalContainers: []
-  initContainers: []
+  # annotations: {}
+  # podAnnotations: {}
+  # additionalContainers: []
+  # initContainers: []
 
 ports:
   web:
@@ -75,12 +75,12 @@ rbac:
   enabled: true
 
 service:
-  enabled: true
-  type: LoadBalancer
-  annotations: {}
-  labels: {}
+  # enabled: true
+  # type: LoadBalancer
+  # annotations: {}
+  # labels: {}
   spec:
     loadBalancerIP: 192.168.1.240 # this should be an IP in the MetalLB range
     externalTrafficPolicy: Local
-  loadBalancerSourceRanges: []
-  externalIPs: []
+  # loadBalancerSourceRanges: []
+  # externalIPs: []
