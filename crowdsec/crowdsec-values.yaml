@@ -17,6 +17,9 @@ agent:
       value: "crowdsecurity/traefik LePresidente/authelia LePresidente/grafana"
     - name: TZ
       value: "America/Toronto"
+  persistentVolume:
+    config:
+      enabled: true
 lapi:
   env:
     - name: COLLECTIONS
