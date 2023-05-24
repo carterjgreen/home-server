@@ -9,15 +9,18 @@ agent:
     - namespace: default
       podName: authelia-*
       program: authelia
+    - namespace: default
+      podName: grafana -*
+      program: grafana
   env:
     - name: COLLECTIONS
-      value: "crowdsecurity/traefik LePresidente/authelia crowdsecurity/home-assistant"
+      value: "crowdsecurity/traefik LePresidente/authelia LePresidente/grafana"
     - name: TZ
       value: "America/Toronto"
 lapi:
   env:
     - name: COLLECTIONS
-      value: "crowdsecurity/traefik LePresidente/authelia crowdsecurity/home-assistant"
+      value: "crowdsecurity/traefik LePresidente/authelia LePresidente/grafana"
     - name: ENROLL_KEY
       valueFrom:
         secretKeyRef:
