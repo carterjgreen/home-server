@@ -17,6 +17,8 @@ spec:
           name: hass 
           namespace: default
           port: 8123
+      middlewares:
+        - name: crowdsec
   tls:
     secretName: juicewizerd-le-com-tls
 ---

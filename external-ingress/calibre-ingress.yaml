@@ -18,7 +18,8 @@ spec:
           namespace: default
           port: 8083
       middlewares:
-        - name: authelia-2fa
+        # - name: authelia-2fa
+        - name: crowdsec-authelia
         - name: kobo-sync-headers
   tls:
     secretName: juicewizerd-le-com-tls

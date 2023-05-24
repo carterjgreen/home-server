@@ -119,3 +119,23 @@ metadata:
   namespace: default
 spec:
   compress: {}
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: crowdsec
+  namespace: default
+spec:
+  forwardAuth:
+    address: http://crowdsec-traefik-bouncer-service.default/api/v1/forwardAuth
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: crowdsec-authelia
+  namespace: default
+spec:
+  chain:
+    middlewares:
+      - name: crowdsec
+      - name: authelia-2fa

@@ -18,7 +18,7 @@ spec:
           namespace: default
           port: 5000
       middlewares:
-        - name: authelia-2fa
+        - name: crowdsec-authelia
   tls:
     secretName: juicewizerd-le-com-tls
 ---

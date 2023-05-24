@@ -16,6 +16,6 @@ spec:
         - name: homarr-svc
           port: 80
       middlewares:
-        - name: authelia-2fa
+        - name: crowdsec-authelia
   tls:
     secretName: juicewizerd-le-com-tls

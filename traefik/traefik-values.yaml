@@ -28,7 +28,7 @@ ports:
       - default-floc-block@kubernetescrd
       - default-security-headers@kubernetescrd
       - default-cors-headers@kubernetescrd
-      - default-crowdsec-traefik-bouncer@kubernetescrd
+      # - default-crowdsec-traefik-bouncer@kubernetescrd
     forwardedHeaders:
       trustedIPs:
         - 127.0.0.1/32
