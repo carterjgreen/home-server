@@ -10,7 +10,7 @@ agent:
       podName: authelia-*
       program: authelia
     - namespace: default
-      podName: grafana -*
+      podName: grafana-*
       program: grafana
   env:
     - name: COLLECTIONS
