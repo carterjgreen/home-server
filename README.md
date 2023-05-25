@@ -26,7 +26,7 @@ curl -sfL https://get.k3s.io | sh -s - -server \
 
   --token <token>
 
-
+alias k=kubectl
 sudo chmod 644 /etc/rancher/k3s/k3s.yaml
 sudo cat /var/lib/rancher/k3s/server/node-token
 k config view --raw > ~/.kube/config

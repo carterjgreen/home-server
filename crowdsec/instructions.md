@@ -1,0 +1,1 @@
+helm install crowdsec-traefik-bouncer crowdsec/crowdsec-traefik-bouncer --values=crowdsec/bouncer-values.yaml
