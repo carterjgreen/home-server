@@ -67,7 +67,7 @@ services:
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/home-assistant.svg"
         subtitle: "Smart Home Management"
         tag: "home"
-        url: "http://192.168.1.86:8123/"
+        url: "http://homeassistant.local:8123/"
         target: "_blank"
       - name: "Jellyfin"
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/jellyfin.svg"
