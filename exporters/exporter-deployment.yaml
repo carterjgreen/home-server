@@ -1,171 +1,195 @@
-# ---
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: sonarr-exporter
-#   labels:
-#     app: sonarr-exporter
-# spec:
-#   revisionHistoryLimit: 3
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       app: sonarr-exporter
-#   template:
-#     metadata:
-#       labels:
-#         app: sonarr-exporter
-#     spec:
-#       containers:
-#         - name: sonarr-exporter
-#           image: ghcr.io/onedr0p/exportarr:v1.3.2
-#           args:
-#             - sonarr
-#           env:
-#             - name: PORT
-#               value: '9707'
-#             - name: ENABLE_ADDITIONAL_METRICS
-#               value: 'true'
-#             - name: URL
-#               value: "http://192.168.1.93:8989"
-#             - name: APIKEY
-#               valueFrom:
-#                 secretKeyRef:
-#                   name: exporter
-#                   key: SONARR_API
-#           ports:
-#             - containerPort: 9707
-#               name: sonarr-prom
-#           livenessProbe:
-#             httpGet:
-#               path: /healthz
-#               port: sonarr-prom
-#             failureThreshold: 5
-#             periodSeconds: 10
-#           readinessProbe:
-#             httpGet:
-#               path: /healthz
-#               port: sonarr-prom
-#             failureThreshold: 5
-#             periodSeconds: 10
-#           resources:
-#             limits:
-#               memory: 100Mi
-#               cpu:  100m
-#             # requests:
-#             #   cpu: 50m
-#             #   memory: 50Mi
-# ---
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: radarr-exporter
-#   labels:
-#     app: radarr-exporter
-# spec:
-#   revisionHistoryLimit: 1
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       app: radarr-exporter
-#   template:
-#     metadata:
-#       labels:
-#         app: radarr-exporter
-#     spec:
-#       containers:
-#         - name: radarr-exporter
-#           image: ghcr.io/onedr0p/exportarr:v1.3.2
-#           args:
-#             - radarr
-#           env:
-#             - name: PORT
-#               value: '9707'
-#             - name: ENABLE_ADDITIONAL_METRICS
-#               value: 'true'
-#             - name: URL
-#               value: "http://192.168.1.93:8989"
-#             - name: APIKEY
-#               valueFrom:
-#                 secretKeyRef:
-#                   name: exporter
-#                   key: RADARR_API
-#           ports:
-#             - containerPort: 9708
-#               name: radarr-prom
-#           livenessProbe:
-#             httpGet:
-#               path: /healthz
-#               port: radarr-prom
-#             failureThreshold: 5
-#             periodSeconds: 10
-#           readinessProbe:
-#             httpGet:
-#               path: /healthz
-#               port: radarr-prom
-#             failureThreshold: 5
-#             periodSeconds: 10
-#           resources:
-#             limits:
-#               memory: 100Mi
-#               cpu:  100m
-#             # requests:
-#             #   cpu: 50m
-#             #   memory: 50Mi
-# ---
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: prowlarr-exporter
-#   labels:
-#     app: prowlarr-exporter
-# spec:
-#   revisionHistoryLimit: 1
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       app: prowlarr-exporter
-#   template:
-#     metadata:
-#       labels:
-#         app: prowlarr-exporter
-#     spec:
-#       containers:
-#         - name: prowlarr-exporter
-#           image: ghcr.io/onedr0p/exportarr:v1.3.2
-#           args:
-#             - prowlarr
-#           env:
-#             - name: PORT
-#               value: '9710'
-#             - name: ENABLE_ADDITIONAL_METRICS
-#               value: 'true'
-#             - name: URL
-#               value: "http://192.168.1.93:8989"
-#             - name: APIKEY
-#               valueFrom:
-#                 secretKeyRef:
-#                   name: exporter
-#                   key: PROWLARR_API
-#           ports:
-#             - containerPort: 9710
-#               name: prowlarr-prom
-#           livenessProbe:
-#             httpGet:
-#               path: /healthz
-#               port: prwolarr-prom
-#             failureThreshold: 5
-#             periodSeconds: 10
-#           readinessProbe:
-#             httpGet:
-#               path: /healthz
-#               port: prowlarr-prom
-#             failureThreshold: 5
-#             periodSeconds: 10
-#           resources:
-#             limits:
-#               memory: 64Mi
-#               cpu:  100m
-#             # requests:
-#             #   cpu: 50m
-#             #   memory: 50Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prom-exporters
+  labels:
+    app: prom-exporters
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prom-exporters
+  template:
+    metadata:
+      labels:
+        app: prom-exporters
+    spec:
+      containers:
+        - name: sonarr-exporter
+          image: ghcr.io/onedr0p/exportarr:v1.5.3
+          args:
+            - sonarr
+          env:
+            - name: PORT
+              value: '9707'
+            - name: ENABLE_ADDITIONAL_METRICS
+              value: 'true'
+            - name: URL
+              value: "http://192.168.1.93:8989"
+            - name: APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: exporter
+                  key: SONARR_API
+          ports:
+            - containerPort: 9707
+              name: sonarr-prom
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: sonarr-prom
+            failureThreshold: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: sonarr-prom
+            failureThreshold: 5
+            periodSeconds: 10
+          resources:
+            requests:
+              memory: 64Mi
+              cpu:  100m
+            limits:
+              cpu: 500m
+              memory: 256Mi
+        - name: radarr-exporter
+          image: ghcr.io/onedr0p/exportarr:v1.5.3
+          args:
+            - radarr
+          env:
+            - name: PORT
+              value: '9708'
+            - name: ENABLE_ADDITIONAL_METRICS
+              value: 'true'
+            - name: URL
+              value: "http://192.168.1.93:7878"
+            - name: APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: exporter
+                  key: RADARR_API
+          ports:
+            - containerPort: 9708
+              name: radarr-prom
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: radarr-prom
+            failureThreshold: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: radarr-prom
+            failureThreshold: 5
+            periodSeconds: 10
+          resources:
+            requests:
+              memory: 64Mi
+              cpu:  100m
+            limits:
+              cpu: 500m
+              memory: 256Mi
+        - name: prowlarr-exporter
+          image: ghcr.io/onedr0p/exportarr:v1.5.3
+          args:
+            - prowlarr
+          env:
+            - name: PORT
+              value: '9710'
+            - name: ENABLE_ADDITIONAL_METRICS
+              value: 'true'
+            - name: URL
+              value: "http://192.168.1.93:9696"
+            - name: APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: exporter
+                  key: PROWLARR_API
+          ports:
+            - containerPort: 9710
+              name: prowlarr-prom
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: prowlarr-prom
+            failureThreshold: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: prowlarr-prom
+            failureThreshold: 5
+            periodSeconds: 10
+          resources:
+            requests:
+              memory: 64Mi
+              cpu:  100m
+            limits:
+              cpu: 500m
+              memory: 256Mi
+        - name: sabnzbd-exporter
+          image: ghcr.io/onedr0p/exportarr:v1.5.3
+          args:
+            - sabnzbd
+          env:
+            - name: PORT
+              value: '9712'
+            - name: ENABLE_ADDITIONAL_METRICS
+              value: 'true'
+            - name: URL
+              value: "http://192.168.1.93:8080"
+            - name: APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: exporter
+                  key: SABNZBD_API
+          ports:
+            - containerPort: 9712
+              name: sabnzbd-prom
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: sabnzbd-prom
+            failureThreshold: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: sabnzbd-prom
+            failureThreshold: 5
+            periodSeconds: 10
+          resources:
+            requests:
+              memory: 64Mi
+              cpu:  100m
+            limits:
+              cpu: 500m
+              memory: 256Mi
+        - name: nuts-exporter
+          image: ghcr.io/druggeri/nut_exporter:3.0
+          env:
+            - name: NUT_EXPORTER_SERVER
+              value: '192.168.1.97'
+            - name: NUT_EXPORTER_USERNAME
+              value: 'upsadmin'
+            - name: NUT_EXPORTER_VARIABLES
+              value: "battery.charge,battery.runtime,battery.voltage,input.voltage,ups.load,ups.status"
+            - name: NUT_EXPORTER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: exporter
+                  key: NUTS_PASSWORD
+          ports:
+            - containerPort: 9199
+              name: nuts-prom
+          resources:
+            requests:
+              memory: 64Mi
+              cpu:  100m
+            limits:
+              cpu: 500m
+              memory: 256Mi
