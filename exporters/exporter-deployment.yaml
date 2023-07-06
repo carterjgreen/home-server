@@ -138,8 +138,6 @@ spec:
           env:
             - name: PORT
               value: '9712'
-            - name: ENABLE_ADDITIONAL_METRICS
-              value: 'true'
             - name: URL
               value: "http://192.168.1.93:8080"
             - name: APIKEY

@@ -19,6 +19,10 @@ spec:
       protocol: TCP
       port: 9710
       targetPort: prowlarr-prom
+    - name: sabnzbd
+      protocol: TCP
+      port: 9712
+      targetPort: sabnzbd-prom
     - name: nuts
       protocol: TCP
       port: 9199
