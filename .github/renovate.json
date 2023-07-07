@@ -6,6 +6,9 @@
   "kubernetes": {
     "fileMatch": ["\\.yml$"]
   },
+  "argocd": {
+    "fileMatch": ["argocd/.+\\.yaml$"]
+  },
   "packageRules": [
     {
       "matchUpdateTypes": [ "patch"],
