@@ -7,7 +7,7 @@
     "fileMatch": ["argocd/.+\\.yaml$"]
   },
   "kubernetes": {
-    "fileMatch": ["^deployment\\.yaml$"]
+    "fileMatch": ["-deployment\\.yaml$"]
   },
   "packageRules": [
     {
