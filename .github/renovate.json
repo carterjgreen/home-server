@@ -13,7 +13,6 @@
     {
       "matchUpdateTypes": [ "patch"],
       "matchDatasources": ["argocd", "kubernetes"],
-      "matchCurrentVersion": "!/^0/",
       "automerge": true
     }
   ]
