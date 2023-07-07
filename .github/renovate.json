@@ -3,11 +3,11 @@
   "extends": [
     "config:base"
   ],
-  "kubernetes": {
-    "fileMatch": ["\\.yml$"]
-  },
   "argocd": {
     "fileMatch": ["argocd/.+\\.yaml$"]
+  },
+  "kubernetes": {
+    "fileMatch": ["\\.yml$"]
   },
   "packageRules": [
     {
