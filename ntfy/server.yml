@@ -32,3 +32,6 @@ log-level: INFO
 # Version 2
 enable-signup: false
 enable-login: true
+
+web-push-file: /var/cache/ntfy/webpush.db
+web-push-email-address: carter.green@icloud.com
