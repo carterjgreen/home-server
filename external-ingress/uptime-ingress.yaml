@@ -10,7 +10,7 @@ spec:
     # - web
     - websecure
   routes:
-    - match: Host(`uptime.juicewizerd.com`)
+    - match: Host(`uptime2.juicewizerd.com`)
       kind: Rule
       services:
         - kind: Service
