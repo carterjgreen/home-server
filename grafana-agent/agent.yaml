@@ -9,21 +9,21 @@ metrics:
       scrape_configs:
         - job_name: "sonarr"
           static_configs:
-            - targets: ["exporters:9707"]
+            - targets: ["sonarr-exporter:9707"]
         - job_name: "radarr"
           static_configs:
-            - targets: ["exporters:9708"]
+            - targets: ["radarr-exporter:9708"]
         - job_name: "prowlarr"
           static_configs:
-            - targets: ["exporters:9710"]
+            - targets: ["prowlarr-exporter:9710"]
         - job_name: "sabnzbd"
           static_configs:
-            - targets: ["exporters:9712"]
+            - targets: ["sabnzbd-exporter:9712"]
         - job_name: "nut"
           metrics_path: /ups_metrics
           scrape_interval: 30s
           static_configs:
-            - targets: ["exporters:9199"]
+            - targets: ["nuts-exporter:9199"]
         - job_name: "unifipoller"
           scrape_interval: 30s
           static_configs:

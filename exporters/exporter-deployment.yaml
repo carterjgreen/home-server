@@ -2,19 +2,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: prom-exporters
+  name: sonarr-exporter
   labels:
-    app: prom-exporters
+    app: sonarr-exporter
 spec:
   revisionHistoryLimit: 3
   replicas: 1
   selector:
     matchLabels:
-      app: prom-exporters
+      app: sonarr-exporter
   template:
     metadata:
       labels:
-        app: prom-exporters
+        app: sonarr-exporter
     spec:
       containers:
         - name: sonarr-exporter
@@ -55,6 +55,25 @@ spec:
             limits:
               cpu: 500m
               memory: 256Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: radarr-exporter
+  labels:
+    app: radarr-exporter
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  selector:
+    matchLabels:
+      app: radarr-exporter
+  template:
+    metadata:
+      labels:
+        app: radarr-exporter
+    spec:
+      containers:
         - name: radarr-exporter
           image: ghcr.io/onedr0p/exportarr:v1.5.3
           args:
@@ -93,6 +112,25 @@ spec:
             limits:
               cpu: 500m
               memory: 256Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prowlarr-exporter
+  labels:
+    app: prowlarr-exporter
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prowlarr-exporter
+  template:
+    metadata:
+      labels:
+        app: prowlarr-exporter
+    spec:
+      containers:
         - name: prowlarr-exporter
           image: ghcr.io/onedr0p/exportarr:v1.5.3
           args:
@@ -131,6 +169,25 @@ spec:
             limits:
               cpu: 500m
               memory: 256Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sabnzbd-exporter
+  labels:
+    app: sabnzbd-exporter
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sabnzbd-exporter
+  template:
+    metadata:
+      labels:
+        app: sabnzbd-exporter
+    spec:
+      containers:
         - name: sabnzbd-exporter
           image: ghcr.io/onedr0p/exportarr:v1.5.3
           args:
@@ -167,6 +224,25 @@ spec:
             limits:
               cpu: 500m
               memory: 256Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nuts-exporter
+  labels:
+    app: nuts-exporter
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nuts-exporter
+  template:
+    metadata:
+      labels:
+        app: nuts-exporter
+    spec:
+      containers:
         - name: nuts-exporter
           image: ghcr.io/druggeri/nut_exporter:3.0
           env:
