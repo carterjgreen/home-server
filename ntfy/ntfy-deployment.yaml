@@ -48,7 +48,7 @@ spec:
           resources:
             limits:
               memory: 300Mi
-              cpu:  200m
+              cpu: 200m
             # requests:
             #   cpu: 150m
             #   memory: 150Mi
@@ -66,4 +66,3 @@ spec:
         - name: cache-volume
           persistentVolumeClaim:
             claimName: ntfy-pvc
-            

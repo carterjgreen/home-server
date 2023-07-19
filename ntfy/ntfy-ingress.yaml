@@ -4,7 +4,7 @@ metadata:
   name: ntfy-ingress
   labels:
     app: ntfy-pod
-  annotations: 
+  annotations:
     kubernetes.io/ingress.class: traefik-external
 spec:
   entryPoints:
@@ -23,5 +23,5 @@ spec:
       middlewares:
         - name: default-headers
         - name: crowdsec
-  tls: 
+  tls:
     secretName: juicewizerd-le-com-tls

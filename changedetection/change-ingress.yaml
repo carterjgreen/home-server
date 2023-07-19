@@ -3,7 +3,7 @@ kind: IngressRoute
 metadata:
   name: change-ingress
   namespace: default
-  annotations: 
+  annotations:
     kubernetes.io/ingress.class: traefik-external
 spec:
   entryPoints:

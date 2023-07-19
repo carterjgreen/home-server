@@ -3,7 +3,7 @@ kind: IngressRoute
 metadata:
   name: kavita
   namespace: default
-  annotations: 
+  annotations:
     kubernetes.io/ingress.class: traefik-external
 spec:
   entryPoints:
@@ -14,7 +14,7 @@ spec:
       kind: Rule
       services:
         - kind: Service
-          name: kavita 
+          name: kavita
           namespace: default
           port: 5000
       middlewares:

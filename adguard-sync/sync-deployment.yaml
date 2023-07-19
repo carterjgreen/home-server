@@ -23,22 +23,22 @@ spec:
             - name: TZ
               value: America/Toronto
             - name: API_PORT
-              value: '0'
+              value: "0"
             - name: CRON
-              value: '*/10 * * * *'
+              value: "*/10 * * * *"
             - name: RUNONSTART
-              value: 'true'
+              value: "true"
             - name: ORIGIN_URL
-              value: 'http://192.168.1.93:8070'
+              value: "http://192.168.1.93:8070"
             - name: ORIGIN_USERNAME
-              value: 'carter'
+              value: "carter"
             - name: ORIGIN_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: adguard
                   key: ORIGIN_PASSWORD
             - name: REPLICA1_URL
-              value: 'http://192.168.1.99:8070'
+              value: "http://192.168.1.99:8070"
             - name: REPLICA1_USERNAME
               value: carter
             - name: REPLICA1_PASSWORD
@@ -47,9 +47,9 @@ spec:
                   name: adguard
                   key: REPLICA_PASSWORD
             - name: REPLICA_URL
-              value: 'http://192.168.1.86:3010'
+              value: "http://192.168.1.86:3010"
             - name: REPLICA_USERNAME
-              value: 'external'
+              value: "external"
             - name: REPLICA_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -58,5 +58,4 @@ spec:
           resources:
             limits:
               memory: 100Mi
-              cpu:  100m
-            
+              cpu: 100m

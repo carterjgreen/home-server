@@ -10,5 +10,5 @@ spec:
     kind: ClusterIssuer
   commonName: "*.juicewizerd.com"
   dnsNames:
-  - "juicewizerd.com"
-  - "*.juicewizerd.com"
+    - "juicewizerd.com"
+    - "*.juicewizerd.com"

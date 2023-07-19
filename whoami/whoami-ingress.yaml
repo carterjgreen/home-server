@@ -3,7 +3,7 @@ kind: IngressRoute
 metadata:
   name: whoami-ingress
   namespace: default
-  annotations: 
+  annotations:
     kubernetes.io/ingress.class: traefik-external
 spec:
   entryPoints:
@@ -17,5 +17,5 @@ spec:
           port: 80
       middlewares:
         - name: chain-authelia-auth
-  tls: 
+  tls:
     secretName: juicewizerd-le-com-tls

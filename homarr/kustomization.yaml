@@ -4,8 +4,8 @@ resources:
   - homarr-deployment.yaml # deployment definition
   - homarr-svc.yaml # service connecting pods to cluster network
   - homarr-ingress.yaml # ingress definition
-configMapGenerator: 
-    - name: homarr-config
-      files: 
-        - default.json
-namespace: default # select namespace for whole application 
+configMapGenerator:
+  - name: homarr-config
+    files:
+      - default.json
+namespace: default # select namespace for whole application

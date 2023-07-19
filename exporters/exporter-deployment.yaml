@@ -23,9 +23,9 @@ spec:
             - sonarr
           env:
             - name: PORT
-              value: '9707'
+              value: "9707"
             - name: ENABLE_ADDITIONAL_METRICS
-              value: 'true'
+              value: "true"
             - name: URL
               value: "http://192.168.1.93:8989"
             - name: APIKEY
@@ -51,7 +51,7 @@ spec:
           resources:
             requests:
               memory: 64Mi
-              cpu:  100m
+              cpu: 100m
             limits:
               cpu: 500m
               memory: 256Mi
@@ -61,9 +61,9 @@ spec:
             - radarr
           env:
             - name: PORT
-              value: '9708'
+              value: "9708"
             - name: ENABLE_ADDITIONAL_METRICS
-              value: 'true'
+              value: "true"
             - name: URL
               value: "http://192.168.1.93:7878"
             - name: APIKEY
@@ -89,7 +89,7 @@ spec:
           resources:
             requests:
               memory: 64Mi
-              cpu:  100m
+              cpu: 100m
             limits:
               cpu: 500m
               memory: 256Mi
@@ -99,9 +99,9 @@ spec:
             - prowlarr
           env:
             - name: PORT
-              value: '9710'
+              value: "9710"
             - name: ENABLE_ADDITIONAL_METRICS
-              value: 'true'
+              value: "true"
             - name: URL
               value: "http://192.168.1.93:9696"
             - name: APIKEY
@@ -127,7 +127,7 @@ spec:
           resources:
             requests:
               memory: 64Mi
-              cpu:  100m
+              cpu: 100m
             limits:
               cpu: 500m
               memory: 256Mi
@@ -137,7 +137,7 @@ spec:
             - sabnzbd
           env:
             - name: PORT
-              value: '9712'
+              value: "9712"
             - name: URL
               value: "http://192.168.1.93:8080"
             - name: APIKEY
@@ -163,7 +163,7 @@ spec:
           resources:
             requests:
               memory: 64Mi
-              cpu:  100m
+              cpu: 100m
             limits:
               cpu: 500m
               memory: 256Mi
@@ -171,9 +171,9 @@ spec:
           image: ghcr.io/druggeri/nut_exporter:3.0
           env:
             - name: NUT_EXPORTER_SERVER
-              value: '192.168.1.97'
+              value: "192.168.1.97"
             - name: NUT_EXPORTER_USERNAME
-              value: 'upsadmin'
+              value: "upsadmin"
             - name: NUT_EXPORTER_VARIABLES
               value: "battery.charge,battery.runtime,battery.voltage,input.voltage,ups.load,ups.status"
             - name: NUT_EXPORTER_PASSWORD
@@ -187,7 +187,7 @@ spec:
           resources:
             requests:
               memory: 64Mi
-              cpu:  100m
+              cpu: 100m
             limits:
               cpu: 500m
               memory: 256Mi

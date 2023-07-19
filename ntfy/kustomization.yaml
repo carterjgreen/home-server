@@ -5,8 +5,8 @@ resources:
   - ntfy-svc.yaml # service connecting pods to cluster network
   - ntfy-pvc.yaml # pvc used to store cache and attachment
   - ntfy-ingress.yaml # ingress definition
-configMapGenerator: 
-    - name: server-config
-      files: 
-        - server.yml
-namespace: default # select namespace for whole application 
+configMapGenerator:
+  - name: server-config
+    files:
+      - server.yml
+namespace: default # select namespace for whole application

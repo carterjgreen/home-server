@@ -24,15 +24,15 @@ spec:
               name: unpoller-prom
           env:
             - name: UP_INFLUXDB_DISABLE
-              value: 'true'
+              value: "true"
             - name: UP_POLLER_DEBUG
-              value: 'false'
+              value: "false"
             - name: UP_UNIFI_DEFAULT_SAVE_DPI
-              value: 'true'
+              value: "true"
             - name: UP_UNIFI_DEFAULT_URL
-              value: 'https://192.168.1.1'
+              value: "https://192.168.1.1"
             - name: UP_UNIFI_DEFAULT_USER
-              value: 'up2'
+              value: "up2"
             - name: UP_UNIFI_DEFAULT_PASS
               valueFrom:
                 secretKeyRef:
@@ -41,5 +41,4 @@ spec:
           resources:
             limits:
               memory: 100Mi
-              cpu:  100m
-            
+              cpu: 100m

@@ -35,4 +35,3 @@ spec:
         - name: agent-volume
           configMap:
             name: agent-config
-            

@@ -28,7 +28,7 @@ spec:
           resources:
             limits:
               memory: 300Mi
-              cpu:  200m
+              cpu: 200m
           volumeMounts:
             - mountPath: /datastore
               name: change-volume
@@ -36,4 +36,3 @@ spec:
         - name: change-volume
           persistentVolumeClaim:
             claimName: change-pvc
-            

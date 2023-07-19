@@ -13,7 +13,7 @@ spec:
       helm:
         releaseName: authelia
         valueFiles:
-        - $myRepo/authelia/authelia-values.yaml
+          - $myRepo/authelia/authelia-values.yaml
     - repoURL: https://github.com/carterjgreen/home-server.git
       ref: myRepo
   destination:

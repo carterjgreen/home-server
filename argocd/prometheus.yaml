@@ -11,7 +11,7 @@ spec:
       targetRevision: 23.1.0
       helm:
         valueFiles:
-        - $myRepo/prometheus/prometheus-values.yaml
+          - $myRepo/prometheus/prometheus-values.yaml
     - repoURL: https://github.com/carterjgreen/home-server.git
       ref: myRepo
   destination:

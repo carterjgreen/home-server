@@ -6,7 +6,7 @@ domain: juicewizerd.com
 
 ingress:
   enabled: true
-  annotations: 
+  annotations:
     kubernetes.io/ingress.class: traefik-external
   tls:
     secret: juicewizerd-le-com-tls
@@ -22,8 +22,8 @@ pod:
     type: RollingUpdate
 
   env:
-  - name: TZ
-    value: America/Toronto
+    - name: TZ
+      value: America/Toronto
 
   resources:
     limits:
@@ -51,7 +51,7 @@ configMap:
     level: info
     keep_stdout: true
   default_redirection_url: https://auth.juicewizerd.com
-  theme: auto   # options: dark, light, grey, auto
+  theme: auto # options: dark, light, grey, auto
   totp:
     disable: false
     issuer: juicewizerd.com
@@ -94,11 +94,11 @@ configMap:
         resources:
           - "^/kobo([/?].*)?$"
       # Home assistant app bypass
-      - domain: 
+      - domain:
           - "hass.juicewizerd.com"
         policy: bypass
         resources:
-          - '^/api([/?].*)?$'
+          - "^/api([/?].*)?$"
           - "^/auth/token.*"
           - "^/.external_auth=.*"
           - "^/service_worker.js"
@@ -107,13 +107,13 @@ configMap:
           - "^/hacsfiles.*"
           - "^/frontend_latest.*"
       # Uptime-Kuma API
-      - domain: 
+      - domain:
           - "uptime.juicewizerd.com"
         policy: bypass
         resources:
-          - '^/api([/?].*)?$'
+          - "^/api([/?].*)?$"
       ## Two-Factor
-      - domain: 
+      - domain:
           - "homer.juicewizerd.com"
         policy: two_factor
       ## One-Factor
@@ -122,11 +122,11 @@ configMap:
           # - "uptime.juicewizerd.com"
           # - "books.juicewizerd.com"
           # - "whoami.juicewizerd.com"
-        policy: one_factor 
-          
+        policy: one_factor
+
   session:
     name: authelia_session
-    domain: juicewizerd.com 
+    domain: juicewizerd.com
     expiration: 1h
     inactivity: 2h
     redis:
@@ -142,7 +142,6 @@ configMap:
       host: 192.168.1.91
       port: 5433
 
-      
   notifier:
     filesystem:
       enabled: true

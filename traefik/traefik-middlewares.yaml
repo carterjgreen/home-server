@@ -1,3 +1,4 @@
+---
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
@@ -22,7 +23,7 @@ metadata:
   namespace: default
 spec:
   forwardAuth:
-    address: http://192.168.1.95:9091/api/verify?auth=basic # replace auth with your authelia container name
+    address: http://192.168.1.95:9091/api/verify?auth=basic
     trustForwardHeader: true
     authResponseHeaders:
       - Remote-User

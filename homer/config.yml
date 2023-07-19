@@ -39,11 +39,11 @@ colors:
     text-title: "#81A1C1"
     text-subtitle: "#81A1C1"
     card-shadow: rgba(0, 0, 0, 0.4)
-    link-hover: "#BF616A"  
+    link-hover: "#BF616A"
     # colors from Nord theme: https://github.com/arcticicestudio/nord
 
 # Optional navbar
-# links: [] # Allows for navbar (dark mode, layout, and search) without any links
+# links: [] # Allows for navbar without any links
 links:
   - name: "Contribute"
     icon: "fab fa-github"
@@ -52,11 +52,12 @@ links:
   - name: "Wiki"
     icon: "fas fa-book"
     url: "https://www.wikipedia.org/"
-  # this will link to a second homer page that will load config from additional-page.yml and keep default config values as in config.yml file
-  # see url field and assets/additional-page.yml.dist used in this example:
+  #   this will link to a second homer page that will load config from
+  #   additional-page.yml and keep default config values as in config.yml file
+  #   see url field and assets/additional-page.yml.dist used in this example:
   # - name: "another page!"
   #   icon: "fas fa-file-alt"
-  #   url: "#additional-page" 
+  #   url: "#additional-page"
 
 # Services
 services:
@@ -111,7 +112,7 @@ services:
         keywords: "photos"
         url: "http://192.168.1.93:2283"
         target: "_blank"
-        
+
   - name: Starr
     icon: "fas fa-film"
     items:
@@ -119,19 +120,19 @@ services:
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/homarr.svg"
         subtitle: "arr Homepage"
         url: "https://homarr.juicewizerd.com"
-        target: "_blank" 
+        target: "_blank"
       - name: "Jellyseerr"
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/jellyseerr.svg"
         tag: "requests"
         subtitle: "Media Requests"
         url: "https://jellyseerr.juicewizerd.com"
-        target: "_blank" 
+        target: "_blank"
       - name: "Radarr"
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/radarr.svg"
         tag: "movies"
         subtitle: "Movie Downloader"
         url: "http://192.168.1.93:7878"
-        target: "_blank" 
+        target: "_blank"
         type: "Radarr"
         apikey: "4011babfa3b043df9a824cd986d03f18"
       - name: "Sonarr"
@@ -139,7 +140,7 @@ services:
         tag: "shows"
         subtitle: "TV Downloader"
         url: "http://192.168.1.93:8989"
-        target: "_blank" 
+        target: "_blank"
         type: "Sonarr"
         apikey: "0c8978dcd9474445987a79a520326b80"
       - name: "Prowlarr"
@@ -147,10 +148,10 @@ services:
         tag: "indexers"
         subtitle: "Index Manager"
         url: "http://192.168.1.93:9696"
-        target: "_blank" 
+        target: "_blank"
         type: "Prowlarr"
         apikey: "e851b6ad7743446d97a49181a01fbaf0"
-      
+
   - name: "Tools"
     icon: "fas fa-tools"
     items:
@@ -212,7 +213,6 @@ services:
         subtitle: "DNS-level Ad Blocking"
         tag: "adblocker"
         url: "http://192.168.1.99:80"
-        # type: "AdGuardHome"
         target: "_blank"
       # - name: "Speedtest Tracker"
       #   logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/speedtest-tracker.png"
@@ -236,19 +236,19 @@ services:
         tag: "monitoring"
         # url: "http://192.168.1.93:3000"
         url: "http://graf.juicewizerd.com/d/SH5hMcX7k/home-assistant?orgId=1"
-        target: "_blank"  
+        target: "_blank"
       - name: "Authelia"
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/authelia.png"
         subtitle: "SSO Authentication"
         tag: "authentication"
         url: "https://auth.juicewizerd.com"
-        target: "_blank"  
+        target: "_blank"
       - name: "InfluxDB"
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/influxdb.svg"
-        subtitle: "Time-Series Database"  
+        subtitle: "Time-Series Database"
         tag: "database"
         url: "http://192.168.1.93:8086"
-        target: "_blank"         
+        target: "_blank"
 
   - name: "Kubernetes"
     icon: "fas fa-server"
@@ -264,12 +264,10 @@ services:
         subtitle: "Kubernetes Proxy Manager"
         tag: "reverse-proxy"
         url: "http://dash.traefik"
-        target: "_blank"    
+        target: "_blank"
       - name: "Longhorn"
         logo: "https://raw.githubusercontent.com/longhorn/website/master/static/img/icon-longhorn.svg"
         subtitle: "Kubernetes Volume Manager"
         tag: "volumes"
         url: "http://longhorn.example.com"
-        target: "_blank"    
-         
-      
+        target: "_blank"

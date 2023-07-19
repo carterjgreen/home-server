@@ -3,7 +3,7 @@ kind: IngressRoute
 metadata:
   name: calibre
   namespace: default
-  annotations: 
+  annotations:
     kubernetes.io/ingress.class: traefik-external
 spec:
   entryPoints:
@@ -14,7 +14,7 @@ spec:
       kind: Rule
       services:
         - kind: Service
-          name: calibre 
+          name: calibre
           namespace: default
           port: 8083
       middlewares:

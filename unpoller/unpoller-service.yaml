@@ -10,4 +10,4 @@ spec:
     - name: unpoller-out
       protocol: TCP
       port: 9130
-      targetPort:  unpoller-prom
+      targetPort: unpoller-prom

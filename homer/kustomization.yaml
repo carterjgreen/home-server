@@ -4,8 +4,8 @@ resources:
   - homer-deployment.yaml # deployment definition
   - homer-svc.yaml # service connecting pods to cluster network
   - homer-ingress.yaml # ingress definition
-configMapGenerator: 
-    - name: homer-config
-      files: 
-        - config.yml
-namespace: default # select namespace for whole application 
+configMapGenerator:
+  - name: homer-config
+    files:
+      - config.yml
+namespace: default # select namespace for whole application

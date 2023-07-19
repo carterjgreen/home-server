@@ -3,7 +3,7 @@ kind: IngressRoute
 metadata:
   name: uptimekuma-ingress
   namespace: default
-  annotations: 
+  annotations:
     kubernetes.io/ingress.class: traefik-external
 spec:
   entryPoints:
@@ -22,5 +22,5 @@ spec:
       middlewares:
         - name: crowdsec-authelia
         - name: cors-headers
-  tls: 
+  tls:
     secretName: juicewizerd-le-com-tls

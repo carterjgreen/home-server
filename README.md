@@ -1,15 +1,19 @@
 # home-server
 
 ## Installation
+
 Make firewall rules if on RHEL/derivatives
-```
+
+```bash
 sudo firewall-cmd --permanent --add-port=6443/tcp #apiserver
 sudo firewall-cmd --permanent --zone=trusted --add-source=10.42.0.0/16 #pods
 sudo firewall-cmd --permanent --zone=trusted --add-source=10.43.0.0/16 #services
 sudo firewall-cmd --reload
 ```
+
 ## Install k3s to server
-```
+
+```bash
 export INSTALL_K3S_VERSION="v1.25.7+k3s1" # or don't add this to use stable
 export K3S_KUBECONFIG_MODE="644"
 export K3S_DATASTORE_ENDPOINT='postgres://username:password@192.168.1.99:5432/k3s?sslmode=disable'
@@ -34,7 +38,8 @@ chmod 600 ~/.kube/config
 ```
 
 ## Install Cilium
-```
+
+```bash
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 CILIUM_CLI_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/cilium-cli/master/stable.txt)
 CLI_ARCH=amd64
@@ -64,33 +69,39 @@ hubble status
 ```
 
 ## Install k3s to agent
-```
+
+```bash
 export INSTALL_K3S_VERSION="v1.24.10+k3s1"
 curl -sfL https://get.k3s.io | K3S_URL=https://1.2.3.4:6443 sh -s - agent --token mypassword
 ```
 
 Copy k3s.yaml to use kubectl externally
-```
+
+```bash
 sudo cat /etc/rancher/k3s/k3s.yaml
 ```
+
 Copy to .kube/config on other device and run
 ```chmod 600 ~/.kube/config```
 
 ## Install metallb
-```
+
+```bash
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.9/config/manifests/metallb-native.yaml
 kubectl apply -f metallb/layer2.yaml \
   -f metallb/advertisement.yaml
 ```
 
 ## Apply secrets
-```
+
+```bash
 kubectl apply -f namespaces
 kubectl apply -f secrets
 ```
 
-## Install helm: https://helm.sh/docs/intro/install/
-```
+## Install helm: <https://helm.sh/docs/intro/install/>
+
+```bash
 helm repo add traefik https://traefik.github.io/charts
 helm repo add longhorn https://charts.longhorn.io
 helm repo add jetstack https://charts.jetstack.io
@@ -99,9 +110,11 @@ helm repo add crowdsec https://crowdsecurity.github.io/helm-charts
 helm repo update
 ```
 
-## Install longhorn with helm: 
-https://longhorn.io/docs/1.4.1/deploy/install/install-with-helm/
-```
+## Install longhorn with helm
+
+<https://longhorn.io/docs/1.4.1/deploy/install/install-with-helm/>
+
+```bash
 kubectl apply -f longhorn/longhorn-namespace.yaml
 kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/v1.4.0/deploy/prerequisite/longhorn-iscsi-installation.yaml
 kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/v1.4.0/deploy/prerequisite/longhorn-nfs-installation.yaml
@@ -113,7 +126,8 @@ helm install longhorn longhorn/longhorn --namespace longhorn-system --version 1.
 ```
 
 ## Install argocd
-```
+
+```bash
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
@@ -131,7 +145,8 @@ argocd repo add https://github.com/carterjgreen/home-server.git --username carte
 ```
 
 ## Install Cert-Manager
-```
+
+```bash
 helm install cert-manager jetstack/cert-manager \
      --namespace cert-manager \
      --create-namespace \

@@ -5,8 +5,8 @@ resources:
   - grafana-svc.yaml # service connecting pods to cluster network
   - grafana-pvc.yaml # pvc used to store cache and attachment
   - grafana-ingress.yaml # ingress definition
-configMapGenerator: 
-    - name: grafana-config
-      files: 
-        - grafana.ini
-namespace: default # select namespace for whole application 
+configMapGenerator:
+  - name: grafana-config
+    files:
+      - grafana.ini
+namespace: default # select namespace for whole application

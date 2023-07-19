@@ -11,7 +11,7 @@ spec:
       targetRevision: 0.9.6
       helm:
         valueFiles:
-        - $myRepo/crowdsec/crowdsec-values.yaml
+          - $myRepo/crowdsec/crowdsec-values.yaml
     - repoURL: https://github.com/carterjgreen/home-server.git
       ref: myRepo
   destination:

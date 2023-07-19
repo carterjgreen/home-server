@@ -2,9 +2,8 @@ persistence:
   defaultClassReplicaCount: 2
 
 defaultSettings:
-  backupTarget: s3://carter-longhorn@s3.us-west-004.backblazeb2.com/ 
+  backupTarget: s3://carter-longhorn@s3.us-west-004.backblazeb2.com/
   backupTargetCredentialSecret: s3-compatible-backup-target-secret
   defaultReplicaCount: "2"
   backupstorePollInterval: "0"
   defaultDataLocality: "best-effort"
-  

@@ -13,7 +13,7 @@ spec:
       helm:
         releaseName: traefik
         valueFiles:
-        - $myRepo/traefik/traefik-values.yaml
+          - $myRepo/traefik/traefik-values.yaml
     - repoURL: https://github.com/carterjgreen/home-server.git
       ref: myRepo
   destination:
