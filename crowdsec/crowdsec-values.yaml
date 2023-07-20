@@ -39,14 +39,14 @@ lapi:
   persistentVolume:
     # -- Persistent volume for data folder. Stores e.g. registered bouncer api keys
     data:
-      enabled: true
+      enabled: false
       accessModes:
         - ReadWriteOnce
       storageClassName: "local-path"
       size: 1Gi
     # -- Persistent volume for config folder. Stores e.g. online api credentials
     config:
-      enabled: true
+      enabled: false
       accessModes:
         - ReadWriteOnce
       storageClassName: "local-path"
