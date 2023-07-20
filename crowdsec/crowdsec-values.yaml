@@ -22,8 +22,8 @@ agent:
       enabled: false
 lapi:
   env:
-    - name: COLLECTIONS
-      value: "crowdsecurity/traefik LePresidente/authelia LePresidente/grafana"
+    # - name: COLLECTIONS
+    #   value: "crowdsecurity/traefik LePresidente/authelia LePresidente/grafana"
     - name: ENROLL_KEY
       valueFrom:
         secretKeyRef:
