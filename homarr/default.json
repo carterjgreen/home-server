@@ -51,7 +51,7 @@
 			},
 			"network": {
 				"enabledStatusChecker": false,
-				"okStatus": []
+				"statusCodes": []
 			},
 			"appearance": {
 				"iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/github.png"
@@ -110,8 +110,8 @@
 			},
 			"network": {
 				"enabledStatusChecker": false,
-				"okStatus": [
-					200
+				"statusCodes": [
+					"200"
 				]
 			},
 			"appearance": {
@@ -171,8 +171,8 @@
 			},
 			"network": {
 				"enabledStatusChecker": false,
-				"okStatus": [
-					200
+				"statusCodes": [
+					"200"
 				]
 			},
 			"appearance": {
@@ -232,8 +232,8 @@
 			},
 			"network": {
 				"enabledStatusChecker": false,
-				"okStatus": [
-					200
+				"statusCodes": [
+					"200"
 				]
 			},
 			"appearance": {
@@ -431,10 +431,9 @@
 				"type": "radarr",
 				"properties": [
 					{
-						"type": "private",
 						"field": "apiKey",
-						"value": "4011babfa3b043df9a824cd986d03f18",
-						"isDefined": false
+						"type": "private",
+						"value": "4011babfa3b043df9a824cd986d03f18"
 					}
 				]
 			}
@@ -488,10 +487,9 @@
 				"type": "sonarr",
 				"properties": [
 					{
-						"type": "private",
 						"field": "apiKey",
-						"value": "4418595070ee40c6a02642687f5f89d8",
-						"isDefined": false
+						"type": "private",
+						"value": "4418595070ee40c6a02642687f5f89d8"
 					}
 				]
 			}
@@ -545,16 +543,14 @@
 				"type": "jellyfin",
 				"properties": [
 					{
-						"type": "public",
 						"field": "username",
-						"value": "carter",
-						"isDefined": false
+						"type": "public",
+						"value": "carter"
 					},
 					{
-						"type": "private",
 						"field": "password",
-						"value": "perrytheplatypus",
-						"isDefined": false
+						"type": "private",
+						"value": "perrytheplatypus"
 					}
 				]
 			}
@@ -658,16 +654,14 @@
 				"type": "qBittorrent",
 				"properties": [
 					{
-						"type": "public",
 						"field": "username",
-						"value": "admin",
-						"isDefined": false
+						"type": "public",
+						"value": "admin"
 					},
 					{
-						"type": "private",
 						"field": "password",
-						"value": "adminadmin",
-						"isDefined": false
+						"type": "private",
+						"value": "adminadmin"
 					}
 				]
 			}
@@ -721,10 +715,9 @@
 				"type": "sabnzbd",
 				"properties": [
 					{
-						"type": "private",
 						"field": "apiKey",
-						"value": "fa7ad2b38b29436ba2bbd8e49087f0eb",
-						"isDefined": false
+						"type": "private",
+						"value": "fa7ad2b38b29436ba2bbd8e49087f0eb"
 					}
 				]
 			}
@@ -881,7 +874,11 @@
 			"type": "weather",
 			"properties": {
 				"displayInFahrenheit": false,
-				"location": "Paris"
+				"location": {
+					"name": "Paris",
+					"latitude": 48.85341,
+					"longitude": 2.3488
+				}
 			},
 			"area": {
 				"type": "category",
@@ -1117,7 +1114,7 @@
 				"enabledPing": false,
 				"enabledSearchbar": true
 			},
-			"pageTitle": "Homarr v0.13  ⭐️",
+			"pageTitle": "Homarr v0.12  ⭐️",
 			"logoImageUrl": "/imgs/logo/logo.png",
 			"faviconUrl": "/imgs/favicon/favicon-squared.png",
 			"backgroundImageUrl": "",
