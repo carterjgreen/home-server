@@ -1015,8 +1015,8 @@
 			"id": "bc3b8dc7-12f3-4087-9eea-c1c2f28c7ec1",
 			"type": "calendar",
 			"properties": {
-				"useSonarrv4": false,
-				"sundayStart": false,
+				"useSonarrv4": true,
+				"sundayStart": true,
 				"radarrReleaseType": "inCinemas"
 			},
 			"area": {
@@ -1117,7 +1117,7 @@
 				"enabledPing": false,
 				"enabledSearchbar": true
 			},
-			"pageTitle": "Homarr v0.12  ⭐️",
+			"pageTitle": "Homarr v0.13  ⭐️",
 			"logoImageUrl": "/imgs/logo/logo.png",
 			"faviconUrl": "/imgs/favicon/favicon-squared.png",
 			"backgroundImageUrl": "",
