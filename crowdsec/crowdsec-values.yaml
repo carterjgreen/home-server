@@ -19,7 +19,7 @@ agent:
       value: "America/Toronto"
   persistentVolume:
     config:
-      enabled: true
+      enabled: false
 lapi:
   env:
     - name: COLLECTIONS
@@ -46,7 +46,7 @@ lapi:
       size: 1Gi
     # -- Persistent volume for config folder. Stores e.g. online api credentials
     config:
-      enabled: false
+      enabled: true
       accessModes:
         - ReadWriteOnce
       storageClassName: "local-path"
