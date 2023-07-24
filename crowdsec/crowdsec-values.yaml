@@ -19,11 +19,11 @@ agent:
       value: "America/Toronto"
   persistentVolume:
     config:
-      enabled: true
+      enabled: false
 lapi:
   env:
-    - name: COLLECTIONS
-      value: "crowdsecurity/traefik LePresidente/authelia LePresidente/grafana"
+    # - name: COLLECTIONS
+    #   value: "crowdsecurity/traefik LePresidente/authelia LePresidente/grafana"
     - name: ENROLL_KEY
       valueFrom:
         secretKeyRef:
@@ -39,7 +39,7 @@ lapi:
   persistentVolume:
     # -- Persistent volume for data folder. Stores e.g. registered bouncer api keys
     data:
-      enabled: true
+      enabled: false
       accessModes:
         - ReadWriteOnce
       storageClassName: "local-path"
