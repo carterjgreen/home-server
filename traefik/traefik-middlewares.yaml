@@ -41,6 +41,8 @@ spec:
     address: http://authelia.default.svc.cluster.local/api/verify?rd=https://auth.juicewizerd.com/
     trustForwardHeader: true
     authResponseHeaders:
+      - Authorization
+      - Proxy-Authorization
       - Remote-User
       - Remote-Groups
       - Remote-Name
