@@ -27,7 +27,7 @@ ports:
       - default-security-headers@kubernetescrd
       - default-cors-headers@kubernetescrd
       # - default-crowdsec-traefik-bouncer@kubernetescrd
-    
+
 ingressRoute:
   dashboard:
     enabled: false
