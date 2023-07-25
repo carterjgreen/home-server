@@ -14,5 +14,5 @@ spec:
     namespace: default
   syncPolicy:
     automated:
-      selfHeal: false # doesn't like cillium
+      selfHeal: true
       prune: true
