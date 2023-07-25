@@ -27,6 +27,7 @@
       "automerge": true
     },
     {
+      "description": "Pull request for major and minor",
       "matchUpdateTypes": [
         "major",
         "minor"
