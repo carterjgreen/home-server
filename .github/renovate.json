@@ -20,19 +20,7 @@
         "patch",
         "digest"
       ],
-      "matchDatasources": [
-        "argocd",
-        "kubernetes",
-        "docker"
-      ],
       "automerge": true
-    },
-    {
-      "description": "Pull request for major and minor",
-      "matchUpdateTypes": [
-        "major",
-        "minor"
-      ]
     }
   ]
 }
