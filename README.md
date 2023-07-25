@@ -142,6 +142,19 @@ argocd admin initial-password -n argocd
 argocd login 192.168.1.241
 argocd account update-password
 argocd repo add https://github.com/carterjgreen/home-server.git --username carterjgreen --password <secret>
+
+kubectl edit configmap argocd-cm -n argocd
+```
+
+```yaml
+data:
+  resource.exclusions: |
+  - apiGroups:
+      - cilium.io
+    kinds:
+      - CiliumIdentity
+    clusters:
+      - "*"
 ```
 
 ## Install Cert-Manager
