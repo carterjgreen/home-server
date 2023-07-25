@@ -4,16 +4,33 @@
     "config:base"
   ],
   "argocd": {
-    "fileMatch": ["argocd/.+\\.yaml$"]
+    "fileMatch": [
+      "argocd/.+\\.yaml$"
+    ]
   },
   "kubernetes": {
-    "fileMatch": ["-deployment\\.yaml$"]
+    "fileMatch": [
+      "-deployment\\.yaml$"
+    ]
   },
   "packageRules": [
     {
-      "matchUpdateTypes": [ "patch"],
-      "matchDatasources": ["argocd", "kubernetes"],
+      "description": "Automerge patches",
+      "matchUpdateTypes": [
+        "patch",
+        "digest"
+      ],
+      "matchDatasources": [
+        "argocd",
+        "kubernetes"
+      ],
       "automerge": true
+    },
+    {
+      "matchUpdateTypes": [
+        "major",
+        "minor"
+      ]
     }
   ]
 }
