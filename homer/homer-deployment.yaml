@@ -28,9 +28,9 @@ spec:
             limits:
               memory: 100Mi
               cpu: 100m
-            # requests:
-            #   cpu: 50m
-            #   memory: 50Mi
+            requests:
+              cpu: 5m
+              memory: 25Mi
           volumeMounts:
             - mountPath: /www/assets/config.yml
               subPath: config.yml

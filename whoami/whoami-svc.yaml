@@ -2,8 +2,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: whoami-svc
+  annotations:
+    metallb.universe.tf/loadBalancerIPs: 192.168.1.246
 spec:
-  # type: ClusterIP
+  type: LoadBalancer
   selector:
     app: whoami-pod
   ports:
