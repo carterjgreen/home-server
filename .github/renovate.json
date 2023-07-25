@@ -22,7 +22,8 @@
       ],
       "matchDatasources": [
         "argocd",
-        "kubernetes"
+        "kubernetes",
+        "docker"
       ],
       "automerge": true
     },
