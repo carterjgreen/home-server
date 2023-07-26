@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "9.5.2"
+      "version": "10.0.3"
     },
     {
       "type": "datasource",
@@ -109,7 +109,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -154,7 +154,7 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 3,
+        "w": 6,
         "x": 6,
         "y": 0
       },
@@ -173,7 +173,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -248,7 +248,7 @@
       "gridPos": {
         "h": 8,
         "w": 12,
-        "x": 9,
+        "x": 12,
         "y": 0
       },
       "id": 7,
@@ -308,7 +308,7 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 3,
+        "w": 6,
         "x": 6,
         "y": 4
       },
@@ -327,7 +327,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -372,7 +372,7 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 3,
+        "w": 4,
         "x": 0,
         "y": 8
       },
@@ -391,7 +391,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -436,8 +436,8 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 3,
-        "x": 3,
+        "w": 4,
+        "x": 4,
         "y": 8
       },
       "id": 6,
@@ -455,7 +455,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -496,8 +496,8 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 3,
-        "x": 6,
+        "w": 4,
+        "x": 8,
         "y": 8
       },
       "id": 11,
@@ -515,7 +515,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -590,7 +590,7 @@
       "gridPos": {
         "h": 8,
         "w": 12,
-        "x": 9,
+        "x": 12,
         "y": 8
       },
       "id": 9,
@@ -653,7 +653,7 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 3,
+        "w": 4,
         "x": 0,
         "y": 12
       },
@@ -672,7 +672,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -717,8 +717,8 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 3,
-        "x": 3,
+        "w": 4,
+        "x": 4,
         "y": 12
       },
       "id": 10,
@@ -736,7 +736,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -781,8 +781,8 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 3,
-        "x": 6,
+        "w": 4,
+        "x": 8,
         "y": 12
       },
       "id": 8,
@@ -800,7 +800,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -820,8 +820,7 @@
   "style": "dark",
   "tags": [
     "home",
-    "money",
-    "budget"
+    "money"
   ],
   "templating": {
     "list": []
@@ -834,6 +833,6 @@
   "timezone": "",
   "title": "Grocery",
   "uid": "ab621f90-e2ce-4b33-8786-649cd8bba6c5",
-  "version": 4,
+  "version": 3,
   "weekStart": ""
 }

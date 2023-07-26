@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "9.5.2"
+      "version": "10.0.3"
     },
     {
       "type": "datasource",
@@ -124,7 +124,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 17,
+        "h": 15,
         "w": 24,
         "x": 0,
         "y": 0
@@ -217,7 +217,7 @@
         "h": 14,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 15
       },
       "id": 14,
       "options": {
@@ -308,7 +308,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 31
+        "y": 29
       },
       "id": 6,
       "options": {
@@ -410,7 +410,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 42
+        "y": 40
       },
       "id": 15,
       "options": {
@@ -431,7 +431,7 @@
             "type": "influxdb",
             "uid": "${DS_INFLUXDB}"
           },
-          "query": "from(bucket: \"home_assistant\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"sensor.living_room_climate_voc_index\")",
+          "query": "from(bucket: \"home_assistant\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"sensor.living_room_climate_voc_index\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"value\")\r\n  |> timedMovingAverage(every: 10m, period: 20m)",
           "refId": "A"
         }
       ],
@@ -512,7 +512,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 42
+        "y": 40
       },
       "id": 16,
       "options": {
@@ -566,7 +566,7 @@
               "tooltip": false,
               "viz": false
             },
-            "lineInterpolation": "stepAfter",
+            "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -599,10 +599,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 16,
+        "h": 10,
         "w": 24,
         "x": 0,
-        "y": 50
+        "y": 48
       },
       "id": 12,
       "options": {
@@ -623,8 +623,18 @@
             "type": "influxdb",
             "uid": "${DS_INFLUXDB}"
           },
+          "hide": false,
           "query": "from(bucket: \"home_assistant\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_field\"] == \"value\")\r\n  |> filter(fn: (r) => r[\"entity_id\"] == \"ac_sensor\")\r\n  |> map(fn: (r) => ({\r\n        _value: r._value, \r\n        _time: r._time, \r\n        name: \"${r[\"friendly_name\"]}\"\r\n    }))\r\n  |> sort(columns: [\"_time\"])\r\n  |> group(columns: [\"name\"])\r\n  ",
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB}"
+          },
+          "hide": false,
+          "query": "from(bucket: \"home_assistant\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"%\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"value\")\r\n  |> filter(fn: (r) => r[\"entity_id\"] == \"bedroom_temperature_sensor_humidity\")\r\n  |> derivative(unit: 1h)\r\n  |> timedMovingAverage(every: 30m, period: 45m)",
+          "refId": "B"
         }
       ],
       "title": "AC Sensor",
@@ -692,7 +702,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 66
+        "y": 58
       },
       "id": 2,
       "options": {
@@ -739,9 +749,9 @@
     "to": "now"
   },
   "timepicker": {},
-  "timezone": "",
+  "timezone": "America/Toronto",
   "title": "Home Assistant",
   "uid": "SH5hMcX7k",
-  "version": 13,
+  "version": 6,
   "weekStart": ""
 }
