@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: change
-          image: dgtlmoon/changedetection.io:0.43.2
+          image: dgtlmoon/changedetection.io:0.44
           env:
             - name: TZ
               value: America/Toronto
