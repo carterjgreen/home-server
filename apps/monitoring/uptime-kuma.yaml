@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: homer
+  name: uptime-kuma
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     repoURL: "https://github.com/carterjgreen/home-server.git"
-    path: homer
+    path: manifests/uptime-kuma
     targetRevision: HEAD
   destination:
     server: "https://kubernetes.default.svc"

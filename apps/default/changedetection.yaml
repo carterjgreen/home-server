@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: external-ingress
+  name: changedetection
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     repoURL: "https://github.com/carterjgreen/home-server.git"
-    path: external-ingress
+    path: manifests/changedetection
     targetRevision: HEAD
   destination:
     server: "https://kubernetes.default.svc"

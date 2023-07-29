@@ -2,19 +2,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus
+  name: crowdsec
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   sources:
-    - repoURL: https://prometheus-community.github.io/helm-charts
-      chart: prometheus
-      targetRevision: 23.1.0
+    - repoURL: https://crowdsecurity.github.io/helm-charts
+      chart: crowdsec
+      targetRevision: 0.9.7
       helm:
         valueFiles:
-          - $myRepo/prometheus/prometheus-values.yaml
+          - $myRepo/manifests/crowdsec/crowdsec-values.yaml
     - repoURL: https://github.com/carterjgreen/home-server.git
       ref: myRepo
   destination:

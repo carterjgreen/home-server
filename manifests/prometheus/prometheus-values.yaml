@@ -7,9 +7,9 @@ prometheus-pushgateway:
 kube-state-metrics:
   enabled: false
 
-server:
-  remoteWrite:
-    - url: http://192.168.1.93:9090/api/v1/write
+# server:
+#   remoteWrite:
+#     - url: http://192.168.1.93:9090/api/v1/write
 
 extraScrapeConfigs: |
   - job_name: 'unifipoller'

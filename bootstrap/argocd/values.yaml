@@ -1,0 +1,17 @@
+configs:
+  repositories:
+    - url: https://github.com/carterjgreen/home-server
+  repository.credentials:
+    - url: https://github.com/carterjgreen
+      passwordSecret:
+        name: githubsecret
+        key: token
+
+server:
+  resource.exclusions: |
+    - apiGroups:
+        - cilium.io
+      kinds:
+        - CiliumIdentity
+      clusters:
+        - "*"

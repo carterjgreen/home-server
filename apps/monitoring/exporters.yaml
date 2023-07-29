@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     repoURL: "https://github.com/carterjgreen/home-server.git"
-    path: exporters
+    path: manifests/exporters
     targetRevision: HEAD
   destination:
     server: "https://kubernetes.default.svc"
