@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     repoURL: "https://github.com/carterjgreen/home-server.git"
-    path: unpoller
+    path: manifests/unpoller
     targetRevision: HEAD
   destination:
     server: "https://kubernetes.default.svc"
