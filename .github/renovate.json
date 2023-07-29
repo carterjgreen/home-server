@@ -5,7 +5,7 @@
   ],
   "argocd": {
     "fileMatch": [
-      "argocd/.+\\.yaml$"
+      "apps/.+\\.yaml$"
     ]
   },
   "kubernetes": {
