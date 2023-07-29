@@ -21,6 +21,7 @@ spec:
           - $myRepo/manifests/traefik/traefik-values.yaml
     - repoURL: https://github.com/carterjgreen/home-server.git
       ref: myRepo
+    - repoURL: https://github.com/carterjgreen/home-server.git
   destination:
     server: "https://kubernetes.default.svc"
     namespace: traefik
