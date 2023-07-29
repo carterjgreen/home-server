@@ -22,6 +22,7 @@ spec:
     - repoURL: https://github.com/carterjgreen/home-server.git
       ref: myRepo
     - repoURL: https://github.com/carterjgreen/home-server.git
+      path: manifests/traefik
   destination:
     server: "https://kubernetes.default.svc"
     namespace: traefik
