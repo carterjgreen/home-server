@@ -1,3 +1,4 @@
+---
 persistence:
   defaultClassReplicaCount: 2
 

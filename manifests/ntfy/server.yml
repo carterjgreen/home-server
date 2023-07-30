@@ -1,3 +1,4 @@
+---
 base-url: "https://ntfy.juicewizerd.com"
 
 listen-http: ":80"
