@@ -15,10 +15,71 @@ spec:
       chart: grafana
       targetRevision: 6.58.7
       helm:
-        valueFiles:
-          - $myRepo/manifests/grafana/values.yaml
+        # valueFiles:
+        #   - $myRepo/manifests/grafana/values.yaml
+        values: |
+          service:
+            type: LoadBalancer
+            annotations:
+              metallb.universe.tf/loadBalancerIPs: 192.168.1.242
+
+          resources:
+            limits:
+              cpu: 250m
+              memory: 750Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+
+          persistence:
+            enabled: true
+            size: 1Gi
+
+          admin:
+            existingSecret: "grafana"
+
+          envFromSecret: "grafana"
+
+          datasources:
+            datasources.yaml:
+              apiVersion: 1
+              datasources:
+                - name: Prometheus
+                  type: prometheus
+                  url: http://192.168.1.93:9090
+                - name: InfluxDB
+                  type: influxdb
+                  isDefault: true
+                  url: http://192.168.1.93:8086
+                  jsonData:
+                    version: Flux
+                    organization: my-org
+                    defaultBucket: home_assistant
+                    tlsSkipVerify: true
+                  secureJsonData:
+                    token: ${influx-token}
+
+          grafana.ini:
+            server:
+              domain: graf.juicewizerd.com
+              enable_gzip: true
+            users:
+              allow_sign_up: false
+              auto_assign_org: true
+              auto_assign_role: Viewer
+            auth.anonymous:
+              enabled: true
+            auth.proxy:
+              enabled: true
+              header_name: Remote-User
+              header_property: username
+              auto_sign_up: true
+              headers: Groups:Remote-Group
+              enable_login_token: false
+            analytics:
+              reporting_enabled: false
     - repoURL: https://github.com/carterjgreen/home-server.git
-      ref: myRepo
+      path: manifests/grafana
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
