@@ -1,28 +1,28 @@
-# ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: argocd
-#   namespace: argocd
-#   annotations:
-#     argocd.argoproj.io/sync-wave: "0"
-#   finalizers:
-#     - resources-finalizer.argocd.argoproj.io
-# spec:
-#   project: default
-#   sources:
-#     - repoURL: https://argoproj.github.io/argo-helm
-#       chart: argo-cd
-#       targetRevision: 5.42.1
-#       helm:
-#         valueFiles:
-#           - $myRepo/bootstrap/argocd/values.yaml
-#     - repoURL: https://github.com/carterjgreen/home-server.git
-#       ref: myRepo
-#   destination:
-#     server: "https://kubernetes.default.svc"
-#     namespace: argocd
-#   syncPolicy:
-#     automated:
-#       selfHeal: true
-#       prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  # finalizers:
+  #   - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - repoURL: https://argoproj.github.io/argo-helm
+      chart: argo-cd
+      targetRevision: 5.42.1
+      helm:
+        valueFiles:
+          - $myRepo/bootstrap/argocd/values.yaml
+    - repoURL: https://github.com/carterjgreen/home-server.git
+      ref: myRepo
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: argocd
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
