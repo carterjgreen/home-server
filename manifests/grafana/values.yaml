@@ -25,14 +25,16 @@ datasources:
         url: http://192.168.1.93:9090
       - name: InfluxDB
         type: influxdb
+        default: true
+        allowUiUpdates: true
         url: http://192.168.1.93:8086
         jsonData:
           version: Flux
           organization: my-org
-          default-bucket: home_assistant
+          defaultBucket: home_assistant
           tlsSkipVerify: true
         secureJsonData:
-          token: $influx_token
+          token: ${influx-token}
 
 grafana.ini:
   server:
