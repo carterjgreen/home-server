@@ -21,7 +21,7 @@ spec:
       ref: myRepo
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: default
+    namespace: argocd
   syncPolicy:
     automated:
       selfHeal: true
