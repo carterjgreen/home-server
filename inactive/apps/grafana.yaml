@@ -11,18 +11,13 @@ metadata:
 spec:
   project: default
   source:
-    - repoURL: https://grafana.github.io/helm-charts
-      chart: grafana
-      targetRevision: 6.58.7
-      helm:
-        valueFiles:
-          - $myRepo/manifests/grafana/values.yaml
-    - repoURL: https://github.com/carterjgreen/home-server.git
-      ref: myRepo
+    repoURL: "https://github.com/carterjgreen/home-server.git"
+    path: manifests/grafana
+    targetRevision: HEAD
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
   syncPolicy:
     automated:
-      selfHeal: true
       prune: true
+      selfHeal: true
