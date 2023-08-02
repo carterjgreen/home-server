@@ -12,5 +12,6 @@ configs:
           - "*"
 
 server:
-  type: "LoadBalancer"
-  service: "192.168.1.241"
+  service:
+    type: LoadBalancer
+    service: 192.168.1.241

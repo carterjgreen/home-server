@@ -9,13 +9,12 @@ metadata:
     kubernetes.io/ingress.class: traefik-external
 spec:
   entryPoints:
-    # - web
     - websecure
   routes:
     - match: Host(`graf.juicewizerd.com`)
       kind: Rule
       services:
-        - name: grafana-svc
+        - name: grafana
           port: 80
       middlewares:
         - name: crowdsec-authelia
