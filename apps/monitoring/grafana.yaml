@@ -10,7 +10,7 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
-  source:
+  sources:
     - repoURL: https://grafana.github.io/helm-charts
       chart: grafana
       targetRevision: 6.58.7
