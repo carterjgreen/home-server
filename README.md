@@ -14,7 +14,7 @@ sudo firewall-cmd --reload
 ## Install k3s to server
 
 ```bash
-export INSTALL_K3S_VERSION="v1.27.3+k3s1" # or don't add this to use stable
+export INSTALL_K3S_VERSION="v1.27.4+k3s1" # or don't add this to use stable
 export K3S_KUBECONFIG_MODE="644"
 export K3S_DATASTORE_ENDPOINT='postgres://username:password@192.168.1.99:5432/k3s?sslmode=disable'
 export K3S_RESOLV_CONF=/etc/resolv.conf
