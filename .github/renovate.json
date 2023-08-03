@@ -3,6 +3,9 @@
   "extends": [
     "config:base"
   ],
+  "ignorePaths": [
+    "**/archive/**"
+  ],
   "argocd": {
     "fileMatch": [
       "apps/.+\\.yaml$"
