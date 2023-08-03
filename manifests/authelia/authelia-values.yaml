@@ -78,7 +78,7 @@ configMap:
       clients:
         - id: grafana
           description: Grafana
-          secret: "4$FLt03HU9Jc8771XThBjsxA$Jqb+Op0qM+FzuMZHnfvARqElHeW6Rr07XS5Z0KUu6W4"
+          secret: "$argon2id$v=19$m=65536,t=3,p=4$FLt03HU9Jc8771XThBjsxA$Jqb+Op0qM+FzuMZHnfvARqElHeW6Rr07XS5Z0KUu6W4"
           redirect_uris: ["https://graf.juicewizerd.com/login/generic_oauth"]
 
   access_control:
