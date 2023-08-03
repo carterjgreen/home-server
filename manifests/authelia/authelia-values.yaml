@@ -69,6 +69,17 @@ configMap:
       mail_attribute: mail
       display_name_attribute: displayName
       user: uid=admin,ou=people,dc=juicewizerd,dc=com
+  identity_providers:
+    oidc:
+      enabled: true
+      cors:
+        endpoints: ["authorization", "token", "revocation", "introspection"]
+        allowed_origins_from_client_redirect_uris: true
+      clients:
+        - id: grafana
+          description: Grafana
+          secret: "4$FLt03HU9Jc8771XThBjsxA$Jqb+Op0qM+FzuMZHnfvARqElHeW6Rr07XS5Z0KUu6W4"
+          redirect_uris: ["https://graf.juicewizerd.com/login/generic_oauth"]
 
   access_control:
     default_policy: two_factor
