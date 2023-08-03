@@ -80,7 +80,7 @@ spec:
             #   auto_sign_up: true
             #   headers: Groups:Remote-Group
             #   enable_login_token: false
-            auth.generic_oath:
+            auth.generic_oauth:
               enabled: true
               name: Authelia
               client_id: grafana
