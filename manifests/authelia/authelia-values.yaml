@@ -13,18 +13,13 @@ ingress:
   traefikCRD:
     enabled: true
     entryPoints:
-      # - web
       - websecure
-    # sticky: true
+
 pod:
   kind: DaemonSet # Must be Deployment, DaemonSet, or StatefulSet.
-  strategy:
-    type: RollingUpdate
-
   env:
     - name: TZ
       value: America/Toronto
-
   resources:
     limits:
       cpu: "4.00"
@@ -33,34 +28,29 @@ pod:
       cpu: "0.25"
       memory: 50Mi
 
+secret:
+  existingSecret: authelia
+
 ## Authelia Config Map Generator
 configMap:
   enabled: true
   key: configuration.yaml
-
   server:
     host: 0.0.0.0
-    port: 9091
     buffers:
       read: 10485760 # Set large for calibre web
       write: 8192
     timeouts:
       read: 6s
       write: 6s
-  log:
-    level: info
-    keep_stdout: true
+  telemtry:
+    enabled: true
+    serviceMonitor:
+      enabled: true
   default_redirection_url: https://auth.juicewizerd.com
-  theme: auto # options: dark, light, grey, auto
+  theme: auto
   totp:
-    disable: false
     issuer: juicewizerd.com
-    algorithm: sha1
-    digits: 6
-    period: 30
-    skew: 1
-    secret_size: 32
-
   authentication_backend:
     password_reset:
       disable: false
@@ -82,7 +72,7 @@ configMap:
       user: uid=admin,ou=people,dc=juicewizerd,dc=com
 
   access_control:
-    default_policy: deny
+    default_policy: two_factor
     rules:
       # # Already hass 2FA
       - domain:
@@ -106,23 +96,6 @@ configMap:
           - "^/local.*"
           - "^/hacsfiles.*"
           - "^/frontend_latest.*"
-      # Uptime-Kuma API
-      - domain:
-          - "uptime.juicewizerd.com"
-        policy: bypass
-        resources:
-          - "^/api([/?].*)?$"
-      ## Two-Factor
-      - domain:
-          - "homer.juicewizerd.com"
-        policy: two_factor
-      ## One-Factor
-      - domain:
-          - "*.juicewizerd.com"
-          # - "uptime.juicewizerd.com"
-          # - "books.juicewizerd.com"
-          # - "whoami.juicewizerd.com"
-        policy: one_factor
 
   session:
     name: authelia_session
@@ -132,11 +105,6 @@ configMap:
     redis:
       host: 192.168.1.91
 
-  regulation:
-    max_retries: 5
-    find_time: 120
-    ban_time: 300
-
   storage:
     postgres:
       host: 192.168.1.91
@@ -145,14 +113,5 @@ configMap:
   notifier:
     filesystem:
       enabled: true
-      filename: /config/notification.txt
     smtp:
       enabled: false
-
-secret:
-  existingSecret: authelia
-
-persistence:
-  enabled: false
-  existingClaim: "authelia-pvc"
-  storageClass: "longhorn"
