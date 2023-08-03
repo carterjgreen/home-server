@@ -88,11 +88,7 @@ configMap:
         networks:
           - "192.168.1.0/24"
     rules:
-      # # Already hass 2FA
-      - domain: "*.juicewizerd.com"
-        policy: one_factor
-        networks: "internal"
-      - domain:
+      - domain: # Already hass 2FA
           - "hass.juicewizerd.com"
         policy: bypass
       # Kobo bypass
@@ -113,6 +109,9 @@ configMap:
           - "^/local.*"
           - "^/hacsfiles.*"
           - "^/frontend_latest.*"
+      - domain: "*.juicewizerd.com"
+        policy: one_factor
+        networks: "internal"
 
   session:
     name: authelia_session
