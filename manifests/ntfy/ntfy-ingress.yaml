@@ -9,7 +9,6 @@ metadata:
     kubernetes.io/ingress.class: traefik-external
 spec:
   entryPoints:
-    # - web
     - websecure
   routes:
     - match: Host(`ntfy.juicewizerd.com`)
@@ -17,10 +16,6 @@ spec:
       services:
         - name: ntfy-svc
           port: 80
-          sticky:
-            cookie:
-              name: cookie
-              secure: true
       middlewares:
         - name: default-headers
         - name: crowdsec
