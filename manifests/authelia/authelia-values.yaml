@@ -83,10 +83,6 @@ configMap:
 
   access_control:
     default_policy: two_factor
-    networks:
-      - name: internal
-        networks:
-          - "192.168.1.0/24"
     rules:
       - domain: # Already hass 2FA
           - "hass.juicewizerd.com"
@@ -109,9 +105,6 @@ configMap:
           - "^/local.*"
           - "^/hacsfiles.*"
           - "^/frontend_latest.*"
-      - domain: "*.juicewizerd.com"
-        policy: one_factor
-        networks: "internal"
 
   session:
     name: authelia_session
