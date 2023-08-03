@@ -9,13 +9,13 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ntfy-pod
+      app: ntfy
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: ntfy-pod
+        app: ntfy
     spec:
       containers:
         - name: ntfy
@@ -38,6 +38,8 @@ spec:
           ports:
             - containerPort: 80
               name: http-ntfy
+            - containerPort:: 9090
+              name: metrics
           livenessProbe:
             httpGet:
               path: /v1/health

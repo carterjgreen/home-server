@@ -2,6 +2,7 @@
 base-url: "https://ntfy.juicewizerd.com"
 
 listen-http: ":80"
+metrics-listen-http: ":9090"
 
 cache-batch-size: 25
 cache-batch-timeout: "1s"
