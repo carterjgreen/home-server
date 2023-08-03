@@ -61,7 +61,7 @@ spec:
 
           grafana.ini:
             server:
-              domain: graf.juicewizerd.com
+              root_url: https://graf.juicewizerd.com
               enable_gzip: true
             users:
               allow_sign_up: false
