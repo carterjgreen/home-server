@@ -11,6 +11,11 @@ configs:
         clusters:
           - "*"
 
+controller:
+  metrics:
+    serviceMonitor:
+      enabled: true
+
 server:
   service:
     type: LoadBalancer
