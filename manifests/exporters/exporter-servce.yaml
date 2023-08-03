@@ -53,4 +53,4 @@ spec:
       app: nuts-exporter
   podMetricsEndpoints:
     - port: nuts-prom
-      metrics_path: /ups_metrics
+      path: /ups_metrics
