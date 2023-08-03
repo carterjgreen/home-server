@@ -83,8 +83,15 @@ configMap:
 
   access_control:
     default_policy: two_factor
+    networks:
+      - name: internal
+        networks:
+          - "192.168.1.0/24"
     rules:
       # # Already hass 2FA
+      - domain: "*.juicewizerd.com"
+        policy: one_factor
+        networks: "internal"
       - domain:
           - "hass.juicewizerd.com"
         policy: bypass
