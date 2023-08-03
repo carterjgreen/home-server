@@ -1,5 +1,4 @@
 prometheus.remote_write "off_cluster" {
-  // Send metrics to a locally running Mimir.
   endpoint {
     url = "http://192.168.1.93:9090/api/v1/write"
   }
