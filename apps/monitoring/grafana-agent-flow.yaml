@@ -33,6 +33,7 @@ spec:
                 prometheus.operator.servicemonitors "services" {
                     forward_to = [prometheus.remote_write.off_cluster.receiver]
                 }
+            enableReporting: false
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
