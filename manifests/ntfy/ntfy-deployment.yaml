@@ -9,13 +9,13 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ntfy
+      app: ntfy-pod
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: ntfy
+        app: ntfy-pod
     spec:
       containers:
         - name: ntfy
