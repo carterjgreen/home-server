@@ -1,17 +1,27 @@
 ---
-apiVersion: v1
-kind: Service
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: sonarr-exporter
+# spec:
+#   type: ClusterIP
+#   selector:
+#     app: sonarr-exporter
+#   ports:
+#     - name: sonarr
+#       protocol: TCP
+#       port: 9707
+#       targetPort: sonarr-prom
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
 metadata:
   name: sonarr-exporter
 spec:
-  type: ClusterIP
   selector:
-    app: sonarr-exporter
-  ports:
-    - name: sonarr
-      protocol: TCP
-      port: 9707
-      targetPort: sonarr-prom
+    matchLabels:
+      app: sonarr-exporter
+  podMetricsEndpoints:
+    - port: sonarr-prom
 ---
 apiVersion: v1
 kind: Service
