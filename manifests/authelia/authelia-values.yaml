@@ -83,7 +83,8 @@ configMap:
         - id: miniflux
           description: Miniflux RSS Reader
           secret: "$argon2id$v=19$m=65536,t=3,p=4$reGqltl1QiwpzHp3edvKDQ$pVChJs/HCOKMMroVF2Qi+bqM9hXSBypkcTs+MrqPeks"
-          redirect_uris: ["https://auth.juicewizerd.com/oauth2/oidc/callback"]
+          redirect_uris:
+            ["https://miniflux.juicewizerd.com/oauth2/oidc/callback"]
 
   access_control:
     default_policy: two_factor
