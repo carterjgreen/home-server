@@ -16,7 +16,7 @@ ingress:
       - websecure
 
 pod:
-  kind: DaemonSet # Must be Deployment, DaemonSet, or StatefulSet.
+  kind: DaemonSet
   env:
     - name: TZ
       value: America/Toronto
@@ -31,14 +31,13 @@ pod:
 secret:
   existingSecret: authelia
 
-## Authelia Config Map Generator
 configMap:
   enabled: true
   key: configuration.yaml
   server:
     host: 0.0.0.0
     buffers:
-      read: 10485760 # Set large for calibre web
+      read: 10485760 # Large for calibre web
       write: 8192
     timeouts:
       read: 6s
