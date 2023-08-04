@@ -9,3 +9,5 @@ spec:
       app: ntfy
   endpoints:
     - port: ntfy-metrics
+      path: /
+      interval: 10s
