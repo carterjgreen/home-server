@@ -17,6 +17,7 @@ spec:
         - name: whoami-svc
           port: 80
       middlewares:
+        - name: first-allowlist
         - name: crowdsec-authelia
   tls:
     secretName: juicewizerd-le-com-tls

@@ -142,3 +142,13 @@ spec:
     middlewares:
       - name: crowdsec
       - name: authelia-2fa
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: local-allowlist
+  namespace: default
+spec:
+  ipWhiteList: # change to ipAllowList in v3
+    sourceRange:
+      - 192.168.1.0/24
