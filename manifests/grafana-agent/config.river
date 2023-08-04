@@ -21,5 +21,4 @@ prometheus.scrape "proxmox_scraper" {
   forward_to = [prometheus.remote_write.off_cluster.receiver]
 
   scrape_interval = "10s"
-  path            = "/metrics"
 }
