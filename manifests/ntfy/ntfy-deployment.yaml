@@ -25,16 +25,9 @@ spec:
           env:
             - name: TZ
               value: America/Toronto
-            - name: NTFY_WEB_PUSH_PUBLIC_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: ntfy
-                  key: NTFY_WEB_PUSH_PUBLIC_KEY
-            - name: NTFY_WEB_PUSH_PRIVATE_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: ntfy
-                  key: NTFY_WEB_PUSH_PRIVATE_KEY
+          envFrom:
+            - secretRef:
+                name: ntfy
           ports:
             - containerPort: 80
               name: http-ntfy
