@@ -24,15 +24,6 @@
         "digest"
       ],
       "automerge": true
-    },
-    {
-      "matchDatasources": [
-        "docker"
-      ],
-      "matchPackageNames": [
-        "dgtlmoon/changedetection.io"
-      ],
-      "versioning": "loose"
     }
   ]
 }

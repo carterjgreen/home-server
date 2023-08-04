@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: change
-          image: dgtlmoon/changedetection.io:0.44
+          image: lscr.io/linuxserver/changedetection.io:0.44.1-ls49
           env:
             - name: TZ
               value: America/Toronto
