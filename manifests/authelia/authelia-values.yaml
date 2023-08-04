@@ -80,6 +80,11 @@ configMap:
           description: Grafana
           secret: "$argon2id$v=19$m=65536,t=3,p=4$FLt03HU9Jc8771XThBjsxA$Jqb+Op0qM+FzuMZHnfvARqElHeW6Rr07XS5Z0KUu6W4"
           redirect_uris: ["https://graf.juicewizerd.com/login/generic_oauth"]
+        - id: miniflux
+          description: Miniflux RSS Reader
+          secret: "$argon2id$v=19$m=65536,t=3,p=4$reGqltl1QiwpzHp3edvKDQ$pVChJs/HCOKMMroVF2Qi+bqM9hXSBypkcTs+MrqPeks"
+          redirect_uris:
+            ["https://miniflux.juicewizerd.com/oauth2/oidc/callback"]
 
   access_control:
     default_policy: two_factor

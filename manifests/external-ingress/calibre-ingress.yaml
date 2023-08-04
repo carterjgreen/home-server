@@ -8,7 +8,6 @@ metadata:
     kubernetes.io/ingress.class: traefik-external
 spec:
   entryPoints:
-    # - web
     - websecure
   routes:
     - match: Host(`books.juicewizerd.com`)
@@ -19,7 +18,6 @@ spec:
           namespace: default
           port: 8083
       middlewares:
-        # - name: authelia-2fa
         - name: crowdsec-authelia
         - name: kobo-sync-headers
   tls:
