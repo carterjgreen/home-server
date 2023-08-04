@@ -20,6 +20,10 @@ spec:
       containers:
         - name: sync
           image: ghcr.io/recyclarr/recyclarr:5.1.1
+          command: ["recyclarr"]
+          args:
+            - "sync"
+            - "--preview"
           env:
             - name: TZ
               value: America/Toronto
