@@ -32,11 +32,11 @@ spec:
               cpu: 100m
           volumeMounts:
             - mountPath: /config/configs/sonarr.yaml
-              subPath: sonarr.yml
+              subPath: sonarr.yaml
               name: sonarr-volume
               readOnly: true
             - mountPath: /config/configs/radarr.yaml
-              subPath: radarr.yml
+              subPath: radarr.yaml
               name: radarr-volume
               readOnly: true
       volumes:
