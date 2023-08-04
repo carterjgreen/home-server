@@ -97,7 +97,7 @@ services:
         subtitle: "Manga Library"
         tag: "app"
         keywords: "books"
-        url: "http://192.168.1.93:5000"
+        url: "https://kavita.juicewizerd.com"
         target: "_blank"
       - name: "Immich"
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/immich.svg"
