@@ -20,7 +20,6 @@ spec:
             configMap:
               content: |
                 prometheus.remote_write "off_cluster" {
-                  // Send metrics to a locally running Mimir.
                   endpoint {
                     url = "http://192.168.1.93:9090/api/v1/write"
                   }
@@ -33,6 +32,19 @@ spec:
                 prometheus.operator.servicemonitors "services" {
                     forward_to = [prometheus.remote_write.off_cluster.receiver]
                 }
+
+                prometheus.scrape "proxmox_scraper" {
+                  targets = [
+                    {"__adress__" = "192.168.1.97", "instance" = "chihiro"},
+                    {"__adress__" = "192.168.1.98", "instance" = "haku"},
+                  ]
+
+                  forward_to = [prometheus.remote_write.off_cluster.receiver]
+
+                  scrape_interval = "10s"
+                  path            = "/metrics"
+                }
+
             enableReporting: false
   destination:
     server: "https://kubernetes.default.svc"
