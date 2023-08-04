@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recyclarr
+  labels:
+    app: recyclarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recyclarr
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: recyclarr
+    spec:
+      containers:
+        - name: sync
+          image: ghcr.io/recyclarr/recyclarr:5.1.1
+          env:
+            - name: TZ
+              value: America/Toronto
+          envFrom:
+            - secretRef:
+                name: starr
+          resources:
+            limits:
+              memory: 100Mi
+              cpu: 100m
+          volumeMounts:
+            - mountPath: /config/configs/sonarr.yaml
+              subPath: sonarr.yml
+              name: sonarr-volume
+              readOnly: true
+            - mountPath: /config/configs/radarr.yaml
+              subPath: radarr.yml
+              name: radarr-volume
+              readOnly: true
+      volumes:
+        - name: sonarr-volume
+          configMap:
+            name: sonarr-config
+        - name: radarr-volume
+          configMap:
+            name: radarr-config
