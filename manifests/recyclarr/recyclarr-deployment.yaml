@@ -32,8 +32,8 @@ spec:
                 name: starr
           resources:
             limits:
-              memory: 100Mi
-              cpu: 100m
+              memory: 200Mi
+              cpu: 500m
           volumeMounts:
             - mountPath: /config/configs/sonarr.yaml
               subPath: sonarr.yaml
