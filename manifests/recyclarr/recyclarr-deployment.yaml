@@ -6,7 +6,8 @@ metadata:
   labels:
     app: recyclarr
 spec:
-  schedule: "0 0 * * *"
+  schedule: "@daily"
+  concurrencyPolicy: Forbid
   jobTemplate:
     spec:
       template:
