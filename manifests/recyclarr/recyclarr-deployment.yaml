@@ -1,52 +1,46 @@
 ---
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: CronJob
 metadata:
   name: recyclarr
   labels:
     app: recyclarr
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: recyclarr
-  strategy:
-    type: Recreate
-  template:
-    metadata:
-      labels:
-        app: recyclarr
+  schedule: "0 0 * * *"
+  jobTemplate:
     spec:
-      containers:
-        - name: sync
-          image: ghcr.io/recyclarr/recyclarr:5.1.1
-          command: ["recyclarr"]
-          args:
-            - "sync"
-            - "--preview"
-          env:
-            - name: TZ
-              value: America/Toronto
-          envFrom:
-            - secretRef:
-                name: starr
-          resources:
-            limits:
-              memory: 200Mi
-              cpu: 500m
-          volumeMounts:
-            - mountPath: /config/configs/sonarr.yaml
-              subPath: sonarr.yaml
-              name: sonarr-volume
-              readOnly: true
-            - mountPath: /config/configs/radarr.yaml
-              subPath: radarr.yaml
-              name: radarr-volume
-              readOnly: true
-      volumes:
-        - name: sonarr-volume
-          configMap:
-            name: sonarr-config
-        - name: radarr-volume
-          configMap:
-            name: radarr-config
+      template:
+        spec:
+          containers:
+            - name: sync
+              image: ghcr.io/recyclarr/recyclarr:5.1.1
+              command: ["recyclarr"]
+              args:
+                - "sync"
+              env:
+                - name: TZ
+                  value: America/Toronto
+              envFrom:
+                - secretRef:
+                    name: starr
+              resources:
+                limits:
+                  memory: 500Mi
+                  cpu: 1000m
+              volumeMounts:
+                - mountPath: /config/configs/sonarr.yaml
+                  subPath: sonarr.yaml
+                  name: sonarr-volume
+                  readOnly: true
+                - mountPath: /config/configs/radarr.yaml
+                  subPath: radarr.yaml
+                  name: radarr-volume
+                  readOnly: true
+          volumes:
+            - name: sonarr-volume
+              configMap:
+                name: sonarr-config
+            - name: radarr-volume
+              configMap:
+                name: radarr-config
+          restartPolicy: OnFailure
