@@ -37,6 +37,8 @@ spec:
                   subPath: radarr.yaml
                   name: radarr-volume
                   readOnly: true
+                - mountPath: /config
+                  name: cache-volume
           volumes:
             - name: sonarr-volume
               configMap:
@@ -44,4 +46,7 @@ spec:
             - name: radarr-volume
               configMap:
                 name: radarr-config
+            - name: cache-volume
+              persistentVolumeClaim:
+                claimName: recyclarr
           restartPolicy: OnFailure
