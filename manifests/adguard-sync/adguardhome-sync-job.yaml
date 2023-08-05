@@ -14,12 +14,14 @@ spec:
         spec:
           containers:
             - name: sync
-              image: lscr.io/linuxserver/adguardhome-sync:0.4.14
+              image: ghcr.io/bakito/adguardhome-sync:0.4.14
               env:
                 - name: TZ
                   value: America/Toronto
                 - name: API_PORT
                   value: "0"
+                - name: CRON
+                  value: ""
               envFrom:
                 - secretRef:
                     name: adguard
