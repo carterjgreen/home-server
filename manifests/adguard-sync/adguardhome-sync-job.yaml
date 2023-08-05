@@ -1,0 +1,31 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: adguardhome-sync
+  labels:
+    app: adguardhome-sync
+spec:
+  schedule: "*/10 * * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: sync
+              image: lscr.io/linuxserver/adguardhome-sync:0.4.14
+              command: ["run"]
+              env:
+                - name: TZ
+                  value: America/Toronto
+                - name: API_PORT
+                  value: "0"
+              envFrom:
+                - secretRef:
+                    name: adguard
+              resources:
+                limits:
+                  memory: 100Mi
+                  cpu: 100m
+          restartPolicy: OnFailure
