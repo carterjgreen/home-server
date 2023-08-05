@@ -15,8 +15,7 @@ spec:
           containers:
             - name: sync
               image: ghcr.io/bakito/adguardhome-sync:v0.4.14
-              command: ["adguardhome-sync"]
-              args: ["run"]
+              command: ["run"]
               env:
                 - name: TZ
                   value: America/Toronto
