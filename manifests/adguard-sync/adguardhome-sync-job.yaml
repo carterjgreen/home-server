@@ -21,7 +21,9 @@ spec:
                 - name: API_PORT
                   value: "0"
                 - name: CRON
-                  value: ""
+                  value: " "
+                - name: RUNONSTART
+                  value: "true"
               envFrom:
                 - secretRef:
                     name: adguard
