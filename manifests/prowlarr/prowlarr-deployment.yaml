@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prowlarr
+  labels:
+    app: prowlarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prowlarr
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: prowlarr
+    spec:
+      containers:
+        - name: prowlarr
+          image: ghcr.io/onedr0p/prowlarr:rolling@sha256:2b87f09a718d4ca0c11d098e5d900427d38d9e5d670c6708a0a8060f0e0dd9bb
+          env:
+            - name: TZ
+              value: America/Toronto
+            - name: PROWLARR__API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: starr
+                  key: PROWLARR_API
+          ports:
+            - containerPort: 9696
+              name: http-prowlarr
+          resources:
+            limits:
+              memory: 300Mi
+              cpu: 200m
+          volumeMounts:
+            - mountPath: /config
+              name: config-volume
+      volumes:
+        - name: config-volume
+          persistentVolumeClaim:
+            claimName: prowlarr-pvc
