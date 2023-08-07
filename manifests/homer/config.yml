@@ -141,7 +141,7 @@ services:
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/prowlarr.svg"
         tag: "indexers"
         subtitle: "Index Manager"
-        url: "http://192.168.1.93:9696"
+        url: "http://192.168.1.245"
         target: "_blank"
         type: "Prowlarr"
         apikey: "e851b6ad7743446d97a49181a01fbaf0"
