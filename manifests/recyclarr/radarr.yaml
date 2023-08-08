@@ -60,7 +60,7 @@ radarr:
         qualities:
           - name: Remux 1080p
             qualities:
-              - "Bluray-1080p Remux"
+              - "Remux-1080p"
               - "Bluray-1080p"
           - name: WEB 1080p
             qualities:
