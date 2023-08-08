@@ -335,7 +335,7 @@
 		{
 			"id": "c21e4dd4-e70b-41bb-b399-d5e81b382176",
 			"name": "Prowlarr",
-			"url": "http://192.168.1.93:9696",
+			"url": "http://192.168.1.245",
 			"appearance": {
 				"iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/prowlarr.png"
 			},

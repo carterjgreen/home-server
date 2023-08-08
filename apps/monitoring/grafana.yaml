@@ -40,6 +40,9 @@ spec:
 
           envFromSecret: "grafana"
 
+          plugins:
+            - influxdata-flightsql-datasource
+
           datasources:
             datasources.yaml:
               apiVersion: 1
