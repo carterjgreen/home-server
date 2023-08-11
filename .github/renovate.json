@@ -13,7 +13,8 @@
   },
   "kubernetes": {
     "fileMatch": [
-      "-deployment\\.yaml$"
+      "-deployment\\.yaml$",
+      "-job\\.yaml$"
     ]
   },
   "packageRules": [
