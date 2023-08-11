@@ -11,17 +11,11 @@ prometheus.remote_write "victoria" {
 }
 
 prometheus.operator.podmonitors "pods" {
-  forward_to = [
-    prometheus.remote_write.off_cluster.receiver, 
-    prometheus.remote_write.victoria.receiver
-  ]
+  forward_to = [prometheus.remote_write.off_cluster.receiver, prometheus.remote_write.victoria.receiver]
 }
 
 prometheus.operator.servicemonitors "services" {
-  forward_to = [
-    prometheus.remote_write.off_cluster.receiver, 
-    prometheus.remote_write.victoria.receiver
-  ]
+  forward_to = [prometheus.remote_write.off_cluster.receiver, prometheus.remote_write.victoria.receiver]
 }
 
 prometheus.scrape "proxmox_scraper" {
@@ -30,10 +24,7 @@ prometheus.scrape "proxmox_scraper" {
     {"__address__" = "192.168.1.98:9273", "instance" = "haku"},
   ]
 
-  forward_to = [
-    prometheus.remote_write.off_cluster.receiver, 
-    prometheus.remote_write.victoria.receiver
-  ]
+  forward_to = [prometheus.remote_write.off_cluster.receiver, prometheus.remote_write.victoria.receiver]
 
   scrape_interval = "10s"
 }
