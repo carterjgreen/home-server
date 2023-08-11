@@ -25,6 +25,12 @@ spec:
                   }
                 }
 
+                prometheus.remote_write "victoria" {
+                  endpoint {
+                    url = "http://192.168.1.93:8428/api/v1/write"
+                  }
+                }
+
                 prometheus.operator.podmonitors "pods" {
                     forward_to = [prometheus.remote_write.off_cluster.receiver]
                 }
@@ -39,7 +45,10 @@ spec:
                     {"__address__" = "192.168.1.98:9273", "instance" = "haku"},
                   ]
 
-                  forward_to = [prometheus.remote_write.off_cluster.receiver]
+                  forward_to = [
+                    prometheus.remote_write.off_cluster.receiver, 
+                    prometheus.remote_write.victoria.receiver
+                  ]
 
                   scrape_interval = "10s"
                 }
