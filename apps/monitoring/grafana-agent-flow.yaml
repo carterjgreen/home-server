@@ -50,7 +50,23 @@ spec:
                   scrape_interval = "10s"
                 }
 
+                prometheus.scrape "hass_scraper" {
+                  targets = [{"__address__" = "192.168.1.86:9273"}]
+                  forward_to = [prometheus.remote_write.victoria.receiver]
+
+                  scrape_interval = "60s"
+                  metrics_path = "api/prometheus"
+                  
+                  authorization {
+                    type = "Bearer"
+                    credentials = env("HASS_API")
+                  }
+                }
+
             enableReporting: false
+            envFrom:
+              - secretRef:
+                  name: agent
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
