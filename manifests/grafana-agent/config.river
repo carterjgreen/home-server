@@ -30,7 +30,7 @@ prometheus.scrape "proxmox_scraper" {
 }
 
 prometheus.scrape "hass_scraper" {
-  targets = [{"__address__" = "192.168.1.86:9273"}]
+  targets = [{"__address__" = "192.168.1.86:8123"}]
   forward_to = [prometheus.remote_write.victoria.receiver]
 
   scrape_interval = "60s"
