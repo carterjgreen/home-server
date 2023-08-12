@@ -17,8 +17,8 @@ spec:
       helm:
         values: |
           auth:
-            enabled: true
-            sentinel: true
+            enabled: false
+            sentinel: false
           master:
             persistence:
               enabled: false
