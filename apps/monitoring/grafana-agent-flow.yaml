@@ -56,7 +56,7 @@ spec:
 
                   scrape_interval = "60s"
                   metrics_path = "api/prometheus"
-                
+
                   authorization {
                     type = "Bearer"
                     credentials = env("HASS_API")
