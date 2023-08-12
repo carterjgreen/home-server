@@ -1,0 +1,35 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: redis
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - repoURL: oci://registry-1.docker.io/bitnamicharts/redis
+      chart: redis
+      targetRevision: 17.15.3
+      helm:
+        values: |
+          auth:
+            enabled: true
+            sentinel: true
+          master:
+            persistence:
+              enabled: false
+          replica:
+            replicaCount: 2
+            persistence:
+              enabled: false
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: default
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
