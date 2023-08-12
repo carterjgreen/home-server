@@ -31,6 +31,15 @@ spec:
           ports:
             - containerPort: 9696
               name: http-prowlarr
+          livenessProbe: &probe
+            httpGet:
+              path: /ping
+              port: http-prowlarr
+            initialDelaySeconds: 10
+            failureThreshold: 3
+            periodSeconds: 60
+            timeoutSeconds: 5
+          readinessProbe: *probe
           resources:
             limits:
               memory: 500Mi
