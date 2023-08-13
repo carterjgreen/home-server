@@ -23,7 +23,7 @@ spec:
             persistence:
               enabled: false
           replica:
-            replicaCount: 1
+            replicaCount: 0
             persistence:
               enabled: false
   destination:
