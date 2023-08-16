@@ -68,7 +68,7 @@ services:
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/home-assistant.svg"
         subtitle: "Smart Home Management"
         tag: "home"
-        url: "http://homeassistant.local:8123/"
+        url: "https://hass.juicewizerd.com/"
         target: "_blank"
       - name: "Jellyfin"
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/jellyfin.svg"
