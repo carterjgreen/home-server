@@ -134,5 +134,5 @@ configMap:
       port: 465
       timeout: 20s
       username: juicewizerd@gmail.com
-      sender: "Carter Green juicewizerd@gmail.com"
+      sender: juicewizerd@gmail.com
       identifier: juicewizerd.com
