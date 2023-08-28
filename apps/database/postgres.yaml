@@ -23,8 +23,8 @@ spec:
                 username: authelia
                 existingSecret: postgres
                 secretKeys:
-                  adminPasswordKay: adminPass
-                  userPass: STORAGE_PASSWORD
+                  adminPasswordKey: adminPass
+                  userPasswordKey: STORAGE_PASSWORD
   destination:
     server: "https://kubernetes.default.svc"
     namespace: database
