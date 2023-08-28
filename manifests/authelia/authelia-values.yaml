@@ -126,6 +126,13 @@ configMap:
 
   notifier:
     filesystem:
-      enabled: true
-    smtp:
       enabled: false
+    smtp:
+      enabled: true
+      enabledSecret: true
+      host: smtp.gmail.com
+      port: 465
+      timeout: 20s
+      username: juicewizerd@gmail.com
+      sender: "Carter Green juicewizerd@gmail.com"
+      identifier: juicewizerd.com
