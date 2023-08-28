@@ -1,0 +1,36 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: postgres
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - repoURL: registry-1.docker.io/bitnamicharts
+      chart: postgres
+      targetRevision: 12.10.0
+      helm:
+        values: |
+          global:
+            postgresql:
+              auth:
+                database: authelia
+                username: authelia
+                existingSecret: postgres
+                secretKeys:
+                  adminPasswordKay: adminPass
+                  userPass: STORAGE_PASSWORD
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: database
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
