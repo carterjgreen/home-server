@@ -10,7 +10,8 @@ radarr:
     replace_existing_custom_formats: true
     quality_profiles:
       - name: Remux + WEB 1080p
-        reset_unmatched_scores: true
+        reset_unmatched_scores:
+          enabled: true
         upgrade:
           allowed: true
           until_quality: Remux-1080p
@@ -23,7 +24,8 @@ radarr:
               - "WEBDL-1080p"
               - "WEBRip-1080p"
       - name: Remux + WEB 2160p
-        reset_unmatched_scores: true
+        reset_unmatched_scores:
+          enabled: true
         upgrade:
           allowed: true
           until_quality: Remux-2160p
@@ -36,7 +38,8 @@ radarr:
               - "WEBDL-2160p"
               - "WEBRip-2160p"
       - name: Remux|Bluray|IMAX-E
-        reset_unmatched_scores: true
+        reset_unmatched_scores:
+          enabled: true
         upgrade:
           allowed: true
           until_quality: WEB|Remux|Bluray|2160p
@@ -52,7 +55,8 @@ radarr:
               - "WEBDL-1080p"
               - "WEBRip-1080p"
       - name: Remux-1080p - Anime
-        reset_unmatched_scores: true
+        reset_unmatched_scores:
+          enabled: true
         upgrade:
           allowed: true
           until_quality: Remux 1080p
