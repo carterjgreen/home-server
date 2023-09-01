@@ -136,6 +136,12 @@ services:
         subtitle: "Index Manager"
         url: "http://192.168.1.245"
         target: "_blank"
+      - name: "Bazarr"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/bazarr.svg"
+        tag: "media"
+        subtitle: "Subtitle Downloader"
+        url: "http://192.168.1.93:6767"
+        target: "_blank"
 
   - name: "Tools"
     icon: "fas fa-tools"
