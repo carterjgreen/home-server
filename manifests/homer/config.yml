@@ -107,11 +107,11 @@ services:
   - name: Starr
     icon: "fas fa-film"
     items:
-      - name: "Homarr"
-        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/homarr.svg"
-        subtitle: "arr Homepage"
-        url: "https://homarr.juicewizerd.com"
-        target: "_blank"
+      # - name: "Homarr"
+      #   logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/homarr.svg"
+      #   subtitle: "arr Homepage"
+      #   url: "https://homarr.juicewizerd.com"
+      #   target: "_blank"
       - name: "Jellyseerr"
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/jellyseerr.svg"
         tag: "requests"
