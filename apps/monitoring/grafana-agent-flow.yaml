@@ -13,7 +13,7 @@ spec:
   sources:
     - repoURL: https://grafana.github.io/helm-charts
       chart: grafana-agent
-      targetRevision: 0.22.0
+      targetRevision: 0.23.0
       helm:
         values: | # config.river
           agent:
