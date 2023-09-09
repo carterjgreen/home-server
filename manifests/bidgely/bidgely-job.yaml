@@ -1,0 +1,39 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: bidgely
+  labels:
+    app: bidgely
+spec:
+  schedule: "5 4 * * *"
+  concurrencyPolicy: Replace
+  successfulJobsHistoryLimit: 4
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: bidgely
+              image: bidgely
+              imagePullPolicy: Never
+              env:
+                - name: TZ
+                  value: America/Toronto
+              envFrom:
+                - secretRef:
+                    name: bidgely
+              resources:
+                limits:
+                  memory: 100Mi
+                  cpu: 100m
+          restartPolicy: "OnFailure"
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: kubernetes.io/hostname
+                        operator: In
+                        values:
+                          - zeniba
