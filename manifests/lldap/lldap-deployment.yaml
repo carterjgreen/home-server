@@ -43,7 +43,7 @@ spec:
                   key: lldap-ldap-user-pass
             - name: TZ
               value: America/Toronto
-          image: lldap/lldap:v0.4.3
+          image: lldap/lldap:v0.5.0
           name: lldap
           ports:
             - containerPort: 3890
