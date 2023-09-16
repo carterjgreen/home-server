@@ -21,11 +21,10 @@ spec:
             sentinel: false
           master:
             persistence:
-              enabled: false
+              enabled: true
+              size: 4Gi
           replica:
             replicaCount: 0
-            persistence:
-              enabled: false
   destination:
     server: "https://kubernetes.default.svc"
     namespace: database
