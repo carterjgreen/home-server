@@ -21,9 +21,13 @@ kubernetesIngress:
   allowExternalNameServices: true
 
 metrics:
+  expose: true
   service:
     enabled: true
-    disableAPICheck: true
+  disableAPICheck: true
+  serviceMonitor:
+    jobLabel: traefik
+    interval: 30s
 
 globalArguments:
   - "--global.sendanonymoususage=false"
