@@ -1,23 +1,27 @@
 ---
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   name: whoami-ingress
   namespace: default
   annotations:
-    kubernetes.io/ingress.class: traefik-external
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: default-local-allowlist@kubernetescrd
+
 spec:
-  entryPoints:
-    # - web
-    - websecure
-  routes:
-    - match: Host(`whoami.local.juicewizerd.com`) || Host(`whoami.juicewizerd.com`)
-      kind: Rule
-      services:
-        - name: whoami-svc
-          port: 80
-      middlewares:
-        - name: first-allowlist
-        - name: crowdsec-authelia
+  ingressClassName: traefik
   tls:
-    secretName: juicewizerd-le-com-tls
+    - hosts:
+        - whoami.juicewizerd.com
+      secretName: juicewizerd-le-com-tls
+  rules:
+    - host: whoami.juicewizerd.com
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: whoami-svc
+                port:
+                  number: 80

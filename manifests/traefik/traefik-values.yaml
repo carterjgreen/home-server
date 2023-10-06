@@ -2,17 +2,35 @@
 image:
   tag: "v2.10.4"
 
+deployment:
+  enabled: true
+  kind: DaemonSet
+
+ingressRoute:
+  dashboard:
+    enabled: false
+
+providers:
+  kubernetesCRD:
+    ingressClass: traefik-external
+    allowExternalNameServices: true
+  kubernetesIngress:
+    allowExternalNameServices: true
+
+kubernetesIngress:
+  allowExternalNameServices: true
+
+metrics:
+  service:
+    enabled: true
+    disableAPICheck: true
+
 globalArguments:
   - "--global.sendanonymoususage=false"
   - "--global.checknewversion=false"
 
 additionalArguments:
   - "--serversTransport.insecureSkipVerify=true"
-  - "--log.level=INFO"
-
-deployment:
-  enabled: true
-  kind: DaemonSet
 
 ports:
   web:
@@ -27,29 +45,18 @@ ports:
       - default-floc-block@kubernetescrd
       - default-security-headers@kubernetescrd
       - default-cors-headers@kubernetescrd
-      # - default-crowdsec-traefik-bouncer@kubernetescrd
-
-ingressRoute:
-  dashboard:
-    enabled: false
-
-providers:
-  kubernetesCRD:
-    enabled: true
-    ingressClass: traefik-external
-    allowExternalNameServices: true
-  kubernetesIngress:
-    enabled: true
-    allowExternalNameServices: true
-    publishedService:
-      enabled: false
-
-rbac:
-  enabled: true
+  metrics:
+    expose: true
 
 service:
   annotations:
     metallb.universe.tf/loadBalancerIPs: 192.168.1.240
   spec:
-    # loadBalancerIP: 192.168.1.240 # this should be an IP in the MetalLB range
     externalTrafficPolicy: Local
+
+requests:
+  cpu: "100m"
+  memory: "50Mi"
+limits:
+  cpu: "300m"
+  memory: "150Mi"
