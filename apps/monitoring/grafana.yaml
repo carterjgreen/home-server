@@ -114,7 +114,7 @@ spec:
               use_pkce: true
               allow_assign_grafana_admin: true
               role_attribute_path: |
-                contains(groups[*], 'admin') && 'Admin' || contains(groups[*], 'people') && 'Viewer'
+                contains(groups[*], 'GrafanaAdmin') && 'GrafanaAdmin' || groups[*], 'admin') && 'Admin' || contains(groups[*], 'people') && 'Viewer'
             analytics:
               reporting_enabled: false
               check_for_updates: false
