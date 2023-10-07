@@ -1,26 +1,29 @@
 ---
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   name: kavita
   namespace: default
   annotations:
-    kubernetes.io/ingress.class: traefik-external
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: default-crowdsec-authelia@kubernetescrd
 spec:
-  entryPoints:
-    - websecure
-  routes:
-    - match: Host(`kavita.juicewizerd.com`)
-      kind: Rule
-      services:
-        - kind: Service
-          name: kavita
-          namespace: default
-          port: 5000
-      middlewares:
-        - name: crowdsec-authelia
+  ingressClassName: traefik
   tls:
-    secretName: juicewizerd-le-com-tls
+    - hosts:
+        - &host kavita.juicewizerd.com
+      secretName: juicewizerd-le-com-tls
+  rules:
+    - host: *host
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: calibre
+                port:
+                  number: 5000
 ---
 apiVersion: v1
 kind: Service

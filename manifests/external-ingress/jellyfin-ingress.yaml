@@ -1,26 +1,29 @@
 ---
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   name: jellyfin
   namespace: default
   annotations:
-    kubernetes.io/ingress.class: traefik-external
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: default-local-allowlist@kubernetescrd
 spec:
-  entryPoints:
-    - websecure
-  routes:
-    - match: Host(`jellyfin.juicewizerd.com`)
-      kind: Rule
-      services:
-        - kind: Service
-          name: jellyfin
-          namespace: default
-          port: 8096
-      middlewares:
-        - name: local-allowlist
+  ingressClassName: traefik
   tls:
-    secretName: juicewizerd-le-com-tls
+    - hosts:
+        - &host jellyfin.juicewizerd.com
+      secretName: juicewizerd-le-com-tls
+  rules:
+    - host: *host
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: jellyfin
+                port:
+                  number: 8096
 ---
 apiVersion: v1
 kind: Service
