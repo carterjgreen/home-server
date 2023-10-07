@@ -1,21 +1,26 @@
 ---
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   name: change-ingress
   namespace: default
   annotations:
-    kubernetes.io/ingress.class: traefik-external
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: default-crowdsec-authelia@kubernetescrd
 spec:
-  entryPoints:
-    - websecure
-  routes:
-    - match: Host(`change.juicewizerd.com`)
-      kind: Rule
-      services:
-        - name: change-svc
-          port: 80
-      middlewares:
-        - name: crowdsec-authelia
+  ingressClassName: traefik
   tls:
-    secretName: juicewizerd-le-com-tls
+    - hosts:
+        - &host change.juicewizerd.com
+      secretName: juicewizerd-le-com-tls
+  rules:
+    - host: *host
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: change-svc
+                port:
+                  number: 80
