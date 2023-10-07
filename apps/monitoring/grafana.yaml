@@ -80,7 +80,7 @@ spec:
                 - name: TimescaleDB
                   type: postgres
                   url: 192.168.1.86:45678
-                  user: ${timescale-user}
+                  user: grafana
                   secureJsonData:
                     password: ${timescale-password}
                   jsonData:
