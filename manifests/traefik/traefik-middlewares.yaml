@@ -59,8 +59,6 @@ spec:
       - "X-Forwarded-Host"
     customRequestHeaders:
       X-Forwarded-Proto: "https"
-    # customResponseHeaders:
-    #   X-Forwarded-Proto: "https"
     contentTypeNosniff: true
     browserXssFilter: true
     forceSTSHeader: true

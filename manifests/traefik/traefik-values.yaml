@@ -33,6 +33,7 @@ globalArguments:
 
 additionalArguments:
   - "--serversTransport.insecureSkipVerify=true"
+  - "--providers.kubernetesingress.ingressendpoint.publishedservice=traefik/traefik"
 
 ports:
   web:
