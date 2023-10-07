@@ -23,6 +23,22 @@ spec:
             annotations:
               metallb.universe.tf/loadBalancerIPs: 192.168.1.242
 
+          serviceMonitor:
+            enabled: true
+
+          ingress:
+            enabled: true
+            ingressClassName: traefik
+            annotations:
+              traefik.ingress.kubernetes.io/router.entrypoints: websecure
+              traefik.ingress.kubernetes.io/router.middlewares: default-crowdsec-authelia@kubernetescrd
+            hosts:
+              - &host graf.juicewizerd.com
+            tls:
+              - secretName: juicewizerd-le-com-tls
+                hosts:
+                  - *host
+
           resources:
             limits:
               cpu: 250m
@@ -33,7 +49,7 @@ spec:
 
           persistence:
             enabled: true
-            size: 1Gi
+            size: 5Gi
 
           admin:
             existingSecret: "grafana"
@@ -61,6 +77,17 @@ spec:
                     tlsSkipVerify: true
                   secureJsonData:
                     token: ${influx-token}
+                - name: TimescaleDB
+                  type: postgres
+                  url: 192.168.1.86:45678
+                  user: ${timescale-user}
+                  secureJsonData:
+                    password: ${timescale-password}
+                  jsonData:
+                    database: homeassistant
+                    sslmode: 'disable'
+                    postgresVersion: 15
+                    timescaledb: true
 
           grafana.ini:
             server:
