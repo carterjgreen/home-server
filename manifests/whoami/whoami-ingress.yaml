@@ -7,15 +7,14 @@ metadata:
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.middlewares: default-local-allowlist@kubernetescrd
-
 spec:
   ingressClassName: traefik
   tls:
     - hosts:
-        - whoami.juicewizerd.com
+        - &host whoami.juicewizerd.com
       secretName: juicewizerd-le-com-tls
   rules:
-    - host: whoami.juicewizerd.com
+    - host: *host
       http:
         paths:
           - path: "/"
