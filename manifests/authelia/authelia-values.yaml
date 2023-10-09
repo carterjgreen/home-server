@@ -122,7 +122,7 @@ configMap:
   storage:
     postgres:
       enabled: true
-      host: postgres-postgresql-hl.database.svc.cluster.local
+      host: postgres-rw.database.svc.cluster.local
 
   notifier:
     filesystem:
