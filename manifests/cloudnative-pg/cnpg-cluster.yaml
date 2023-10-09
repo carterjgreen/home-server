@@ -30,8 +30,8 @@ spec:
       serverName: cnpg-1
       s3Credentials:
         accessKeyId:
-          name: cloudnative-pg-secret
+          name: cnpg-secret
           key: aws-access-key-id
         secretAccessKey:
-          name: cloudnative-pg-secret
+          name: cnpg-secret
           key: aws-secret-access-key
