@@ -1,0 +1,95 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gatus
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - repoURL: https://bjw-s.github.io/helm-charts
+      chart: app-template
+      targetRevision: 2.0.3
+      helm:
+        values: |
+          controllers:
+            main:
+              image:
+                repository: ghcr.io/twin/gatus
+                tag: v5.6.0
+              envFromSecret: "gatus-secret"
+              env:
+                TZ: America/Toronto
+                GATUS_CONFIG_PATH: /config
+                CUSTOM_WEB_PORT: &port 80
+            initContainers:
+              01-init-db:
+                image: ghcr.io/onedr0p/postgres-init:14.9
+                envFromSecret: gatus
+              02-config-sync:
+                image: ghcr.io/kiwigrid/k8s-sidecar:1.25.2
+                imagePullPolicy: IfNotPresent
+                env:
+                  - { name: FOLDER, value: /config }
+                  - { name: LABEL, value: gatus.io/enabled }
+                  - { name: NAMESPACE, value: ALL }
+                  - { name: RESOURCE, value: both }
+                  - { name: UNIQUE_FILENAMES, value: "true" }
+                  - { name: METHOD, value: LIST }
+                volumeMounts:
+                  - { name: config, mountPath: /config }
+            sidecars:
+              config-sync:
+                image: ghcr.io/kiwigrid/k8s-sidecar:1.25.2
+                imagePullPolicy: IfNotPresent
+                env:
+                  - { name: FOLDER, value: /config }
+                  - { name: LABEL, value: gatus.io/enabled }
+                  - { name: NAMESPACE, value: ALL }
+                  - { name: RESOURCE, value: both }
+                  - { name: UNIQUE_FILENAMES, value: "true" }
+                  - { name: METHOD, value: WATCH }
+                volumeMounts:
+                  - { name: config, mountPath: /config }
+          service:
+            main:
+              ports:
+                http:
+                  port: *port
+          ingress:
+            main:
+              enabled: true
+              ingressClassName: traefik
+              hosts:
+                - host: &host https://status.juicewizerd.com
+                  paths:
+                    - path: /
+                      pathType: Prefix
+                      service:
+                        name: main
+                        port: http
+              tls:
+                hosts:
+                  - *host
+                secretName: juicewizerd-le-com-tls
+          persistence:
+            config-file:
+              enabled: true
+              type: configMap
+              name: gatus-configmap
+              mountPath: /config/config.yaml
+              subPath: config.yaml
+              readOnly: true
+
+    - repoURL: "https://github.com/carterjgreen/home-server.git"
+      path: manifests/gatus
+      targetRevision: HEAD
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: default
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
