@@ -13,6 +13,10 @@ spec:
     storageClass: local-path
   superuserSecret:
     name: cnpg-secret
+  bootstrap:
+    initdb:
+      database: postgres
+      owner: postgres
   postgresql:
     parameters:
       max_connections: "600"
