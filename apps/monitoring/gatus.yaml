@@ -63,6 +63,8 @@ spec:
                 - { name: METHOD, value: WATCH }
               volumeMounts:
                 - { name: config, mountPath: /config }
+          serviceAccount:
+            name: gatus
           service:
             main:
               ports:
