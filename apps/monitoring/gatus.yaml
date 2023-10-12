@@ -91,12 +91,13 @@ spec:
               enabled: true
               type: configMap
               name: gatus-configmap
-              advancedMounts
+              advancedMounts:
                 main:
                   main:
-                path: /config/config.yaml
-                subPath: config.yaml
-                readOnly: true
+                    - path: /config/config.yaml
+                      readOnly: true
+                      subPath: config.yaml
+
     - repoURL: "https://github.com/carterjgreen/home-server.git"
       path: manifests/gatus
       targetRevision: HEAD
