@@ -87,13 +87,10 @@ spec:
                     - *host
                   secretName: juicewizerd-le-com-tls
           persistence:
-            config-file:
+            config/config.yaml:
               enabled: true
               type: configMap
               name: gatus-configmap
-              mountPath: /config/config.yaml
-              subPath: config.yaml
-              readOnly: true
     - repoURL: "https://github.com/carterjgreen/home-server.git"
       path: manifests/gatus
       targetRevision: HEAD
