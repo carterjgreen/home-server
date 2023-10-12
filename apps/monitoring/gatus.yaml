@@ -21,7 +21,9 @@ spec:
                   image:
                     repository: ghcr.io/twin/gatus
                     tag: v5.6.0
-                  envFromSecret: "gatus-secret"
+                  envFrom: &envFrom
+                    - secretRef: 
+                        name: "gatus-secret"
                   env:
                     TZ: America/Toronto
                     GATUS_CONFIG_PATH: /config
@@ -31,7 +33,7 @@ spec:
                   image:
                     repository: ghcr.io/onedr0p/postgres-init
                     tag: 14.9
-                  envFromSecret: gatus
+                  envFrom: *envFrom
                 02-config-sync:
                   image:
                     repository: ghcr.io/kiwigrid/k8s-sidecar
