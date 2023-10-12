@@ -16,32 +16,41 @@ spec:
         values: |
           controllers:
             main:
-              image:
-                repository: ghcr.io/twin/gatus
-                tag: v5.6.0
-              envFromSecret: "gatus-secret"
-              env:
-                TZ: America/Toronto
-                GATUS_CONFIG_PATH: /config
-                CUSTOM_WEB_PORT: &port 80
-            01-init-db:
-              image: ghcr.io/onedr0p/postgres-init:14.9
-              envFromSecret: gatus
-            02-config-sync:
-              image: ghcr.io/kiwigrid/k8s-sidecar:1.25.2
-              imagePullPolicy: IfNotPresent
-              env:
-                - { name: FOLDER, value: /config }
-                - { name: LABEL, value: gatus.io/enabled }
-                - { name: NAMESPACE, value: ALL }
-                - { name: RESOURCE, value: both }
-                - { name: UNIQUE_FILENAMES, value: "true" }
-                - { name: METHOD, value: LIST }
-              volumeMounts:
-                - { name: config, mountPath: /config }
+              containers:
+                main:
+                  image:
+                    repository: ghcr.io/twin/gatus
+                    tag: v5.6.0
+                  envFromSecret: "gatus-secret"
+                  env:
+                    TZ: America/Toronto
+                    GATUS_CONFIG_PATH: /config
+                    CUSTOM_WEB_PORT: &port 80
+              initContainers:
+                01-init-db:
+                  image:
+                    repository: ghcr.io/onedr0p/postgres-init
+                    tag: v14.9
+                  envFromSecret: gatus
+                02-config-sync:
+                  image:
+                    repository: ghcr.io/kiwigrid/k8s-sidecar
+                    tag: v1.25.2
+                  imagePullPolicy: IfNotPresent
+                  env:
+                    - { name: FOLDER, value: /config }
+                    - { name: LABEL, value: gatus.io/enabled }
+                    - { name: NAMESPACE, value: ALL }
+                    - { name: RESOURCE, value: both }
+                    - { name: UNIQUE_FILENAMES, value: "true" }
+                    - { name: METHOD, value: LIST }
+                  volumeMounts:
+                    - { name: config, mountPath: /config }
           sidecars:
             config-sync:
-              image: ghcr.io/kiwigrid/k8s-sidecar:1.25.2
+              image:
+                repository: ghcr.io/kiwigrid/k8s-sidecar
+                tag: v1.25.2
               imagePullPolicy: IfNotPresent
               env:
                 - { name: FOLDER, value: /config }
@@ -60,9 +69,9 @@ spec:
           ingress:
             main:
               enabled: true
-              ingressClassName: traefik
+              classNme: traefik
               hosts:
-                - host: &host https://status.juicewizerd.com
+                - host: &host status.juicewizerd.com
                   paths:
                     - path: /
                       pathType: Prefix
@@ -70,9 +79,9 @@ spec:
                         name: main
                         port: http
               tls:
-                hosts:
-                  - *host
-                secretName: juicewizerd-le-com-tls
+                - hosts:
+                    - *host
+                  secretName: juicewizerd-le-com-tls
           persistence:
             config-file:
               enabled: true
