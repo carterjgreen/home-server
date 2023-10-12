@@ -90,13 +90,12 @@ spec:
               mountPath: /config/config.yaml
               subPath: config.yaml
               readOnly: true
-
     - repoURL: "https://github.com/carterjgreen/home-server.git"
       path: manifests/gatus
       targetRevision: HEAD
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: default
+    namespace: monitoring
   syncPolicy:
     automated:
       selfHeal: true
