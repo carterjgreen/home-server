@@ -36,6 +36,7 @@ endpoints:
     url: 192.168.1.1
     dns:
       query-name: auth.juicewizerd.com
+      query-type: "A"
     conditions:
       - "[DNS_RCODE] == NOERROR"
   - name: Home Assistant
