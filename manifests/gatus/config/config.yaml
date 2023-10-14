@@ -24,16 +24,18 @@ connectivity:
     target: 1.1.1.1:53
     interval: 1m
 default-endpoint: &defaults
-  group: internal
+  group: Internal
   interval: 2m
   conditions:
     - "[STATUS] == 200"
 endpoints:
+  # External
   - name: status
-    group: external
+    group: External
     url: https://status.juicewizerd.com
     conditions:
       - "[STATUS] == 200"
+      - "[STATUS] == any(200, 401)"
     alerts:
       - type: pushover
   - name: DNS Resolution
@@ -45,13 +47,14 @@ endpoints:
     conditions:
       - "[DNS_RCODE] == NOERROR"
   - name: Authelia
-    group: external
+    group: External
     url: https://auth.juicewizerd.com/api/health
     client:
       dns-resolver: tcp://1.1.1.1:53
     conditions:
       - "[STATUS] == any(200, 401)"
       - "[CERTIFICATE_EXPIRATION] > 48h"
+  # Home Assistant
   - name: Home Assistant
     group: Home Assistant
     url: http://192.168.1.86:8123
@@ -64,6 +67,15 @@ endpoints:
     <<: *defaults
     group: Home Assistant
     url: http://192.168.1.91:5000/api/version
+  - name: HASS DB
+    group: Home Assistant
+    <<: *defaults
+    url: tcp://192.168.1.86:45678
+  - name: Scrypted
+    group: Home Assistant
+    <<: *defaults
+    url: http://192.168.1.91:11080
+  # Internal
   - name: Grafana
     <<: *defaults
     url: http://192.168.1.242/api/health
@@ -73,6 +85,7 @@ endpoints:
   - name: LLDAP
     <<: *defaults
     url: http://192.168.1.243:17170/health
+  # Media Server
   - name: Calibre-Web
     group: Media Server
     <<: *defaults
