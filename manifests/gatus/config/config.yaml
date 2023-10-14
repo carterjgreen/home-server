@@ -82,9 +82,6 @@ endpoints:
   - name: Immich
     <<: *defaults
     url: http://192.168.1.93:2283/api/server-info/ping
-  - name: LLDAP
-    <<: *defaults
-    url: http://192.168.1.243:17170/health
   # Media Server
   - name: Calibre-Web
     group: Media Server
