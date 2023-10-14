@@ -82,3 +82,31 @@ endpoints:
     group: Media Server
     <<: *defaults
     url: http://192.168.1.92:8096/health
+  - name: Kavita
+    group: Media Server
+    <<: *defaults
+    url: http://192.168.1.93:5000/api/health
+  - name: Miniflux
+    group: Media Server
+    <<: *defaults
+    url: http://192.168.1.93:8089/healthcheck
+  - name: Prowlarr
+    group: Media Server
+    <<: *defaults
+    url: http://192.168.1.245/ping
+  - name: qBittorrent
+    group: Media Server
+    <<: *defaults
+    url: http://192.168.1.93:8060/
+  - name: Radarr
+    group: Media Server
+    <<: *defaults
+    url: http://192.168.1.93:7878/ping
+  - name: SABnzbd
+    group: Media Server
+    <<: *defaults
+    url: http://192.168.1.93:8080/api?mode=version
+  - name: Sonarr
+    group: Media Server
+    <<: *defaults
+    url: http://192.168.1.93:8989/ping
