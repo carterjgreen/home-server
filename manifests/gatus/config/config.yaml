@@ -23,6 +23,11 @@ connectivity:
   checker:
     target: 1.1.1.1:53
     interval: 1m
+default-endpoint: &defaults
+  group: internal
+  interval: 2m
+  conditions:
+    - "[STATUS] == 200"
 endpoints:
   - name: status
     group: external
@@ -39,16 +44,6 @@ endpoints:
       query-type: "A"
     conditions:
       - "[DNS_RCODE] == NOERROR"
-  - name: Home Assistant
-    group: internal
-    url: http://192.168.1.86:8123
-    conditions:
-      - "[STATUS] == 200"
-  - name: Zigbee2MQTT
-    group: internal
-    url: http://192.168.1.86:8099
-    conditions:
-      - "[STATUS] == 200"
   - name: Authelia
     group: external
     url: https://auth.juicewizerd.com/api/health
@@ -56,3 +51,15 @@ endpoints:
       dns-resolver: tcp://1.1.1.1:53
     conditions:
       - "[STATUS] == 200"
+  - name: Home Assistant
+    group: Home Assistant
+    url: http://192.168.1.86:8123
+    <<: *defaults
+  - name: Zigbee2MQTT
+    <<: *defaults
+    group: Home Assistant
+    url: http://192.168.1.86:8099
+  - name: Frigate
+    <<: *defaults
+    group: Home Assistant
+    url: http://192.168.1.91:5000/api/version
