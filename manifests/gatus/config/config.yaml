@@ -28,7 +28,7 @@ endpoints:
     group: external
     url: https://status.juicewizerd.com
     conditions:
-      - &default "[STATUS] == 200"
+      - "[STATUS] == 200"
     alerts:
       - type: pushover
   - name: DNS Resolution
@@ -42,16 +42,17 @@ endpoints:
   - name: Home Assistant
     group: internal
     url: http://192.168.1.86:8123
-    condititions:
-      - *default
+    conditions:
+      - "[STATUS] == 200"
   - name: Zigbee2MQTT
     group: internal
     url: http://192.168.1.86:8099
-    condititions:
-      - *default
+    conditions:
+      - "[STATUS] == 200"
   - name: Authelia
     group: external
     url: https://auth.juicewizerd.com/api/health
     client:
       dns-resolver: tcp://1.1.1.1:53
-    condititions: *default
+    conditions:
+      - "[STATUS] == 200"
