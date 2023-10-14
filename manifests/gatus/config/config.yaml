@@ -50,7 +50,9 @@ endpoints:
     client:
       dns-resolver: tcp://1.1.1.1:53
     conditions:
-      - "[STATUS] == 200"
+      - "[STATUS] == any(200, 401)"
+      - "[CERTIFICATE_EXPIRATION] > 48h"
+      - "[DOMAIN_EXPIRATION] > 720h"
   - name: Home Assistant
     group: Home Assistant
     url: http://192.168.1.86:8123
@@ -63,3 +65,20 @@ endpoints:
     <<: *defaults
     group: Home Assistant
     url: http://192.168.1.91:5000/api/version
+  - name: Grafana
+    <<: *defaults
+    url: http://192.168.1.242/api/health
+  - name: Immich
+    <<: *defaults
+    url: http://192.168.1.93:2283/api/server-info/ping
+  - name: LLDAP
+    <<: *defaults
+    url: http://192.168.1.243:17170/health
+  - name: Calibre-Web
+    group: Media Server
+    <<: *defaults
+    url: http://192.168.1.93:8083
+  - name: Jellyfin
+    group: Media Server
+    <<: *defaults
+    url: http://192.168.1.92:8096/health
