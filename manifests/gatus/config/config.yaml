@@ -67,10 +67,6 @@ endpoints:
     <<: *defaults
     group: Home Assistant
     url: http://192.168.1.91:5000/api/version
-  - name: HASS DB
-    group: Home Assistant
-    <<: *defaults
-    url: tcp://192.168.1.86:45678
   - name: Scrypted
     group: Home Assistant
     <<: *defaults
@@ -119,3 +115,16 @@ endpoints:
     group: Media Server
     <<: *defaults
     url: http://192.168.1.93:8989/ping
+  # Databases
+  - name: Prometheus
+    group: Databases
+    <<: *defaults
+    url: http://192.168.1.93:9090/-/healthy
+  - name: InfluxDB - HAOS
+    group: Databases
+    <<: *defaults
+    url: http://192.168.1.86:8086/health
+  - name: InfluxDB - Main
+    group: Databases
+    <<: *defaults
+    url: http://192.168.1.93:8086/health
