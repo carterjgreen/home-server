@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prowlarr-gatus-ep
+  namesapce: default
+  labels:
+    gatus.io/enabled: "true"
+data:
+  config.yaml: |
+    endpoints:
+      - name: Homer
+        group: Media Server
+        url: http://prowlarr/
+        interval: 2m
+        conditions:
+          - "[STATUS] == 200"

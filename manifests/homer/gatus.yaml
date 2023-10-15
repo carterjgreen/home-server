@@ -2,19 +2,16 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: ntfy-gatus-ep
+  name: homer-gatus-ep
   namesapce: default
   labels:
     gatus.io/enabled: "true"
 data:
   config.yaml: |
     endpoints:
-      - name: ntfy
+      - name: Homer
         group: External
-        url: https://ntfy.juicewizerd.com/v1/health
-        client:
-          dns-resolver: tcp://1.1.1.1:53
+        url: http://homer-svc/
+        interval: 2m
         conditions:
           - "[STATUS] == 200"
-        alerts:
-          - type: pushover
