@@ -11,7 +11,7 @@ data:
     endpoints:
       - name: Homer
         group: External
-        url: http://homer-svc/
+        url: http://homer-svc.default/
         interval: 2m
         conditions:
           - "[STATUS] == 200"
