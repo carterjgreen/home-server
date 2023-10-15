@@ -30,14 +30,6 @@ default-endpoint: &defaults
     - "[STATUS] == 200"
 endpoints:
   # External
-  - name: status
-    group: External
-    url: https://status.juicewizerd.com
-    conditions:
-      - "[STATUS] == 200"
-      - "[STATUS] == any(200, 401)"
-    alerts:
-      - type: pushover
   - name: DNS Resolution
     group: server
     url: 192.168.1.1
