@@ -15,3 +15,4 @@ data:
         interval: 2m
         conditions:
           - "[STATUS] == 200"
+          - "[BODY].status == OK"

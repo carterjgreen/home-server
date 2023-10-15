@@ -46,6 +46,11 @@ endpoints:
     conditions:
       - "[STATUS] == any(200, 401)"
       - "[CERTIFICATE_EXPIRATION] > 48h"
+  - name: Authelia
+    group: Internal
+    url: http://authelia.default.svc.cluster.local/api/health
+    conditions:
+      - "[BODY].status == OK"
   # Home Assistant
   - name: Home Assistant
     group: Home Assistant
@@ -67,9 +72,13 @@ endpoints:
   - name: Grafana
     <<: *defaults
     url: http://192.168.1.242/api/health
+    conditions:
+      - "[BODY].database == ok"
   - name: Immich
     <<: *defaults
     url: http://192.168.1.93:2283/api/server-info/ping
+    conditions:
+      - "[BODY].res == pong"
   # Media Server
   - name: Calibre-Web
     group: Media Server
@@ -79,18 +88,20 @@ endpoints:
     group: Media Server
     <<: *defaults
     url: http://192.168.1.92:8096/health
+    conditions:
+      - "[BODY] == Healthy"
   - name: Kavita
     group: Media Server
     <<: *defaults
     url: http://192.168.1.93:5000/api/health
+    conditions:
+      - "[BODY] == Ok"
   - name: Miniflux
     group: Media Server
     <<: *defaults
     url: http://192.168.1.93:8089/healthcheck
-  # - name: Prowlarr
-  #   group: Media Server
-  #   <<: *defaults
-  #   url: http://192.168.1.245/ping
+    conditions:
+      - "[BODY] == OK"
   - name: qBittorrent
     group: Media Server
     <<: *defaults
@@ -99,6 +110,8 @@ endpoints:
     group: Media Server
     <<: *defaults
     url: http://192.168.1.93:7878/ping
+    conditions:
+      - "[BODY].status == OK"
   - name: SABnzbd
     group: Media Server
     <<: *defaults
@@ -107,16 +120,26 @@ endpoints:
     group: Media Server
     <<: *defaults
     url: http://192.168.1.93:8989/ping
+    conditions:
+      - "[BODY].status == OK"
   # Databases
   - name: Prometheus
     group: Databases
     <<: *defaults
     url: http://192.168.1.93:9090/-/healthy
+    conditions:
+      - "[BODY] == Prometheus Server is Healthy."
   - name: InfluxDB - HAOS
     group: Databases
     <<: *defaults
     url: http://192.168.1.86:8086/health
+    conditions:
+      - "[BODY].status == pass"
+      - "[BODY].message == ready for queries and writes"
   - name: InfluxDB - Main
     group: Databases
     <<: *defaults
     url: http://192.168.1.93:8086/health
+    conditions:
+      - "[BODY].status == pass"
+      - "[BODY].message == ready for queries and writes"
