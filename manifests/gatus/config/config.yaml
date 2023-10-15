@@ -8,7 +8,7 @@ storage:
 metrics: false
 debug: false
 ui:
-  title: Status | Gatus
+  title: Status | JuiceWizerd
   header: Status
 alerting:
   pushover:
