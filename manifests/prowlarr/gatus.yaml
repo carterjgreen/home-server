@@ -11,7 +11,7 @@ data:
     endpoints:
       - name: Prowlarr
         group: Media Server
-        url: http://prowlarr/ping
+        url: http://prowlarr.default/ping
         interval: 2m
         conditions:
           - "[STATUS] == 200"
