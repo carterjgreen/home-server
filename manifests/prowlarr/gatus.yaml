@@ -9,7 +9,7 @@ metadata:
 data:
   config.yaml: |
     endpoints:
-      - name: Homer
+      - name: Prowlarr
         group: Media Server
         url: http://prowlarr/ping
         interval: 2m
