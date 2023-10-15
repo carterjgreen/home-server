@@ -11,7 +11,7 @@ data:
     endpoints:
       - name: Homer
         group: Media Server
-        url: http://prowlarr/
+        url: http://prowlarr/ping
         interval: 2m
         conditions:
           - "[STATUS] == 200"

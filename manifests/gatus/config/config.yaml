@@ -87,10 +87,10 @@ endpoints:
     group: Media Server
     <<: *defaults
     url: http://192.168.1.93:8089/healthcheck
-  - name: Prowlarr
-    group: Media Server
-    <<: *defaults
-    url: http://192.168.1.245/ping
+  # - name: Prowlarr
+  #   group: Media Server
+  #   <<: *defaults
+  #   url: http://192.168.1.245/ping
   - name: qBittorrent
     group: Media Server
     <<: *defaults
