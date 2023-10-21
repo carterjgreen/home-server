@@ -141,6 +141,12 @@ services:
   - name: "Tools"
     icon: "fas fa-tools"
     items:
+      - name: "Gatus"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/gatus.svg"
+        subtitle: "Status page"
+        tag: "uptime"
+        url: "https://status.juicewizerd.com"
+        target: "_blank"
       - name: "Uptime-Kuma"
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/uptime-kuma.svg"
         # subtitle: "Uptime Checker"
