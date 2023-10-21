@@ -1,0 +1,16 @@
+apiVersion: secrets.infisical.com/v1alpha1
+kind: InfisicalSecret
+metadata:
+  name: infisicalsecret-adguard
+spec:
+  authentication:
+    serviceToken:
+      serviceTokenSecretReference:
+        secretName: service-token
+        secretNamespace: option
+      secretsScope:
+        envSlug: dev
+        secretsPath: "/adguard"
+  managedSecretReference:
+    secretName: adguard-infisical
+    secretNamespace: default
