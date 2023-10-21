@@ -7,7 +7,7 @@ spec:
     serviceToken:
       serviceTokenSecretReference:
         secretName: service-token
-        secretNamespace: option
+        secretNamespace: default
       secretsScope:
         envSlug: dev
         secretsPath: "/adguard"
