@@ -15,7 +15,7 @@ spec:
       chart: grafana-agent
       targetRevision: 0.27.0
       helm:
-        values: | # config.river
+        valuesObject:
           agent:
             configMap:
               content: |
