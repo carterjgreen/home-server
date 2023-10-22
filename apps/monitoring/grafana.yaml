@@ -98,6 +98,7 @@ spec:
               enable_gzip: true
             auth:
               oauth_auto_login: true
+              oauth_allow_insecure_email_lookup: true
             auth.basic:
               enabled: false
             auth.anonymous:
