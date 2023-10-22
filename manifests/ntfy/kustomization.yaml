@@ -6,6 +6,8 @@ resources:
   - ntfy-svc.yaml # service connecting pods to cluster network
   - ntfy-pvc.yaml # pvc used to store cache and attachment
   - ntfy-ingress.yaml # ingress definition
+  - ntfy-svc-mtr.yaml
+  - ntfy-infisical.yaml
   - gatus.yaml
 configMapGenerator:
   - name: server-config
