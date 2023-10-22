@@ -1,0 +1,18 @@
+apiVersion: secrets.infisical.com/v1alpha1
+kind: InfisicalSecret
+metadata:
+  name: gatus
+  namespace: monitoring
+spec:
+  resyncInterval: 60
+  authentication:
+    serviceToken:
+      serviceTokenSecretReference:
+        secretName: service-token
+        secretNamespace: default
+      secretsScope:
+        envSlug: dev
+        secretsPath: "/gatus"
+  managedSecretReference:
+    secretName: gatus-secret
+    secretNamespace: monitoring
