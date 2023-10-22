@@ -3,6 +3,7 @@ kind: InfisicalSecret
 metadata:
   name: infisicalsecret-adguard
 spec:
+  hostAPI: https://app.infisical.com/api
   resyncInterval: 3600
   authentication:
     serviceToken:
