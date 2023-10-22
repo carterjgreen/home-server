@@ -20,10 +20,8 @@ spec:
             type: LoadBalancer
             annotations:
               metallb.universe.tf/loadBalancerIPs: 192.168.1.242
-
           serviceMonitor:
             enabled: true
-
           ingress:
             enabled: true
             ingressClassName: traefik
@@ -36,7 +34,6 @@ spec:
               - secretName: juicewizerd-le-com-tls
                 hosts:
                   - *host
-
           resources:
             limits:
               cpu: 250m
@@ -44,21 +41,16 @@ spec:
             requests:
               cpu: 100m
               memory: 128Mi
-
           persistence:
             enabled: true
             size: 1Gi
-
           admin:
             existingSecret: "grafana"
             userKey: "ADMIN-USER"
             passwordKey: ADMIN-PASSWORD
-
           envFromSecret: "grafana"
-
           plugins:
             - influxdata-flightsql-datasource
-
           datasources:
             datasources.yaml:
               apiVersion: 1
@@ -91,7 +83,6 @@ spec:
                 - name: Loki
                   type: loki
                   url: http://loki-headless:3100
-
           grafana.ini:
             server:
               root_url: https://graf.juicewizerd.com
@@ -120,6 +111,7 @@ spec:
               allow_assign_grafana_admin: true
               role_attribute_path: |
                 contains(groups[*], 'GrafanaAdmin') && 'GrafanaAdmin' || groups[*], 'admin') && 'Admin' || contains(groups[*], 'people') && 'Viewer'
+              skip_org_role_sync: true
             analytics:
               reporting_enabled: false
               check_for_updates: false
