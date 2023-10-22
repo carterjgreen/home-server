@@ -66,7 +66,7 @@ spec:
             enableReporting: false
             envFrom:
               - secretRef:
-                  name: agent
+                  name: grafana-agent
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
