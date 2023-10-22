@@ -3,3 +3,6 @@ extends: default
 
 rules:
   line-length: disable
+  braces:
+    ignore:
+      - apps/monitoring/gatus.yaml
