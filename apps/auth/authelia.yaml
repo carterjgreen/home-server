@@ -16,10 +16,7 @@ spec:
       targetRevision: 0.8.57
       helm:
         releaseName: authelia
-        values: |
-          ## Repository: authelia https://charts.authelia.com
-          ## Chart: authelia
-
+        valuesObject:
           domain: juicewizerd.com
 
           ingress:
@@ -91,14 +88,16 @@ spec:
               oidc:
                 enabled: true
                 cors:
-                  endpoints: ["authorization", "token", "revocation", "introspection"]
+                  endpoints:
+                    ["authorization", "token", "revocation", "introspection"]
                   allowed_origins_from_client_redirect_uris: true
                 clients:
                   - id: grafana
                     description: Grafana
                     secret: "$argon2id$v=19$m=65536,t=3,p=4$FLt03HU9Jc8771XThBjsxA$Jqb+Op0qM+FzuMZHnfvARqElHeW6Rr07XS5Z0KUu6W4"
                     public: false
-                    redirect_uris: ["https://graf.juicewizerd.com/login/generic_oauth"]
+                    redirect_uris:
+                      ["https://graf.juicewizerd.com/login/generic_oauth"]
                     scopes:
                       - openid
                       - profile
