@@ -20,7 +20,7 @@ spec:
         parameters:
           - name: "installCRDs"
             value: "true"
-        values: |
+        valuesObject:
           dns01RecursiveNameservers: "1.1.1.1:53,8.8.8.8:53"
           dns01RecursiveNameserversOnly: true
     - repoURL: https://github.com/carterjgreen/home-server.git

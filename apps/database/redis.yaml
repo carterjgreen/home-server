@@ -15,7 +15,7 @@ spec:
       chart: redis
       targetRevision: 18.1.6
       helm:
-        values: |
+        valuesObject:
           auth:
             enabled: false
             sentinel: false

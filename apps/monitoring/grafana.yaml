@@ -15,9 +15,7 @@ spec:
       chart: grafana
       targetRevision: 6.61.1
       helm:
-        # valueFiles:
-        #   - $myRepo/manifests/grafana/values.yaml
-        values: |
+        valuesObject:
           service:
             type: LoadBalancer
             annotations:
@@ -87,7 +85,7 @@ spec:
                     password: ${TIMESCALE-PASSWORD}
                   jsonData:
                     database: homeassistant
-                    sslmode: 'disable'
+                    sslmode: "disable"
                     postgresVersion: 15
                     timescaledb: true
                 - name: Loki

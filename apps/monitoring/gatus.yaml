@@ -15,7 +15,7 @@ spec:
       chart: app-template
       targetRevision: 2.0.3
       helm:
-        values: |
+        valuesObject:
           controllers:
             main:
               containers:
