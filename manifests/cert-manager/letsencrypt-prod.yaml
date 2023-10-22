@@ -17,7 +17,7 @@ spec:
             email: carter.green@icloud.com
             apiTokenSecretRef:
               name: cloudflare-token-secret
-              key: cloudflare-token
+              key: CLOUDFLARE-TOKEN
         selector:
           dnsZones:
             - "juicewizerd.com"
