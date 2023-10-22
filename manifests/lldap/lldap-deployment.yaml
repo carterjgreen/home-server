@@ -26,23 +26,11 @@ spec:
     spec:
       containers:
         - env:
-            - name: LLDAP_JWT_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: lldap-credentials
-                  key: lldap-jwt-secret
-            - name: LLDAP_LDAP_BASE_DN
-              valueFrom:
-                secretKeyRef:
-                  name: lldap-credentials
-                  key: base-dn
-            - name: LLDAP_LDAP_USER_PASS
-              valueFrom:
-                secretKeyRef:
-                  name: lldap-credentials
-                  key: lldap-ldap-user-pass
             - name: TZ
               value: America/Toronto
+          envFrom:
+            - secretRef:
+                name: lldap-credentials
           image: lldap/lldap:v0.5.0
           name: lldap
           ports:
