@@ -1,0 +1,17 @@
+apiVersion: secrets.infisical.com/v1alpha1
+kind: InfisicalSecret
+metadata:
+  name: exporter
+spec:
+  resyncInterval: 60
+  authentication:
+    serviceToken:
+      serviceTokenSecretReference:
+        secretName: service-token
+        secretNamespace: default
+      secretsScope:
+        envSlug: dev
+        secretsPath: "/exporter"
+  managedSecretReference:
+    secretName: exporter
+    secretNamespace: default
