@@ -3,6 +3,7 @@ kind: InfisicalSecret
 metadata:
   name: infisicalsecret-adguard
 spec:
+  resyncInterval: 3600
   authentication:
     serviceToken:
       serviceTokenSecretReference:
