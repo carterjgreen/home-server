@@ -5,6 +5,7 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - gatus-rbac.yaml
+  - gatus-infisical.yaml
 configMapGenerator:
   - name: gatus-configmap
     files:
