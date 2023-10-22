@@ -53,6 +53,8 @@ spec:
 
           admin:
             existingSecret: "grafana"
+            userKey: "ADMIN-USER"
+            passwordKey: ADMIN-PASSWORD
 
           envFromSecret: "grafana"
 
@@ -76,18 +78,21 @@ spec:
                     defaultBucket: home_assistant
                     tlsSkipVerify: true
                   secureJsonData:
-                    token: ${influx-token}
+                    token: ${INFLUX-TOKEN}
                 - name: TimescaleDB
                   type: postgres
                   url: 192.168.1.86:45678
                   user: grafana
                   secureJsonData:
-                    password: ${timescale-password}
+                    password: ${TIMESCALE-PASSWORD}
                   jsonData:
                     database: homeassistant
                     sslmode: 'disable'
                     postgresVersion: 15
                     timescaledb: true
+                - name: Loki
+                  type: loki
+                  url: http://loki-headless:3100
 
           grafana.ini:
             server:
