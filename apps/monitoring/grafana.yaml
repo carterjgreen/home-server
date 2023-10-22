@@ -16,6 +16,8 @@ spec:
       targetRevision: 6.61.1
       helm:
         valuesObject:
+          annotations:
+            reloader.stakater.com/auto: "true"
           service:
             type: LoadBalancer
             annotations:

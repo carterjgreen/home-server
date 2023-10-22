@@ -5,6 +5,8 @@ metadata:
   name: change-detection
   labels:
     app: change-detection
+  annotations:
+    reloader.stakater.com/auto: "true"
 spec:
   replicas: 1
   selector:

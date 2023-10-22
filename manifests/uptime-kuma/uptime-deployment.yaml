@@ -5,6 +5,8 @@ metadata:
   name: uptimekuma-deployment
   labels:
     app: uptimekuma-deployment
+  annotations:
+    reloader.stakater.com/auto: "true"
 spec:
   replicas: 1
   selector:

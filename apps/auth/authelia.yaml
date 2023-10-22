@@ -18,6 +18,8 @@ spec:
         releaseName: authelia
         valuesObject:
           domain: juicewizerd.com
+          annotations:
+            reloader.stakater.com/auto: "true"
           ingress:
             enabled: true
             annotations:

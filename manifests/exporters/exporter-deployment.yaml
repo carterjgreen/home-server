@@ -5,6 +5,8 @@ metadata:
   name: sonarr-exporter
   labels:
     app: sonarr-exporter
+  annotations:
+    reloader.stakater.com/auto: "true"
 spec:
   revisionHistoryLimit: 3
   replicas: 1
