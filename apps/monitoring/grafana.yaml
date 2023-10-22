@@ -107,6 +107,7 @@ spec:
             auth.generic_oauth:
               enabled: true
               name: Authelia
+              icon: signin
               client_id: grafana
               scopes: openid profile email groups
               empty_scopes: false
