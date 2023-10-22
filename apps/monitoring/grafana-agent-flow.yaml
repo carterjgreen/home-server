@@ -67,6 +67,9 @@ spec:
             envFrom:
               - secretRef:
                   name: grafana-agent
+    - repoURL: "https://github.com/carterjgreen/home-server.git"
+      path: manifests/grafana-agent
+      targetRevision: HEAD
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
