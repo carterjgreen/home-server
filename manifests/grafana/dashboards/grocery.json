@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "10.0.3"
+      "version": "10.1.5"
     },
     {
       "type": "datasource",
@@ -109,7 +109,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -173,7 +173,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -211,6 +211,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -327,7 +328,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -391,7 +392,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -455,7 +456,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -515,7 +516,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -553,6 +554,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -672,7 +674,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -736,7 +738,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -800,7 +802,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -820,7 +822,8 @@
   "style": "dark",
   "tags": [
     "home",
-    "money"
+    "money",
+    "influx"
   ],
   "templating": {
     "list": []

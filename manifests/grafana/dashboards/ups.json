@@ -21,7 +21,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "10.0.3"
+      "version": "10.1.5"
     },
     {
       "type": "datasource",
@@ -148,7 +148,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -218,7 +218,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -232,6 +232,12 @@
         }
       ],
       "title": "Manufacturer",
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        }
+      ],
       "transparent": true,
       "type": "stat"
     },
@@ -284,7 +290,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -298,6 +304,12 @@
         }
       ],
       "title": "Model",
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        }
+      ],
       "transparent": true,
       "type": "stat"
     },
@@ -358,7 +370,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -404,6 +416,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -411,7 +424,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -491,6 +504,12 @@
         }
       ],
       "title": "Battery Run Time Left",
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        }
+      ],
       "transparent": true,
       "type": "timeseries"
     },
@@ -518,6 +537,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -525,7 +545,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -587,6 +607,12 @@
         }
       ],
       "title": "Load",
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        }
+      ],
       "transparent": true,
       "type": "timeseries"
     },
@@ -636,7 +662,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -706,7 +732,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -750,6 +776,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineStyle": {
               "fill": "solid"
@@ -760,7 +787,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -814,6 +841,12 @@
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
         }
       ],
       "transparent": true,
@@ -873,7 +906,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -918,6 +951,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -925,7 +959,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -981,10 +1015,19 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
+          "editorMode": "code",
+          "exemplar": false,
           "expr": "network_ups_tools_input_voltage{ups=\"$ups\"}",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{__name__}}",
+          "range": true,
           "refId": "A"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
         }
       ],
       "transparent": true,
@@ -1051,7 +1094,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -1096,6 +1139,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1103,7 +1147,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1164,6 +1208,12 @@
           "refId": "A"
         }
       ],
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        }
+      ],
       "transparent": true,
       "type": "timeseries"
     }
@@ -1175,7 +1225,8 @@
     "server",
     "ups",
     "proxmox",
-    "energy"
+    "energy",
+    "prometheus"
   ],
   "templating": {
     "list": [
@@ -1183,7 +1234,7 @@
         "current": {
           "selected": false,
           "text": "Prometheus",
-          "value": "Prometheus"
+          "value": "PBFA97CFB590B2093"
         },
         "hide": 0,
         "includeAll": false,
@@ -1245,6 +1296,6 @@
   "timezone": "",
   "title": "UPS Statistics",
   "uid": "j4a-DMWRk",
-  "version": 3,
+  "version": 4,
   "weekStart": ""
 }

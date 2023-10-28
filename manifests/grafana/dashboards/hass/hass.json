@@ -54,7 +54,7 @@
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "graphTooltip": 0,
+  "graphTooltip": 2,
   "id": null,
   "links": [],
   "liveNow": false,
@@ -72,9 +72,11 @@
           "custom": {
             "axisCenteredZero": false,
             "axisColorMode": "text",
+            "axisGridShow": true,
             "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
+            "axisPlacement": "left",
+            "axisWidth": 60,
+            "barAlignment": 1,
             "drawStyle": "line",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -84,7 +86,10 @@
               "viz": false
             },
             "insertNulls": false,
-            "lineInterpolation": "linear",
+            "lineInterpolation": "stepAfter",
+            "lineStyle": {
+              "fill": "solid"
+            },
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -97,102 +102,10 @@
               "mode": "none"
             },
             "thresholdsStyle": {
-              "mode": "off"
+              "mode": "dashed"
             }
           },
-          "mappings": [],
-          "max": 1,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percentunit"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 12,
-        "x": 0,
-        "y": 0
-      },
-      "id": 2,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          },
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"cpustat\")\n  |> filter(fn: (r) => r[\"_field\"] == \"cpu\")\n  // |> filter(fn: (r) => r[\"host\"] == \"${host}\")\n  |> keep(columns: [\"host\", \"_time\", \"_value\"])\n  |> aggregateWindow(every: 1m, fn: mean)\n  \n",
-          "refId": "A"
-        }
-      ],
-      "title": "CPU",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "${DS_INFLUXDB}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
+          "decimals": 2,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -202,8 +115,8 @@
                 "value": null
               },
               {
-                "color": "red",
-                "value": 80
+                "color": "#9a9a9a",
+                "value": 22.5
               }
             ]
           },
@@ -212,17 +125,16 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 10,
-        "w": 12,
-        "x": 12,
+        "h": 15,
+        "w": 24,
+        "x": 0,
         "y": 0
       },
       "id": 4,
       "options": {
         "legend": {
           "calcs": [
-            "max",
-            "mean"
+            "last"
           ],
           "displayMode": "list",
           "placement": "bottom",
@@ -233,17 +145,27 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "datasource": {
             "type": "influxdb",
             "uid": "${DS_INFLUXDB}"
           },
-          "query": "from(bucket: \"proxmox\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"sensors\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"temp_input\")\r\n  // |> filter(fn: (r) => r[\"host\"] == \"${host}\")\r\n  |> filter(fn: (r) => r[\"chip\"] == \"coretemp-isa-0000\")\r\n  |> filter(fn: (r) => r[\"feature\"] == \"package_id_0\")\r\n  |> keep(columns: [\"host\", \"_time\", \"_value\"])\r\n  |> aggregateWindow(every: 1m, fn: mean)",
+          "query": "from(bucket: \"home_assistant\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"°C\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"value\")\r\n  |> filter(fn: (r) => r[\"friendly_name\"] != \"Living Room Climate temperature\")",
           "refId": "A"
         }
       ],
-      "title": "CPU Temp",
+      "title": "Temperature",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "value \\{domain=\"sensor\", entity_id=\"[A-Za-z_ ]+\", friendly_name=\"([A-Za-z ]+) [Tt]emperature\"\\}",
+            "renamePattern": "$1"
+          }
+        }
+      ],
       "type": "timeseries"
     },
     {
@@ -261,6 +183,7 @@
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
+            "axisWidth": 60,
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 0,
@@ -271,20 +194,20 @@
               "viz": false
             },
             "insertNulls": false,
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
             },
             "thresholdsStyle": {
-              "mode": "off"
+              "mode": "line"
             }
           },
           "mappings": [],
@@ -294,28 +217,23 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           },
-          "unit": "percentunit"
+          "unit": "celsius"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 10,
+        "h": 14,
         "w": 24,
         "x": 0,
-        "y": 10
+        "y": 15
       },
-      "id": 5,
+      "id": 14,
       "options": {
         "legend": {
           "calcs": [
-            "max",
             "mean"
           ],
           "displayMode": "list",
@@ -333,11 +251,20 @@
             "type": "influxdb",
             "uid": "${DS_INFLUXDB}"
           },
-          "query": "from(bucket: \"proxmox\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"cpu\")\r\n  |> filter(fn: (r) => r[\"nodename\"] == \"${host}\")\r\n  |> filter(fn: (r) => r[\"host\"] != \"debian-template\")\r\n  |> keep(columns: [\"host\", \"_time\", \"_value\"])\r\n  |> aggregateWindow(every: 1m, fn: mean)",
+          "query": "from(bucket: \"home_assistant\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"°C\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"value\")\r\n  |> filter(fn: (r) => r[\"friendly_name\"] != \"Living Room Climate temperature\")\r\n  |> timedMovingAverage(every: 30m, period: 3h)",
           "refId": "A"
         }
       ],
-      "title": "Guest CPU Usage",
+      "title": "Temperature Moving Average",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "value \\{domain=\"sensor\", entity_id=\"[A-Za-z_ ]+\", friendly_name=\"([A-Za-z ]+) [Tt]emperature\"\\}",
+            "renamePattern": "$1"
+          }
+        }
+      ],
       "type": "timeseries"
     },
     {
@@ -355,6 +282,7 @@
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
+            "axisWidth": 55,
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 0,
@@ -365,7 +293,7 @@
               "viz": false
             },
             "insertNulls": false,
-            "lineInterpolation": "linear",
+            "lineInterpolation": "stepAfter",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -382,7 +310,6 @@
             }
           },
           "mappings": [],
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -396,21 +323,21 @@
               }
             ]
           },
-          "unit": "bytes"
+          "unit": "humidity"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 10,
+        "h": 11,
         "w": 24,
         "x": 0,
-        "y": 20
+        "y": 29
       },
       "id": 6,
       "options": {
         "legend": {
           "calcs": [
-            "mean"
+            "last"
           ],
           "displayMode": "list",
           "placement": "bottom",
@@ -427,11 +354,20 @@
             "type": "influxdb",
             "uid": "${DS_INFLUXDB}"
           },
-          "query": "from(bucket: \"proxmox\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"mem\")\r\n  |> filter(fn: (r) => r[\"nodename\"] == \"${host}\")\r\n  |> filter(fn: (r) => r[\"host\"] != \"debian-template\")\r\n  |> keep(columns: [\"host\", \"_time\", \"_value\"])\r\n  |> aggregateWindow(every: 1m, fn: mean)",
+          "query": "from(bucket: \"home_assistant\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"%\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"value\")\r\n  |> filter(fn: (r) => r[\"friendly_name\"] != \"Living Room Climate humidity\")",
           "refId": "A"
         }
       ],
-      "title": "Guest Claimed Memory",
+      "title": "Humidity",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "value \\{domain=\"sensor\", entity_id=\"[A-Za-z_ ]+\", friendly_name=\"([A-Za-z ]+) [Hh]umidity\"\\}",
+            "renamePattern": "$1"
+          }
+        }
+      ],
       "type": "timeseries"
     },
     {
@@ -442,13 +378,15 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "mode": "thresholds"
           },
           "custom": {
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
+            "axisSoftMax": 500,
+            "axisSoftMin": 0,
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 0,
@@ -458,7 +396,6 @@
               "tooltip": false,
               "viz": false
             },
-            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -476,39 +413,44 @@
             }
           },
           "mappings": [],
+          "max": 500,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
-                "color": "red",
-                "value": 80
+                "color": "yellow",
+                "value": 150
+              },
+              {
+                "color": "orange",
+                "value": 250
+              },
+              {
+                "color": "dark-red",
+                "value": 400
               }
             ]
-          },
-          "unit": "Bps"
+          }
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 10,
-        "w": 24,
+        "h": 8,
+        "w": 12,
         "x": 0,
-        "y": 30
+        "y": 40
       },
-      "id": 7,
+      "id": 15,
       "options": {
         "legend": {
-          "calcs": [
-            "max"
-          ],
+          "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -521,11 +463,306 @@
             "type": "influxdb",
             "uid": "${DS_INFLUXDB}"
           },
-          "query": "from(bucket: \"proxmox\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"nics\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"netin\")\r\n  |> filter(fn: (r) => r[\"nodename\"] == \"${host}\")\r\n  |> derivative(unit: 1s, nonNegative: false)\r\n  |> keep(columns: [\"host\", \"_time\", \"_value\"])",
+          "query": "from(bucket: \"home_assistant\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"sensor.living_room_climate_voc_index\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"value\")\r\n  |> timedMovingAverage(every: 10m, period: 20m)",
           "refId": "A"
         }
       ],
-      "title": "Guest Download Rate",
+      "title": "VOC Index",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "stepAfter",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "yellow",
+                "value": 12.1
+              },
+              {
+                "color": "orange",
+                "value": 35.5
+              },
+              {
+                "color": "dark-red",
+                "value": 55.5
+              },
+              {
+                "color": "dark-purple",
+                "value": 150.5
+              }
+            ]
+          },
+          "unit": "µg/m³"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 40
+      },
+      "id": 16,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB}"
+          },
+          "query": "from(bucket: \"home_assistant\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"µg/m³\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"value\")\r\n  |> timedMovingAverage(every: 10m, period: 20m)\r\n  |> map(fn: (r) => ({\r\n        _value: r._value, \r\n        _time: r._time, \r\n        name: \"${r[\"friendly_name\"]}\"\r\n    }))\r\n  |> group(columns: [\"name\"])",
+          "refId": "A"
+        }
+      ],
+      "title": "Particulate Matter Levels",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#000000",
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisWidth": 55,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "line+area"
+            }
+          },
+          "mappings": [],
+          "max": 30,
+          "min": -30,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": -3.5
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 48
+      },
+      "id": 12,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB}"
+          },
+          "hide": false,
+          "query": "from(bucket: \"home_assistant\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"%\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"value\")\r\n  |> filter(fn: (r) => r[\"entity_id\"] != \"mean_humidity\")\r\n  |> filter(fn: (r) => r[\"friendly_name\"] != \"Living Room Climate humidity\")\r\n  // |> filter(fn: (r) => r[\"entity_id\"] == \"bedroom_temperature_sensor_humidity\")\r\n  |> derivative(unit: 1h)\r\n  |> timedMovingAverage(every: 5m, period: 1h)",
+          "refId": "B"
+        }
+      ],
+      "title": "AC Sensor",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisWidth": 60,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 25,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "stepAfter",
+            "lineWidth": 1,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "pressurehpa"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 58
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB}"
+          },
+          "query": "from(bucket: \"home_assistant\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> drop(columns: [\"source\"])\n  |> filter(fn: (r) => r[\"_measurement\"] == \"hPa\")\n  |> filter(fn: (r) => r[\"_field\"] == \"value\")",
+          "refId": "A"
+        }
+      ],
+      "title": "Pressure",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "value \\{domain=\"sensor\", entity_id=\"[A-Za-z_ ]+\", friendly_name=\"([A-Za-z ]+) [Pp]ressure\"\\}",
+            "renamePattern": "$1"
+          }
+        }
+      ],
       "type": "timeseries"
     }
   ],
@@ -534,50 +771,21 @@
   "schemaVersion": 38,
   "style": "dark",
   "tags": [
-    "server",
-    "proxmox",
+    "home",
+    "climate",
     "influx"
   ],
   "templating": {
-    "list": [
-      {
-        "current": {
-          "selected": true,
-          "text": "chihiro",
-          "value": "chihiro"
-        },
-        "hide": 0,
-        "includeAll": false,
-        "label": "Proxmox Host",
-        "multi": false,
-        "name": "host",
-        "options": [
-          {
-            "selected": true,
-            "text": "chihiro",
-            "value": "chihiro"
-          },
-          {
-            "selected": false,
-            "text": "haku",
-            "value": "haku"
-          }
-        ],
-        "query": "chihiro, haku",
-        "queryValue": "",
-        "skipUrlSync": false,
-        "type": "custom"
-      }
-    ]
+    "list": []
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-36h",
     "to": "now"
   },
   "timepicker": {},
-  "timezone": "",
-  "title": "Proxmox Influx",
-  "uid": "tlGfbYB4z",
-  "version": 6,
+  "timezone": "America/Toronto",
+  "title": "Home Assistant",
+  "uid": "SH5hMcX7k",
+  "version": 18,
   "weekStart": ""
 }

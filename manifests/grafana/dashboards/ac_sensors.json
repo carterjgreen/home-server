@@ -1,8 +1,24 @@
 {
     "__inputs": [
         {
-            "name": "DS_PROMETHEUS",
-            "label": "Prometheus",
+            "name": "DS_INFLUXDB",
+            "label": "InfluxDB",
+            "description": "",
+            "type": "datasource",
+            "pluginId": "influxdb",
+            "pluginName": "InfluxDB"
+        },
+        {
+            "name": "DS_INFLUXDB-CLOUD-FLUX",
+            "label": "InfluxDB-Cloud-Flux",
+            "description": "",
+            "type": "datasource",
+            "pluginId": "influxdb",
+            "pluginName": "InfluxDB"
+        },
+        {
+            "name": "DS_VICTORIAMETRICS",
+            "label": "VictoriaMetrics",
             "description": "",
             "type": "datasource",
             "pluginId": "prometheus",
@@ -12,10 +28,22 @@
     "__elements": {},
     "__requires": [
         {
+            "type": "panel",
+            "id": "gauge",
+            "name": "Gauge",
+            "version": ""
+        },
+        {
             "type": "grafana",
             "id": "grafana",
             "name": "Grafana",
             "version": "10.1.5"
+        },
+        {
+            "type": "datasource",
+            "id": "influxdb",
+            "name": "InfluxDB",
+            "version": "1.0.0"
         },
         {
             "type": "datasource",
@@ -42,12 +70,6 @@
                 "hide": true,
                 "iconColor": "rgba(0, 211, 255, 1)",
                 "name": "Annotations & Alerts",
-                "target": {
-                    "limit": 100,
-                    "matchAny": false,
-                    "tags": [],
-                    "type": "dashboard"
-                },
                 "type": "dashboard"
             }
         ]
@@ -61,157 +83,30 @@
     "panels": [
         {
             "datasource": {
-                "type": "prometheus",
-                "uid": "${DS_PROMETHEUS}"
+                "type": "influxdb",
+                "uid": "${DS_INFLUXDB}"
             },
             "fieldConfig": {
                 "defaults": {
                     "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        },
-                        "insertNulls": false,
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                            "type": "linear"
-                        },
-                        "showPoints": "never",
-                        "spanNulls": false,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                            "mode": "off"
-                        }
+                        "mode": "thresholds"
                     },
                     "mappings": [],
-                    "max": 1,
-                    "min": 0,
+                    "min": 18,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
+                                "color": "blue",
                                 "value": null
                             },
                             {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    },
-                    "unit": "percentunit"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 10,
-                "w": 12,
-                "x": 0,
-                "y": 0
-            },
-            "id": 2,
-            "interval": "10s",
-            "options": {
-                "legend": {
-                    "calcs": [
-                        "max",
-                        "mean"
-                    ],
-                    "displayMode": "list",
-                    "placement": "bottom",
-                    "showLegend": true
-                },
-                "tooltip": {
-                    "mode": "single",
-                    "sort": "none"
-                }
-            },
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
-                    },
-                    "editorMode": "builder",
-                    "expr": "avg_over_time(cpustat_cpu[$__interval])",
-                    "instant": false,
-                    "legendFormat": "{{host}}",
-                    "range": true,
-                    "refId": "A"
-                }
-            ],
-            "title": "CPU",
-            "type": "timeseries"
-        },
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "${DS_PROMETHEUS}"
-            },
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        },
-                        "insertNulls": false,
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                            "type": "linear"
-                        },
-                        "showPoints": "never",
-                        "spanNulls": false,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                            "mode": "off"
-                        }
-                    },
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
                                 "color": "green",
-                                "value": null
+                                "value": 18.5
                             },
                             {
                                 "color": "red",
-                                "value": 80
+                                "value": 23.5
                             }
                         ]
                     },
@@ -220,249 +115,128 @@
                 "overrides": []
             },
             "gridPos": {
-                "h": 10,
-                "w": 12,
-                "x": 12,
+                "h": 7,
+                "w": 10,
+                "x": 0,
                 "y": 0
             },
-            "id": 4,
-            "interval": "10s",
-            "options": {
-                "legend": {
-                    "calcs": [
-                        "max",
-                        "mean"
-                    ],
-                    "displayMode": "list",
-                    "placement": "bottom",
-                    "showLegend": true
-                },
-                "tooltip": {
-                    "mode": "single",
-                    "sort": "none"
-                }
-            },
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
-                    },
-                    "editorMode": "builder",
-                    "expr": "avg_over_time(sensors_temp_input{chip=\"coretemp-isa-0000\", feature=\"package_id_0\"}[$__interval])",
-                    "instant": false,
-                    "legendFormat": "{{host}}",
-                    "range": true,
-                    "refId": "A"
-                }
-            ],
-            "title": "CPU Temp",
-            "type": "timeseries"
-        },
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "${DS_PROMETHEUS}"
-            },
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        },
-                        "insertNulls": false,
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                            "type": "linear"
-                        },
-                        "showPoints": "never",
-                        "spanNulls": false,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                            "mode": "off"
-                        }
-                    },
-                    "mappings": [],
-                    "min": 0,
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    },
-                    "unit": "percentunit"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 10,
-                "w": 24,
-                "x": 0,
-                "y": 10
-            },
             "id": 5,
-            "interval": "10s",
             "options": {
-                "legend": {
+                "orientation": "auto",
+                "reduceOptions": {
                     "calcs": [
-                        "max",
-                        "mean"
+                        "lastNotNull"
                     ],
-                    "displayMode": "list",
-                    "placement": "bottom",
-                    "showLegend": true
+                    "fields": "",
+                    "values": false
                 },
-                "tooltip": {
-                    "mode": "single",
-                    "sort": "none"
-                }
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true
             },
+            "pluginVersion": "10.1.5",
             "targets": [
                 {
                     "datasource": {
-                        "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "type": "influxdb",
+                        "uid": "${DS_INFLUXDB}"
                     },
-                    "editorMode": "builder",
-                    "expr": "avg_over_time(system_cpu{instance=\"$host\", host!=\"debian-template\"}[$__interval])",
-                    "instant": false,
-                    "legendFormat": "{{host}}",
-                    "range": true,
+                    "query": "from(bucket: \"home_assistant\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"°C\")\n  |> filter(fn: (r) => r[\"_field\"] == \"value\")\n",
                     "refId": "A"
                 }
             ],
-            "title": "Guest CPU Usage",
-            "type": "timeseries"
+            "transformations": [
+                {
+                    "id": "renameByRegex",
+                    "options": {
+                        "regex": "value \\{domain=\"sensor\", entity_id=\"[A-Za-z_ ]+\", friendly_name=\"([A-Za-z ]+) [Tt]emperature\"\\}",
+                        "renamePattern": "$1"
+                    }
+                }
+            ],
+            "type": "gauge"
         },
         {
             "datasource": {
-                "type": "prometheus",
-                "uid": "${DS_PROMETHEUS}"
+                "type": "influxdb",
+                "uid": "${DS_INFLUXDB}"
             },
             "fieldConfig": {
                 "defaults": {
                     "color": {
-                        "mode": "palette-classic"
+                        "mode": "thresholds"
                     },
-                    "custom": {
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        },
-                        "insertNulls": false,
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                            "type": "linear"
-                        },
-                        "showPoints": "never",
-                        "spanNulls": false,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                            "mode": "off"
-                        }
-                    },
+                    "decimals": 0,
                     "mappings": [],
+                    "max": 100,
                     "min": 0,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
+                                "color": "orange",
                                 "value": null
                             },
                             {
+                                "color": "green",
+                                "value": 30
+                            },
+                            {
                                 "color": "red",
-                                "value": 80
+                                "value": 65
                             }
                         ]
                     },
-                    "unit": "bytes"
+                    "unit": "humidity"
                 },
                 "overrides": []
             },
             "gridPos": {
-                "h": 10,
-                "w": 24,
-                "x": 0,
-                "y": 20
+                "h": 7,
+                "w": 14,
+                "x": 10,
+                "y": 0
             },
             "id": 6,
-            "interval": "10s",
             "options": {
-                "legend": {
+                "orientation": "auto",
+                "reduceOptions": {
                     "calcs": [
-                        "mean"
+                        "lastNotNull"
                     ],
-                    "displayMode": "list",
-                    "placement": "bottom",
-                    "showLegend": true
+                    "fields": "",
+                    "values": false
                 },
-                "tooltip": {
-                    "mode": "single",
-                    "sort": "none"
-                }
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true
             },
+            "pluginVersion": "10.1.5",
             "targets": [
                 {
                     "datasource": {
-                        "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "type": "influxdb",
+                        "uid": "${DS_INFLUXDB}"
                     },
-                    "editorMode": "builder",
-                    "expr": "avg_over_time(system_mem{instance=\"$host\", host!=\"debian-template\"}[$__interval])",
-                    "instant": false,
-                    "legendFormat": "{{host}}",
-                    "range": true,
+                    "query": "from(bucket: \"home_assistant\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"%\")\n  |> filter(fn: (r) => r[\"_field\"] == \"value\")\n  |> last()\n",
                     "refId": "A"
                 }
             ],
-            "title": "Guest Claimed Memory",
-            "type": "timeseries"
+            "transformations": [
+                {
+                    "id": "renameByRegex",
+                    "options": {
+                        "regex": "value \\{domain=\"sensor\", entity_id=\"[A-Za-z_ ]+\", friendly_name=\"([A-Za-z ]+) [Hh]umidity\"\\}",
+                        "renamePattern": "$1"
+                    }
+                }
+            ],
+            "type": "gauge"
         },
         {
             "datasource": {
-                "type": "prometheus",
-                "uid": "${DS_PROMETHEUS}"
+                "type": "influxdb",
+                "uid": "${DS_INFLUXDB-CLOUD-FLUX}"
             },
+            "description": "Uses InfluxDB cloud",
             "fieldConfig": {
                 "defaults": {
                     "color": {
@@ -489,18 +263,123 @@
                         "scaleDistribution": {
                             "type": "linear"
                         },
-                        "showPoints": "never",
+                        "showPoints": "auto",
                         "spanNulls": true,
                         "stacking": {
                             "group": "A",
                             "mode": "none"
                         },
                         "thresholdsStyle": {
+                            "mode": "area"
+                        }
+                    },
+                    "decimals": 0,
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "dark-green",
+                                "value": null
+                            },
+                            {
+                                "color": "dark-red",
+                                "value": -20
+                            },
+                            {
+                                "color": "dark-green",
+                                "value": 60
+                            }
+                        ]
+                    },
+                    "unit": "none"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 24,
+                "x": 0,
+                "y": 7
+            },
+            "id": 3,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": false
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "influxdb",
+                        "uid": "${DS_INFLUXDB-CLOUD-FLUX}"
+                    },
+                    "hide": false,
+                    "query": "d1 = from(bucket: \"homeassistant\")\r\n      |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n      |> filter(fn: (r) => r[\"_measurement\"] == \"%\")\r\n      |> filter(fn: (r) => r[\"_field\"] == \"value\")\r\n      |> filter(fn: (r) => r[\"entity_id\"] == \"living_room_climate_humidity\")\r\n      |> window(every: 1m, period: ${windowLength})\r\n\r\nd2 = d1 |> first()\r\n\r\nd3 = d1 |> last()\r\n\r\nunion(tables: [d2, d3]) \r\n|> difference()\r\n|> window(period: inf)\r\n|> stateDuration(fn: (r) => r._value < -1)\r\n|> drop(columns: [\"_value\"])\r\n",
+                    "refId": "A"
+                },
+                {
+                    "datasource": {
+                        "type": "influxdb",
+                        "uid": "${DS_INFLUXDB-CLOUD-FLUX}"
+                    },
+                    "hide": true,
+                    "query": "from(bucket: \"test_bucket\")\n      |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n      |> filter(fn: (r) => r[\"_measurement\"] == \"duration\")\n      |> filter(fn: (r) => r[\"_field\"] == \"value\")",
+                    "refId": "B"
+                }
+            ],
+            "title": "Influx AC Sensor",
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "influxdb",
+                "uid": "${DS_INFLUXDB}"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "insertNulls": false,
+                        "lineInterpolation": "stepAfter",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
                             "mode": "off"
                         }
                     },
                     "mappings": [],
-                    "min": 0,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
@@ -514,26 +393,231 @@
                             }
                         ]
                     },
-                    "unit": "Bps"
+                    "unit": "humidity"
                 },
                 "overrides": []
             },
             "gridPos": {
-                "h": 10,
+                "h": 8,
                 "w": 24,
                 "x": 0,
-                "y": 30
+                "y": 15
             },
-            "id": 7,
-            "interval": "10s",
+            "id": 2,
             "options": {
                 "legend": {
-                    "calcs": [
-                        "max"
-                    ],
+                    "calcs": [],
                     "displayMode": "list",
                     "placement": "bottom",
-                    "showLegend": true
+                    "showLegend": false
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "influxdb",
+                        "uid": "${DS_INFLUXDB}"
+                    },
+                    "query": "from(bucket: \"home_assistant\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"%\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"value\")\r\n  |> filter(fn: (r) => r[\"entity_id\"] == \"living_room_climate_humidity\")",
+                    "refId": "A"
+                }
+            ],
+            "title": "Humidity",
+            "transformations": [
+                {
+                    "id": "renameByRegex",
+                    "options": {
+                        "regex": "value \\{domain=\"sensor\", entity_id=\"[A-Za-z_ ]+\", friendly_name=\"([A-Za-z ]+) [Hh]umidity\"\\}",
+                        "renamePattern": "$1"
+                    }
+                }
+            ],
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "influxdb",
+                "uid": "${DS_INFLUXDB-CLOUD-FLUX}"
+            },
+            "description": "Uses InfluxDB cloud",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "insertNulls": false,
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": true,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "area"
+                        }
+                    },
+                    "decimals": 0,
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "dark-green",
+                                "value": null
+                            },
+                            {
+                                "color": "dark-red",
+                                "value": -2
+                            },
+                            {
+                                "color": "dark-green",
+                                "value": 1
+                            }
+                        ]
+                    },
+                    "unit": "none"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 24,
+                "x": 0,
+                "y": 23
+            },
+            "id": 8,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": false
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "influxdb",
+                        "uid": "${DS_INFLUXDB-CLOUD-FLUX}"
+                    },
+                    "hide": false,
+                    "query": "d1 = from(bucket: \"homeassistant\")\r\n      |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n      |> filter(fn: (r) => r[\"_measurement\"] == \"%\")\r\n      |> filter(fn: (r) => r[\"_field\"] == \"value\")\r\n      |> filter(fn: (r) => r[\"entity_id\"] == \"living_room_climate_humidity\")\r\n      |> window(every: 1m, period: ${windowLength})\r\n\r\nd2 = d1 |> first()\r\n\r\nd3 = d1 |> last()\r\n\r\nunion(tables: [d2, d3]) \r\n|> difference()\r\n|> window(period: inf)\r\n|> aggregateWindow(every: 1m, fn: median)",
+                    "refId": "A"
+                },
+                {
+                    "datasource": {
+                        "type": "influxdb",
+                        "uid": "${DS_INFLUXDB-CLOUD-FLUX}"
+                    },
+                    "hide": true,
+                    "query": "from(bucket: \"test_bucket\")\n      |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n      |> filter(fn: (r) => r[\"_measurement\"] == \"duration\")\n      |> filter(fn: (r) => r[\"_field\"] == \"value\")",
+                    "refId": "B"
+                }
+            ],
+            "title": "Influx AC Sensor",
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_VICTORIAMETRICS}"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "dashed"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green"
+                            },
+                            {
+                                "color": "dark-green",
+                                "value": -2
+                            },
+                            {
+                                "color": "red",
+                                "value": 0
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 24,
+                "x": 0,
+                "y": 31
+            },
+            "id": 1,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": false
                 },
                 "tooltip": {
                     "mode": "single",
@@ -544,23 +628,119 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "${DS_VICTORIAMETRICS}"
                     },
                     "editorMode": "builder",
-                    "expr": "irate(nics_netin{instance=\"$host\"}[1m])",
-                    "instant": false,
-                    "legendFormat": "{{host}}",
+                    "expr": "round(delta(hass_sensor_humidity_percent{friendly_name=\"Living Room Climate humidity\"}[${windowLength}]), 1)",
+                    "instant": true,
+                    "key": "Q-cc1798c6-e3cb-4020-9445-75e906b2ac96-0",
                     "range": true,
                     "refId": "A"
                 }
             ],
-            "title": "Guest Download Rate",
+            "title": "Humidity Difference",
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "influxdb",
+                "uid": "${DS_INFLUXDB}"
+            },
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": true,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "area"
+                        }
+                    },
+                    "mappings": [],
+                    "min": -1,
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "dark-green"
+                            },
+                            {
+                                "color": "dark-red",
+                                "value": -20
+                            },
+                            {
+                                "color": "dark-green",
+                                "value": 60
+                            }
+                        ]
+                    },
+                    "unit": "dtdurations"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 24,
+                "x": 0,
+                "y": 39
+            },
+            "id": 7,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": false
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "influxdb",
+                        "uid": "${DS_INFLUXDB}"
+                    },
+                    "hide": false,
+                    "query": "from(bucket: \"test_bucket\")\n      |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n      |> filter(fn: (r) => r[\"_measurement\"] == \"duration\")\n      |> filter(fn: (r) => r[\"_field\"] == \"value\")",
+                    "refId": "B"
+                }
+            ],
+            "title": "Influx AC Sensor",
             "type": "timeseries"
         },
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "${DS_PROMETHEUS}"
+                "uid": "${DS_VICTORIAMETRICS}"
             },
             "fieldConfig": {
                 "defaults": {
@@ -610,17 +790,17 @@
                             }
                         ]
                     },
-                    "unit": "watt"
+                    "unit": "humidity"
                 },
                 "overrides": []
             },
             "gridPos": {
-                "h": 8,
+                "h": 7,
                 "w": 24,
                 "x": 0,
-                "y": 40
+                "y": 47
             },
-            "id": 8,
+            "id": 4,
             "options": {
                 "legend": {
                     "calcs": [],
@@ -637,84 +817,88 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "${DS_VICTORIAMETRICS}"
                     },
                     "editorMode": "builder",
-                    "expr": "network_ups_tools_ups_load * 9",
+                    "expr": "hass_sensor_humidity_percent{friendly_name=\"Living Room Climate humidity\"}",
                     "instant": false,
-                    "legendFormat": "{{container}}",
                     "range": true,
                     "refId": "A"
-                },
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
-                    },
-                    "editorMode": "builder",
-                    "expr": "unpoller_device_port_poe_watts",
-                    "hide": false,
-                    "instant": false,
-                    "legendFormat": "{{port_name}}",
-                    "range": true,
-                    "refId": "B"
-                },
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
-                    },
-                    "editorMode": "builder",
-                    "expr": "sum by(container) (unpoller_device_port_poe_watts)",
-                    "hide": false,
-                    "instant": false,
-                    "legendFormat": "Total POE",
-                    "range": true,
-                    "refId": "C"
                 }
             ],
-            "title": "Power Usage",
+            "title": "Prometheus Stored Humidity",
             "type": "timeseries"
         }
     ],
     "refresh": "1m",
-    "revision": 1,
     "schemaVersion": 38,
     "style": "dark",
     "tags": [
-        "server",
-        "proxmox",
+        "home",
+        "climate",
+        "influx",
         "prometheus"
     ],
     "templating": {
         "list": [
             {
+                "auto": false,
+                "auto_count": 30,
+                "auto_min": "10s",
                 "current": {
-                    "selected": true,
-                    "text": "chihiro",
-                    "value": "chihiro"
+                    "selected": false,
+                    "text": "90m",
+                    "value": "90m"
                 },
                 "hide": 0,
-                "includeAll": false,
-                "label": "Proxmox Host",
-                "multi": false,
-                "name": "host",
+                "name": "windowLength",
                 "options": [
                     {
-                        "selected": true,
-                        "text": "chihiro",
-                        "value": "chihiro"
+                        "selected": false,
+                        "text": "20m",
+                        "value": "20m"
                     },
                     {
                         "selected": false,
-                        "text": "haku",
-                        "value": "haku"
+                        "text": "30m",
+                        "value": "30m"
+                    },
+                    {
+                        "selected": false,
+                        "text": "40m",
+                        "value": "40m"
+                    },
+                    {
+                        "selected": false,
+                        "text": "50m",
+                        "value": "50m"
+                    },
+                    {
+                        "selected": false,
+                        "text": "60m",
+                        "value": "60m"
+                    },
+                    {
+                        "selected": true,
+                        "text": "90m",
+                        "value": "90m"
+                    },
+                    {
+                        "selected": false,
+                        "text": "2h",
+                        "value": "2h"
+                    },
+                    {
+                        "selected": false,
+                        "text": "3h",
+                        "value": "3h"
                     }
                 ],
-                "query": "chihiro, haku",
+                "query": "20m,30m,40m,50m,60m,90m, 2h, 3h",
                 "queryValue": "",
+                "refresh": 2,
                 "skipUrlSync": false,
-                "type": "custom"
+                "type": "interval"
             }
         ]
     },
@@ -724,8 +908,8 @@
     },
     "timepicker": {},
     "timezone": "",
-    "title": "Proxmox",
-    "uid": "tlGfbYB4y",
-    "version": 20,
+    "title": "AC Sensors",
+    "uid": "c477f709-255b-43e8-b902-d5484059b7ac",
+    "version": 57,
     "weekStart": ""
 }

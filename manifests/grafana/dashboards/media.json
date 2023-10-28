@@ -21,7 +21,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "10.0.3"
+      "version": "10.1.5"
     },
     {
       "type": "panel",
@@ -161,7 +161,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -244,7 +244,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -366,7 +366,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -470,7 +470,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -578,7 +578,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -656,7 +656,7 @@
         "showUnfilled": true,
         "valueMode": "color"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -700,6 +700,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 3,
@@ -849,7 +850,7 @@
         "frameIndex": 1,
         "showHeader": true
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -996,7 +997,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -1077,7 +1078,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -1222,7 +1223,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -1347,7 +1348,7 @@
         "text": {},
         "valueMode": "color"
       },
-      "pluginVersion": "10.0.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -4601,6 +4602,6 @@
   "timezone": "browser",
   "title": "Media Dashboard",
   "uid": "WURH98Y4k",
-  "version": 7,
+  "version": 2,
   "weekStart": ""
 }
