@@ -14,7 +14,7 @@ spec:
     matchLabels:
       app: lldap
   strategy:
-    type: Recreate
+    type: RollingUpdate
   template:
     metadata:
       annotations:

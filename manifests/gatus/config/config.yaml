@@ -19,6 +19,15 @@ alerting:
       send-on-resolved: true
       failure-threshold: 5
       success-threshold: 2
+  ntfy:
+    topic: uptime
+    url: https://ntfy.juicewizerd.com
+    token: ${NTFY_TOKEN}
+    default-alert:
+      description: health-check failed
+      send-on-resolved: true
+      failure-threshold: 5
+      success-threshold: 2
 connectivity:
   checker:
     target: 1.1.1.1:53
@@ -28,6 +37,8 @@ default-endpoint: &defaults
   interval: 2m
   conditions:
     - "[STATUS] == 200"
+  alerts:
+    - type: ntfy
 endpoints:
   # External
   - name: DNS Resolution
@@ -38,6 +49,8 @@ endpoints:
       query-type: "A"
     conditions:
       - "[DNS_RCODE] == NOERROR"
+    alerts:
+      type: pushover
   - name: Authelia
     group: External
     url: https://auth.juicewizerd.com/api/health
@@ -51,6 +64,8 @@ endpoints:
     url: http://authelia.default.svc.cluster.local/api/health
     conditions:
       - "[BODY].status == OK"
+    alerts:
+      type: pushover
   # Home Assistant
   - name: Home Assistant
     group: Home Assistant
