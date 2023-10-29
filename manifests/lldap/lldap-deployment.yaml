@@ -27,7 +27,7 @@ spec:
         - env:
             - name: TZ
               value: America/Toronto
-          envFrom:
+          envFrom: &envFrom
             - secretRef:
                 name: lldap-credentials
           image: lldap/lldap:v0.5.0
@@ -46,6 +46,10 @@ spec:
           volumeMounts:
             - mountPath: /data
               name: lldap-data
+      initContainers:
+        - name: init-db
+          image: ghcr.io/onedr0p/postgres-init:14.9
+          envFrom: *envFrom
       restartPolicy: Always
       volumes:
         - name: lldap-data
