@@ -4,8 +4,8 @@ kind: ConfigMap
 metadata:
   name: change-gatus-ep
   namespace: default
-  # labels:
-  #   gatus.io/enabled: "true"
+  labels:
+    gatus.io/enabled: "true"
 data:
   config.yaml: |
     endpoints:
@@ -16,5 +16,5 @@ data:
           dns-resolver: tcp://1.1.1.1:53
         conditions:
           - "[STATUS] == any(200, 401)"
-        # alerts:
-        #   - type: ntfy
+        alerts:
+          - type: ntfy
