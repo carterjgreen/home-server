@@ -38,7 +38,7 @@ default-endpoint: &defaults
   conditions:
     - "[STATUS] == 200"
   alerts:
-    type: ntfy
+    - type: ntfy
 endpoints:
   # External
   - name: DNS Resolution
