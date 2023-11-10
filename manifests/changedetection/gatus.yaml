@@ -16,5 +16,5 @@ data:
           dns-resolver: tcp://1.1.1.1:53
         conditions:
           - "[STATUS] == any(200, 401)"
-        alerts:
-          - type: ntfy
+        # alerts:
+        #   - type: ntfy

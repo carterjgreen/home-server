@@ -16,5 +16,5 @@ data:
         conditions:
           - "[STATUS] == 200"
           - "[BODY].status == OK"
-        alerts:
-          - type: ntfy
+        # alerts:
+        #   - type: ntfy
