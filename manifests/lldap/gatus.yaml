@@ -4,8 +4,8 @@ kind: ConfigMap
 metadata:
   name: lldap-gatus-ep
   namespace: lldap
-  labels:
-    gatus.io/enabled: "true"
+  # labels:
+  #   gatus.io/enabled: "true"
 data:
   config.yaml: |
     endpoints:
