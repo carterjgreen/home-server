@@ -37,7 +37,8 @@ additionalArguments:
 
 ports:
   web:
-    redirectTo: websecure
+    redirectTo:
+      port: websecure
   websecure:
     http3:
       enabled: true
