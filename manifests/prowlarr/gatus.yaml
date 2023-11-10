@@ -4,8 +4,8 @@ kind: ConfigMap
 metadata:
   name: prowlarr-gatus-ep
   namespace: default
-  labels:
-    gatus.io/enabled: "true"
+  # labels:
+  #   gatus.io/enabled: "true"
 data:
   config.yaml: |
     endpoints:

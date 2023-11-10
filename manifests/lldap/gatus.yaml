@@ -15,5 +15,5 @@ data:
         interval: 2m
         conditions:
           - "[STATUS] == 200"
-        # alerts:
-        #   - type: ntfy
+        alerts:
+          - type: ntfy
