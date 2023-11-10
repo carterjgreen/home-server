@@ -37,8 +37,8 @@ default-endpoint: &defaults
   interval: 2m
   conditions:
     - "[STATUS] == 200"
-  alerts:
-    - type: ntfy
+  # alerts:
+  #   - type: ntfy
 endpoints:
   # External
   - name: DNS Resolution
@@ -50,7 +50,8 @@ endpoints:
     conditions:
       - "[DNS_RCODE] == NOERROR"
     alerts:
-      type: pushover
+      - type: pushover
+      - type: ntfy
   - name: Authelia
     group: External
     url: https://auth.juicewizerd.com/api/health
@@ -65,7 +66,7 @@ endpoints:
     conditions:
       - "[BODY].status == OK"
     alerts:
-      type: pushover
+      - type: pushover
   # Home Assistant
   - name: Home Assistant
     group: Home Assistant
