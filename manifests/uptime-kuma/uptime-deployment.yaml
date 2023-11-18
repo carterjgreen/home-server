@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: uptimekuma
-          image: louislam/uptime-kuma:1.23.5
+          image: louislam/uptime-kuma:1.23.6
           env:
             - name: TZ
               value: America/Toronto
