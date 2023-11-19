@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: radarr
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: radarr
   ports:
