@@ -2,7 +2,7 @@
 ---
 radarr:
   movies:
-    base_url: http://raddarr
+    base_url: http://radarr
     api_key: !env_var RADARR_API_KEY abcde
     quality_definition:
       type: movie
