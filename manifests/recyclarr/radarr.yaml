@@ -8,6 +8,11 @@ radarr:
       type: movie
     delete_old_custom_formats: true
     replace_existing_custom_formats: true
+    media_naming:
+      folder: jellyfin
+      movie:
+        rename: true
+        standard: jellyfin
     quality_profiles:
       - name: Remux + WEB 1080p
         reset_unmatched_scores:
