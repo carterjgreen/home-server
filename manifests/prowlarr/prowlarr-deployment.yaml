@@ -25,11 +25,9 @@ spec:
           env:
             - name: TZ
               value: America/Toronto
-            - name: PROWLARR__API_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: starr
-                  key: PROWLARR_API
+          envFrom:
+            - secretRef:
+                name: prowlarr
           ports:
             - containerPort: 9696
               name: http-prowlarr
@@ -49,6 +47,10 @@ spec:
           volumeMounts:
             - mountPath: /config
               name: config-volume
+      initContainers:
+        - name: init-db
+          image: ghcr.io/onedr0p/postgres-init:14.10
+          envFrom: *envFrom
       volumes:
         - name: config-volume
           persistentVolumeClaim:
