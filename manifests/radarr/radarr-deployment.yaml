@@ -29,7 +29,7 @@ spec:
             - secretRef:
                 name: radarr
           ports:
-            - containerPort: 9696
+            - containerPort: 7878
               name: http-radarr
           livenessProbe: &probe
             httpGet:
