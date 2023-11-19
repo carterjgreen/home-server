@@ -1,0 +1,63 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: radarr
+  labels:
+    app: radarr
+  annotations:
+    reloader.stakater.com/auto: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: radarr
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: radarr
+    spec:
+      containers:
+        - name: radarr
+          image: ghcr.io/onedr0p/radarr:rolling@sha256:aadfd11bacf7a7394f5e812a44267671eda9e07acb83359d520d36aebe234b0c
+          env:
+            - name: TZ
+              value: America/Toronto
+          envFrom: &envFrom
+            - secretRef:
+                name: radarr
+          ports:
+            - containerPort: 9696
+              name: http-radarr
+          livenessProbe: &probe
+            httpGet:
+              path: /ping
+              port: http-radarr
+            initialDelaySeconds: 10
+            failureThreshold: 3
+            periodSeconds: 60
+            timeoutSeconds: 5
+          readinessProbe: *probe
+          resources:
+            limits:
+              memory: 500Mi
+              cpu: 1000m
+          volumeMounts:
+            - mountPath: /config
+              name: config-volume
+            - name: nfs-vol
+              mountPath: /data
+      initContainers:
+        - name: init-db
+          image: ghcr.io/onedr0p/postgres-init:14.10
+          envFrom: *envFrom
+      volumes:
+        - name: config-volume
+          persistentVolumeClaim:
+            claimName: radarr-pvc
+        - name: nfs-vol
+          nfs:
+            server: 192.168.1.93
+            path: /mnt/data
