@@ -117,7 +117,7 @@ services:
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/radarr.svg"
         tag: "movies"
         subtitle: "Movie Downloader"
-        url: "http://192.168.1.93:7878"
+        url: "https://radarr.juicewizerd.com"
         target: "_blank"
       - name: "Sonarr"
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/sonarr.svg"
