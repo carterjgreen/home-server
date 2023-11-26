@@ -58,7 +58,7 @@ endpoints:
     client:
       dns-resolver: tcp://1.1.1.1:53
     conditions:
-      - "[STATUS] == any(200, 401)"
+      - "[STATUS] == 200"
       - "[CERTIFICATE_EXPIRATION] > 48h"
   - name: Authelia
     group: Internal
