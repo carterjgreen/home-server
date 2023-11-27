@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: prowlarr
-          image: ghcr.io/onedr0p/prowlarr:rolling@sha256:2bca4ef529e801966f3b5f13efd27f605983dcd5b311dcbadabf54df22be9c5b
+          image: ghcr.io/onedr0p/prowlarr:rolling@sha256:36dc6ce438b16b41d4029f713c62c26f8bdf0b8a9da864ca8cd536d6673479e3
           env:
             - name: TZ
               value: America/Toronto
