@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: radarr
-          image: ghcr.io/onedr0p/radarr:rolling@sha256:cb042fea8dfe97b7f78cb6efd02f0fc979de570789abd9fb25649b3534ae0f7a
+          image: ghcr.io/onedr0p/radarr:rolling@sha256:e3eeb1de9aed562a2d4b99704b788dab672b314acaa074b38dc080a18b58cfc7
           env:
             - name: TZ
               value: America/Toronto
