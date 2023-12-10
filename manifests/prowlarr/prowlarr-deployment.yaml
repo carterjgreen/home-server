@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: prowlarr
-          image: ghcr.io/onedr0p/prowlarr:rolling@sha256:36dc6ce438b16b41d4029f713c62c26f8bdf0b8a9da864ca8cd536d6673479e3
+          image: ghcr.io/onedr0p/prowlarr:rolling@sha256:64b00c45fb49e4fcfe806131c069e047d8bb5c62b1d37f11f0dfbdc833873e3d
           env:
             - name: TZ
               value: America/Toronto
@@ -49,7 +49,7 @@ spec:
               name: config-volume
       initContainers:
         - name: init-db
-          image: ghcr.io/onedr0p/postgres-init:15.5
+          image: ghcr.io/onedr0p/postgres-init:16.1
           envFrom: *envFrom
       volumes:
         - name: config-volume

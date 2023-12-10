@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: radarr
-          image: ghcr.io/onedr0p/radarr:rolling@sha256:aadfd11bacf7a7394f5e812a44267671eda9e07acb83359d520d36aebe234b0c
+          image: ghcr.io/onedr0p/radarr:rolling@sha256:e3eeb1de9aed562a2d4b99704b788dab672b314acaa074b38dc080a18b58cfc7
           env:
             - name: TZ
               value: America/Toronto
@@ -51,7 +51,7 @@ spec:
               mountPath: /data
       initContainers:
         - name: init-db
-          image: ghcr.io/onedr0p/postgres-init:15.5
+          image: ghcr.io/onedr0p/postgres-init:16.1
           envFrom: *envFrom
       volumes:
         - name: config-volume
