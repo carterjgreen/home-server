@@ -90,11 +90,11 @@ endpoints:
     url: http://192.168.1.242/api/health
     conditions:
       - "[BODY].database == ok"
-  - name: Immich
-    <<: *defaults
-    url: http://192.168.1.93:2283/api/server-info/ping
-    conditions:
-      - "[BODY].res == pong"
+  # - name: Immich
+  #   <<: *defaults
+  #   url: http://192.168.1.93:2283/api/server-info/ping
+  #   conditions:
+  #     - "[BODY].res == pong"
   # Media Server
   - name: Calibre-Web
     group: Media Server
