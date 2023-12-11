@@ -13,7 +13,7 @@ spec:
   sources:
     - repoURL: https://grafana.github.io/helm-charts
       chart: grafana
-      targetRevision: 7.0.11
+      targetRevision: 7.0.14
       helm:
         valuesObject:
           annotations:
