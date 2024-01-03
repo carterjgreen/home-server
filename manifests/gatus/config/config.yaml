@@ -132,6 +132,12 @@ endpoints:
     url: http://192.168.1.93:8989/ping
     conditions:
       - "[BODY].status == OK"
+    - name: Radarr
+    group: Media Server
+    <<: *defaults
+    url: http://192.168.1.93:7878/ping
+    conditions:
+      - "[BODY].status == OK"
   # Databases
   - name: Prometheus
     group: Databases
