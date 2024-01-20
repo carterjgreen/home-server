@@ -103,7 +103,7 @@ endpoints:
   - name: Jellyfin
     group: Media Server
     <<: *defaults
-    url: http://192.168.1.92:8096/health
+    url: http://192.168.1.93:8096/health
     conditions:
       - "[BODY] == Healthy"
   # - name: Kavita
