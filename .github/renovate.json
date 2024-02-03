@@ -18,6 +18,12 @@
       "apps/.+\\.yaml$"
     ]
   },
+  "helm-values": {
+    "fileMatch": [
+      "(^|/)values\\.ya?ml$",
+      "apps/.+\\.yaml$"
+    ]
+  },
   "packageRules": [
     {
       "description": "Automerge patches",
