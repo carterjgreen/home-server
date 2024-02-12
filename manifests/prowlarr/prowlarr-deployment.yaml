@@ -49,7 +49,7 @@ spec:
               name: config-volume
       initContainers:
         - name: init-db
-          image: ghcr.io/onedr0p/postgres-init:16.1
+          image: ghcr.io/onedr0p/postgres-init:16.2
           envFrom: *envFrom
       volumes:
         - name: config-volume
