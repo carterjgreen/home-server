@@ -13,7 +13,7 @@ spec:
   sources:
     - repoURL: registry-1.docker.io/bitnamicharts
       chart: redis
-      targetRevision: 18.19.4
+      targetRevision: 19.0.0
       helm:
         valuesObject:
           auth:
