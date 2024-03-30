@@ -21,7 +21,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: calibre
+                name: kavita
                 port:
                   number: 5000
 ---
