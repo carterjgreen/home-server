@@ -1,7 +1,4 @@
 ---
-image:
-  tag: "v2.10.4"
-
 deployment:
   enabled: true
   kind: DaemonSet
