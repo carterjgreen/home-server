@@ -14,7 +14,7 @@ spec:
         spec:
           containers:
             - name: sync
-              image: ghcr.io/bakito/adguardhome-sync:v0.6.11
+              image: ghcr.io/bakito/adguardhome-sync:v0.6.12
               command: ["/opt/go/adguardhome-sync"]
               args: ["run"]
               env:
