@@ -1,20 +1,20 @@
 {
   "__inputs": [
     {
-      "name": "DS_LOKI",
-      "label": "Loki",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "loki",
-      "pluginName": "Loki"
-    },
-    {
       "name": "DS_INFLUXDB",
       "label": "InfluxDB",
       "description": "",
       "type": "datasource",
       "pluginId": "influxdb",
       "pluginName": "InfluxDB"
+    },
+    {
+      "name": "DS_LOKI",
+      "label": "Loki",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "loki",
+      "pluginName": "Loki"
     }
   ],
   "__elements": {},
@@ -23,7 +23,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "10.1.5"
+      "version": "11.1.0"
     },
     {
       "type": "datasource",
@@ -42,12 +42,6 @@
       "id": "loki",
       "name": "Loki",
       "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
     },
     {
       "type": "panel",
@@ -87,278 +81,6 @@
   "panels": [
     {
       "datasource": {
-        "type": "loki",
-        "uid": "${DS_LOKI}"
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 0,
-        "y": 0
-      },
-      "hideTimeOverride": true,
-      "id": 7,
-      "options": {
-        "dedupStrategy": "none",
-        "enableLogDetails": true,
-        "prettifyLogMessage": false,
-        "showCommonLabels": false,
-        "showLabels": false,
-        "showTime": true,
-        "sortOrder": "Descending",
-        "wrapLogMessage": false
-      },
-      "pluginVersion": "10.1.1",
-      "targets": [
-        {
-          "datasource": {
-            "type": "loki",
-            "uid": "${DS_LOKI}"
-          },
-          "editorMode": "builder",
-          "expr": "{job=\"default/bidgely\"} |= ``",
-          "queryType": "range",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": "2d",
-      "title": "BIdgely Job Details",
-      "type": "logs"
-    },
-    {
-      "datasource": {
-        "type": "loki",
-        "uid": "${DS_LOKI}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 0,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 250
-              }
-            ]
-          },
-          "unit": "kwatth"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 4,
-        "x": 8,
-        "y": 0
-      },
-      "hideTimeOverride": true,
-      "id": 9,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "first"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "10.1.5",
-      "targets": [
-        {
-          "datasource": {
-            "type": "loki",
-            "uid": "${DS_LOKI}"
-          },
-          "editorMode": "code",
-          "expr": "first_over_time({job=\"default/bidgely\"} |= `Usage to Date:` | regexp `Usage to Date: (?P<price>.*) kWh` | unwrap price [24h])",
-          "hide": false,
-          "legendFormat": "{{ app }}",
-          "queryType": "range",
-          "refId": "A",
-          "step": "1d"
-        }
-      ],
-      "timeFrom": "1d",
-      "title": "Current Usage",
-      "transformations": [
-        {
-          "id": "seriesToRows",
-          "options": {}
-        }
-      ],
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "loki",
-        "uid": "${DS_LOKI}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 2,
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "currencyUSD"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 4,
-        "x": 12,
-        "y": 0
-      },
-      "hideTimeOverride": true,
-      "id": 10,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "first"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "10.1.5",
-      "targets": [
-        {
-          "datasource": {
-            "type": "loki",
-            "uid": "${DS_LOKI}"
-          },
-          "editorMode": "code",
-          "expr": "first_over_time({job=\"default/bidgely\"} |= `Cost to Date:` | regexp `Cost to Date: \\$(?P<price>.*)` | unwrap price [1d])",
-          "hide": false,
-          "legendFormat": "{{ app }}",
-          "queryType": "range",
-          "refId": "A",
-          "step": "1d"
-        }
-      ],
-      "timeFrom": "1d",
-      "title": "Current Cost",
-      "transformations": [
-        {
-          "id": "seriesToRows",
-          "options": {}
-        }
-      ],
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "loki",
-        "uid": "${DS_LOKI}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 2,
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "currencyUSD"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 0
-      },
-      "id": 8,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "first"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "10.1.5",
-      "targets": [
-        {
-          "datasource": {
-            "type": "loki",
-            "uid": "${DS_LOKI}"
-          },
-          "editorMode": "code",
-          "expr": "first_over_time({job=\"default/bidgely\"} |= `Forecasted Cost:` | regexp `Forecasted Cost: \\$(?P<price>.*)` | unwrap price [1d])",
-          "hide": false,
-          "legendFormat": "{{ app }}",
-          "queryType": "range",
-          "refId": "A",
-          "step": "1d"
-        }
-      ],
-      "timeFrom": "7d",
-      "title": "Forecasted Cost",
-      "transformations": [
-        {
-          "id": "seriesToRows",
-          "options": {}
-        }
-      ],
-      "type": "stat"
-    },
-    {
-      "datasource": {
         "type": "influxdb",
         "uid": "${DS_INFLUXDB}"
       },
@@ -368,13 +90,14 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
-            "barAlignment": 1,
-            "drawStyle": "line",
-            "fillOpacity": 0,
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 100,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -399,6 +122,7 @@
             }
           },
           "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -455,6 +179,22 @@
                 }
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "B"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "line"
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              }
+            ]
           }
         ]
       },
@@ -462,7 +202,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 0
       },
       "id": 2,
       "options": {
@@ -476,7 +216,7 @@
           "America/Toronto"
         ],
         "tooltip": {
-          "mode": "single",
+          "mode": "multi",
           "sort": "none"
         }
       },
@@ -487,7 +227,7 @@
             "uid": "${DS_INFLUXDB}"
           },
           "hide": false,
-          "query": "from(bucket: \"energy\")\r\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"bidgely\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"usage\")\r\n  |> aggregateWindow(every: 1d, fn: sum, offset: -20h)",
+          "query": "import \"timezone\"\r\n\r\nfrom(bucket: \"energy\")\r\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"bidgely\" or r[\"_measurement\"] == \"hydro_ottawa\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"usage\")\r\n  |> drop(columns: [\"_measurement\"])\r\n  |> aggregateWindow(every: 1d, fn: sum,  location: timezone.location(name: \"America/Toronto\"))\r\n  |> timeShift(duration: -1d)",
           "refId": "C"
         },
         {
@@ -496,7 +236,7 @@
             "uid": "${DS_INFLUXDB}"
           },
           "hide": false,
-          "query": "from(bucket: \"energy\")\r\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"bidgely\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"usage\")\r\n  |> set(key: \"_field\", value: \"average\")\r\n  |> aggregateWindow(every: 1d, fn: sum)\r\n  |> movingAverage(n: 30)",
+          "query": "from(bucket: \"energy\")\r\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"bidgely\" or r[\"_measurement\"] == \"hydro_ottawa\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"usage\")\r\n  |> drop(columns: [\"_measurement\"])\r\n  |> set(key: \"_field\", value: \"average\")\r\n  |> aggregateWindow(every: 1d, fn: sum)\r\n  |> movingAverage(n: 30)",
           "refId": "B"
         },
         {
@@ -504,7 +244,7 @@
             "type": "influxdb",
             "uid": "${DS_INFLUXDB}"
           },
-          "hide": false,
+          "hide": true,
           "query": "from(bucket: \"energy\")\r\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"bidgely\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"temperature\")\r\n  |> aggregateWindow(every: 1d, fn: mean, offset: -20h)",
           "refId": "D"
         }
@@ -532,6 +272,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -584,7 +325,7 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 20
+        "y": 12
       },
       "id": 4,
       "options": {
@@ -615,7 +356,7 @@
             "uid": "${DS_INFLUXDB}"
           },
           "hide": false,
-          "query": "from(bucket: \"energy\")\r\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"bidgely\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"usage\")\r\n  |> aggregateWindow(every: 1w, fn: sum, offset: -4d)",
+          "query": "from(bucket: \"energy\")\r\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"bidgely\" or r[\"_measurement\"] == \"hydro_ottawa\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"usage\")\r\n  |> drop(columns: [\"_measurement\"])\r\n  |> aggregateWindow(every: 1w, fn: sum, offset: -4d)",
           "refId": "B"
         }
       ],
@@ -633,6 +374,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -685,7 +427,7 @@
         "h": 9,
         "w": 24,
         "x": 0,
-        "y": 30
+        "y": 22
       },
       "id": 6,
       "options": {
@@ -716,18 +458,57 @@
             "uid": "${DS_INFLUXDB}"
           },
           "hide": false,
-          "query": "from(bucket: \"energy\")\r\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"bidgely\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"usage\")\r\n  |> aggregateWindow(every: 1mo, fn: sum)",
+          "query": "from(bucket: \"energy\")\r\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"bidgely\" or r[\"_measurement\"] == \"hydro_ottawa\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"usage\")\r\n  |> drop(columns: [\"_measurement\"])\r\n  |> aggregateWindow(every: 1mo, fn: sum)",
           "refId": "B"
         }
       ],
       "title": "Monthly Usage",
       "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "${DS_LOKI}"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 31
+      },
+      "hideTimeOverride": false,
+      "id": 7,
+      "options": {
+        "dedupStrategy": "none",
+        "enableLogDetails": true,
+        "prettifyLogMessage": false,
+        "showCommonLabels": false,
+        "showLabels": false,
+        "showTime": true,
+        "sortOrder": "Descending",
+        "wrapLogMessage": false
+      },
+      "pluginVersion": "10.1.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "${DS_LOKI}"
+          },
+          "editorMode": "builder",
+          "expr": "{app=\"hydro-ottawa\"} |= ``",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": "2d",
+      "title": "API Job Details",
+      "type": "logs"
     }
   ],
   "refresh": "",
   "revision": 1,
-  "schemaVersion": 38,
-  "style": "dark",
+  "schemaVersion": 39,
   "tags": [
     "home",
     "energy",
@@ -737,13 +518,13 @@
     "list": []
   },
   "time": {
-    "from": "now-1y",
+    "from": "now-90d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Energy",
   "uid": "v3dvW_KVk",
-  "version": 27,
+  "version": 36,
   "weekStart": ""
 }
