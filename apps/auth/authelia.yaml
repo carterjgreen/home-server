@@ -17,7 +17,6 @@ spec:
       helm:
         releaseName: authelia
         valuesObject:
-          domain: juicewizerd.com
           annotations:
             reloader.stakater.com/auto: "true"
           ingress:
@@ -59,15 +58,15 @@ spec:
               enabled: true
               serviceMonitor:
                 enabled: true
-            default_redirection_url: https://auth.juicewizerd.com
             theme: auto
             totp:
-              issuer: juicewizerd.com
+              issuer: &domain juicewizerd.com
             authentication_backend:
               password_reset:
                 disable: false
               refresh_interval: 1m
               ldap:
+                enabled: true
                 implementation: custom
                 url: ldap://lldap-service.lldap.svc.cluster.local:3890
                 timeout: 5s
@@ -90,10 +89,13 @@ spec:
                     ["authorization", "token", "revocation", "introspection"]
                   allowed_origins_from_client_redirect_uris: true
                 clients:
-                  - id: grafana
+                  - client_id: grafana
                     description: Grafana
-                    secret: "$argon2id$v=19$m=65536,t=3,p=4$FLt03HU9Jc8771XThBjsxA$Jqb+Op0qM+FzuMZHnfvARqElHeW6Rr07XS5Z0KUu6W4"
+                    client_secret: "$argon2id$v=19$m=65536,t=3,p=4$FLt03HU9Jc8771XThBjsxA$Jqb+Op0qM+FzuMZHnfvARqElHeW6Rr07XS5Z0KUu6W4"
                     public: false
+                    authorization_policy: "two_factor"
+                    require_pkce: true
+                    pkce_challenge_method: "S256"
                     redirect_uris:
                       ["https://graf.juicewizerd.com/login/generic_oauth"]
                     scopes:
@@ -101,19 +103,8 @@ spec:
                       - profile
                       - groups
                       - email
-                    userinfo_signing_algorithm: none
-                  - id: miniflux
-                    description: Miniflux RSS Reader
-                    secret: "$argon2id$v=19$m=65536,t=3,p=4$reGqltl1QiwpzHp3edvKDQ$pVChJs/HCOKMMroVF2Qi+bqM9hXSBypkcTs+MrqPeks"
-                    public: false
-                    redirect_uris:
-                      ["https://miniflux.juicewizerd.com/oauth2/oidc/callback"]
-                    scopes:
-                      - openid
-                      - profile
-                      - groups
-                      - email
-                    userinfo_signing_algorithm: none
+                    userinfo_signed_response_alg: "none"
+                    token_endpoint_auth_method: "client_secret_basic"
             access_control:
               default_policy: two_factor
               rules:
@@ -139,18 +130,21 @@ spec:
                     - "^/hacsfiles.*"
                     - "^/frontend_latest.*"
             session:
-              name: authelia_session
-              domain: juicewizerd.com
+              domain: *domain
               expiration: 1h
               inactivity: 2h
               redis:
+                enabled: true
                 host: redis-headless.database.svc.cluster.local
+              cookies:
+                - domain: *domain
+                  subdomain: auth
+                  default_redirection_url: https://auth.juicewizerd.com
             storage:
               postgres:
                 enabled: true
                 host: postgres-rw.database.svc.cluster.local
             notifier:
-              disable_startup_check: true
               filesystem:
                 enabled: false
               smtp:
@@ -161,7 +155,7 @@ spec:
                 timeout: 20s
                 username: juicewizerd@gmail.com
                 sender: juicewizerd@gmail.com
-                identifier: juicewizerd.com
+                identifier: *domain
     - repoURL: https://github.com/carterjgreen/home-server.git
       path: manifests/authelia
       targetRevision: HEAD
