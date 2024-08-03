@@ -90,8 +90,6 @@ spec:
             identity_providers:
               oidc:
                 enabled: true
-                hmac_secret:
-                  secret_name: authelia
                 jwks:
                   - key:
                       path: "/secrets/authelia/oidc.jwk.RS256.pem"
