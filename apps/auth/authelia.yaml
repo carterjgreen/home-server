@@ -146,8 +146,6 @@ spec:
               inactivity: 2h
               redis:
                 enabled: true
-                password:
-                  secret_name: authelia
                 host: redis-headless.database.svc.cluster.local
               cookies:
                 - domain: *domain
