@@ -74,7 +74,7 @@ spec:
               ldap:
                 enabled: true
                 implementation: custom
-                url: ldap://lldap-service.lldap.svc.cluster.local:3890
+                address: ldap://lldap-service.lldap.svc.cluster.local:3890
                 timeout: 5s
                 start_tls: false
                 base_dn: dc=juicewizerd,dc=com
