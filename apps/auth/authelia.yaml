@@ -59,6 +59,9 @@ spec:
               serviceMonitor:
                 enabled: true
             theme: auto
+            identity_validation:
+              secret:
+                secret_name: authelia
             totp:
               issuer: &domain juicewizerd.com
             authentication_backend:
@@ -84,6 +87,8 @@ spec:
             identity_providers:
               oidc:
                 enabled: true
+                hmac_secret:
+                  secret_name: authelia
                 cors:
                   endpoints:
                     ["authorization", "token", "revocation", "introspection"]
@@ -135,6 +140,8 @@ spec:
               inactivity: 2h
               redis:
                 enabled: true
+                password:
+                  secret_name: authelia
                 host: redis-headless.database.svc.cluster.local
               cookies:
                 - domain: *domain
@@ -143,6 +150,8 @@ spec:
             storage:
               postgres:
                 enabled: true
+                password:
+                  secret_name: authelia
                 host: postgres-rw.database.svc.cluster.local
             notifier:
               filesystem:
@@ -154,6 +163,8 @@ spec:
                 port: 465
                 timeout: 20s
                 username: juicewizerd@gmail.com
+                password:
+                  secret_name: authelia
                 sender: juicewizerd@gmail.com
                 identifier: *domain
     - repoURL: https://github.com/carterjgreen/home-server.git
