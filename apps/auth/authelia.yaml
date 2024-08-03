@@ -60,7 +60,7 @@ spec:
               timeouts:
                 read: 6s
                 write: 6s
-            telemtry:
+            telemetry:
               enabled: true
               serviceMonitor:
                 enabled: true
@@ -151,14 +151,14 @@ spec:
             storage:
               postgres:
                 enabled: true
-                host: postgres-rw.database.svc.cluster.local
+                address: postgres-rw.database.svc.cluster.local
             notifier:
               filesystem:
                 enabled: false
               smtp:
                 enabled: true
                 enabledSecret: true
-                host: smtp.gmail.com
+                address: smtp://smtp.gmail.com:587
                 port: 465
                 timeout: 20s
                 username: juicewizerd@gmail.com
