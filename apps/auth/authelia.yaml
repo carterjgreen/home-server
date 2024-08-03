@@ -45,6 +45,8 @@ spec:
             existingSecret: authelia
             additionalSecrets:
               authelia:
+                items:
+                  - key: "oidc.jwk.RS256.pem"
             certificates:
               existingSecret: authelia
           configMap:
@@ -95,6 +97,9 @@ spec:
                 enabled: true
                 hmac_secret:
                   secret_name: authelia
+                jwks:
+                  - key:
+                      path: "/secrets/authelia/oidc.jwk.RS256.pem"
                 cors:
                   endpoints:
                     ["authorization", "token", "revocation", "introspection"]
