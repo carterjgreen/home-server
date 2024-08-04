@@ -1,5 +1,5 @@
 ---
-apiVersion: traefik.io/v1alpha1
+apiVersion: traefik.io/v1
 kind: Middleware
 metadata:
   name: authelia-basic
@@ -14,7 +14,7 @@ spec:
       - Remote-Name
       - Remote-Email
 ---
-apiVersion: traefik.io/v1alpha1
+apiVersion: traefik.io/v1
 kind: Middleware
 metadata:
   name: authelia-2fa
@@ -31,7 +31,7 @@ spec:
       - Remote-Name
       - Remote-Email
 ---
-apiVersion: traefik.io/v1alpha1
+apiVersion: traefik.io/v1
 kind: Middleware
 metadata:
   name: kobo-sync-headers
@@ -41,7 +41,7 @@ spec:
     customRequestHeaders:
       X-Scheme: https
 ---
-apiVersion: traefik.io/v1alpha1
+apiVersion: traefik.io/v1
 kind: Middleware
 metadata:
   name: security-headers
@@ -66,7 +66,7 @@ spec:
     stsSeconds: 63072000
     stsPreload: true
 ---
-apiVersion: traefik.io/v1alpha1
+apiVersion: traefik.io/v1
 kind: Middleware
 metadata:
   name: cors-headers
@@ -86,7 +86,7 @@ spec:
     accessControlMaxAge: 100
     addVaryHeader: true
 ---
-apiVersion: traefik.io/v1alpha1
+apiVersion: traefik.io/v1
 kind: Middleware
 metadata:
   name: floc-block
@@ -96,7 +96,7 @@ spec:
     customResponseHeaders:
       Permissions-Policy: interest-cohort=()
 ---
-apiVersion: traefik.io/v1alpha1
+apiVersion: traefik.io/v1
 kind: Middleware
 metadata:
   name: test-compress
@@ -104,7 +104,7 @@ metadata:
 spec:
   compress: {}
 ---
-apiVersion: traefik.io/v1alpha1
+apiVersion: traefik.io/v1
 kind: Middleware
 metadata:
   name: crowdsec
@@ -113,7 +113,7 @@ spec:
   forwardAuth:
     address: http://crowdsec-traefik-bouncer-service.default/api/v1/forwardAuth
 ---
-apiVersion: traefik.io/v1alpha1
+apiVersion: traefik.io/v1
 kind: Middleware
 metadata:
   name: crowdsec-authelia
@@ -124,7 +124,7 @@ spec:
       - name: crowdsec
       - name: authelia-2fa
 ---
-apiVersion: traefik.io/v1alpha1
+apiVersion: traefik.io/v1
 kind: Middleware
 metadata:
   name: local-allowlist
