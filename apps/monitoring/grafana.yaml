@@ -89,7 +89,9 @@ spec:
             server:
               root_url: https://graf.juicewizerd.com
               enable_gzip: true
+              enforce_domain: true
             auth:
+              login_cookie_name: __Host-grafana_session
               oauth_auto_login: true
               oauth_allow_insecure_email_lookup: true
             auth.basic:
@@ -115,9 +117,16 @@ spec:
                 contains(groups[*], 'GrafanaAdmin') && 'GrafanaAdmin' || groups[*], 'admin') && 'Admin' || contains(groups[*], 'people') && 'Viewer'
               skip_org_role_sync: true
             analytics:
+              enabled: false
               reporting_enabled: false
               check_for_updates: false
               check_for_plugin_updates: false
+            security:
+              # https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-security-hardening/
+              cookie_secure: true
+              cookie_samesite: strict
+              content_security_policy: true
+              content_security_policy_template: "script-src 'self' 'unsafe-eval' 'unsafe-inline' 'strict-dynamic' $NONCE;object-src 'none';font-src 'self';style-src 'self' 'unsafe-inline' blob:;img-src * data:;base-uri 'self';connect-src 'self' grafana.com ws://$ROOT_PATH wss://$ROOT_PATH;manifest-src 'self';media-src 'none';form-action 'self';"
     - repoURL: https://github.com/carterjgreen/home-server.git
       path: manifests/grafana
   destination:
