@@ -55,7 +55,6 @@ spec:
                 read: 10485760 # Large for calibre web
                 write: 8192
             log:
-              level: debug
               format: json
             telemetry:
               metrics:
