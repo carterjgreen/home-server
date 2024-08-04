@@ -130,6 +130,6 @@ metadata:
   name: local-allowlist
   namespace: default
 spec:
-  ipWhiteList: # change to ipAllowList in v3
+  ipAllowList: # change to ipAllowList in v3
     sourceRange:
       - 192.168.1.0/24
