@@ -3,26 +3,12 @@ deployment:
   enabled: true
   kind: DaemonSet
 
-ingressRoute:
-  dashboard:
-    enabled: false
-
 providers:
   kubernetesCRD:
     ingressClass: traefik-external
     allowExternalNameServices: true
   kubernetesIngress:
     allowExternalNameServices: true
-
-kubernetesIngress:
-  allowExternalNameServices: true
-
-metrics:
-  service:
-    enabled: true
-  serviceMonitor:
-    jobLabel: traefik
-    interval: 30s
 
 globalArguments:
   - "--global.sendanonymoususage=false"
@@ -38,8 +24,6 @@ ports:
       port: websecure
   websecure:
     http3:
-      enabled: true
-    tls:
       enabled: true
     middlewares:
       - default-test-compress@kubernetescrd
