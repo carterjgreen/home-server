@@ -60,7 +60,8 @@ spec:
                 - name: Prometheus
                   type: prometheus
                   url: http://192.168.1.93:9090
-                  incrementalQuerying: true
+                  jsonData:
+                    incrementalQuerying: true
                 - name: InfluxDB
                   type: influxdb
                   isDefault: true
