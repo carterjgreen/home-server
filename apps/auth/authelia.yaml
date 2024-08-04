@@ -50,27 +50,19 @@ spec:
             certificates:
               existingSecret: authelia
           configMap:
-            enabled: true
-            key: configuration.yaml
             server:
-              host: 0.0.0.0
               buffers:
                 read: 10485760 # Large for calibre web
                 write: 8192
-              timeouts:
-                read: 6s
-                write: 6s
             telemetry:
-              enabled: true
-              serviceMonitor:
+              metrics:
                 enabled: true
+                serviceMonitor:
+                  enabled: true
             theme: auto
             totp:
               issuer: &domain juicewizerd.com
             authentication_backend:
-              password_reset:
-                disable: false
-              refresh_interval: 1m
               ldap:
                 enabled: true
                 implementation: custom
@@ -87,6 +79,50 @@ spec:
                 mail_attribute: mail
                 display_name_attribute: displayName
                 user: uid=admin,ou=people,dc=juicewizerd,dc=com
+            access_control:
+              default_policy: two_factor
+              rules:
+                - domain: # Already hass 2FA
+                    - "hass.juicewizerd.com"
+                  policy: bypass
+                # Kobo bypass
+                - domain: "books.juicewizerd.com"
+                  policy: bypass
+                  resources:
+                    - "^/kobo([/?].*)?$"
+                # Home assistant app bypass
+                - domain:
+                    - "hass.juicewizerd.com"
+                  policy: bypass
+                  resources:
+                    - "^/api([/?].*)?$"
+                    - "^/auth/token.*"
+                    - "^/.external_auth=.*"
+                    - "^/service_worker.js"
+                    - "^/static.*"
+                    - "^/local.*"
+                    - "^/hacsfiles.*"
+                    - "^/frontend_latest.*"
+            session:
+              redis:
+                enabled: true
+                host: redis-headless.database.svc.cluster.local
+              cookies:
+                - domain: *domain
+                  subdomain: auth
+            storage:
+              postgres:
+                enabled: true
+                address: postgres-rw.database.svc.cluster.local
+            notifier:
+              smtp:
+                enabled: true
+                enabledSecret: true
+                address: smtp://smtp.gmail.com:587
+                timeout: 20s
+                username: juicewizerd@gmail.com
+                sender: juicewizerd@gmail.com
+                identifier: *domain
             identity_providers:
               oidc:
                 enabled: true
@@ -114,56 +150,6 @@ spec:
                       - email
                     userinfo_signed_response_alg: "none"
                     token_endpoint_auth_method: "client_secret_basic"
-            access_control:
-              default_policy: two_factor
-              rules:
-                - domain: # Already hass 2FA
-                    - "hass.juicewizerd.com"
-                  policy: bypass
-                # Kobo bypass
-                - domain: "books.juicewizerd.com"
-                  policy: bypass
-                  resources:
-                    - "^/kobo([/?].*)?$"
-                # Home assistant app bypass
-                - domain:
-                    - "hass.juicewizerd.com"
-                  policy: bypass
-                  resources:
-                    - "^/api([/?].*)?$"
-                    - "^/auth/token.*"
-                    - "^/.external_auth=.*"
-                    - "^/service_worker.js"
-                    - "^/static.*"
-                    - "^/local.*"
-                    - "^/hacsfiles.*"
-                    - "^/frontend_latest.*"
-            session:
-              domain: *domain
-              expiration: 1h
-              inactivity: 2h
-              redis:
-                enabled: true
-                host: redis-headless.database.svc.cluster.local
-              cookies:
-                - domain: *domain
-                  subdomain: auth
-            storage:
-              postgres:
-                enabled: true
-                address: postgres-rw.database.svc.cluster.local
-            notifier:
-              filesystem:
-                enabled: false
-              smtp:
-                enabled: true
-                enabledSecret: true
-                address: smtp://smtp.gmail.com:587
-                port: 465
-                timeout: 20s
-                username: juicewizerd@gmail.com
-                sender: juicewizerd@gmail.com
-                identifier: *domain
     - repoURL: https://github.com/carterjgreen/home-server.git
       path: manifests/authelia
       targetRevision: HEAD
