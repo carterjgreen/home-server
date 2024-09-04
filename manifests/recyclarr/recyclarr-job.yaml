@@ -14,7 +14,7 @@ spec:
         spec:
           containers:
             - name: sync
-              image: ghcr.io/recyclarr/recyclarr:7.2.2
+              image: ghcr.io/recyclarr/recyclarr:7.2.3
               command: ["recyclarr"]
               args:
                 - "sync"
