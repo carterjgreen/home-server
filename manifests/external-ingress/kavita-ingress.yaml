@@ -30,7 +30,8 @@ kind: Service
 metadata:
   name: kavita
   namespace: default
-  traefik.ingress.kubernetes.io/service.sticky.cookie: "true"
+  annotations:
+    traefik.ingress.kubernetes.io/service.sticky.cookie: "true"
 spec:
   externalName: 192.168.1.93
   type: ExternalName
