@@ -48,7 +48,7 @@ spec:
               name: lldap-data
       initContainers:
         - name: init-db
-          image: ghcr.io/onedr0p/postgres-init:16.3
+          image: ghcr.io/onedr0p/postgres-init:16.6
           envFrom: *envFrom
       restartPolicy: Always
       volumes:
