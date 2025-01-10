@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: unpoller
-          image: ghcr.io/unpoller/unpoller:v2.13.1
+          image: ghcr.io/unpoller/unpoller:v2.14.0
           ports:
             - containerPort: 9130
               name: unpoller-prom
