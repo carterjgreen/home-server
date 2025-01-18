@@ -151,7 +151,7 @@ spec:
                       - groups
                       - email
                     userinfo_signed_response_alg: "none"
-                    token_endpoint_auth_method: "client_secret_basic"
+                    token_endpoint_auth_method: "client_secret_post"
     - repoURL: https://github.com/carterjgreen/home-server.git
       path: manifests/authelia
       targetRevision: HEAD
