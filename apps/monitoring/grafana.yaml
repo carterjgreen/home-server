@@ -90,7 +90,6 @@ spec:
           grafana.ini:
             server:
               root_url: https://graf.juicewizerd.com
-              enable_gzip: true
               enforce_domain: true
             auth:
               login_cookie_name: __Host-grafana_session
