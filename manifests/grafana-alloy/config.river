@@ -6,28 +6,42 @@ prometheus.remote_write "off_cluster" {
 
 prometheus.operator.podmonitors "pods" {
   forward_to = [prometheus.remote_write.off_cluster.receiver]
+  clustering {
+    enabled = true
+  }
 }
 
 prometheus.operator.servicemonitors "services" {
   forward_to = [prometheus.remote_write.off_cluster.receiver]
+  clustering {
+    enabled = true
+  }
 }
 
 prometheus.scrape "proxmox_scraper" {
+  clustering {
+    enabled = true
+  }
   targets = [
     {"__address__" = "192.168.1.97:9273", "instance" = "chihiro"},
     {"__address__" = "192.168.1.98:9273", "instance" = "haku"},
   ]
 
-  forward_to      = [prometheus.remote_write.off_cluster.receiver]
+  forward_to = [prometheus.remote_write.off_cluster.receiver]
+
   scrape_interval = "10s"
 }
 
 prometheus.scrape "hass_scraper" {
-  targets         = [{"__address__" = "192.168.1.86:8123"}]
-  forward_to      = [prometheus.remote_write.off_cluster.receiver]
+  clustering {
+    enabled = true
+  }
+  
+  targets = [{"__address__" = "192.168.1.86:8123"}]
+  forward_to = [prometheus.remote_write.off_cluster.receiver]
 
   scrape_interval = "60s"
-  metrics_path    = "api/prometheus"
+  metrics_path = "api/prometheus"
 
   authorization {
     type = "Bearer"
