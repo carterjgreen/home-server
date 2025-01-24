@@ -16,9 +16,9 @@ spec:
       targetRevision: 0.11.0
       helm:
         valuesObject:
+          controller:
+            type: statefulset
           alloy:
-            controller:
-              type: statefulset
             clustering:
               enabled: true
             configMap:
