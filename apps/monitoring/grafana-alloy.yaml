@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: grafana-agent-flow
+  name: grafana-alloy
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "3"
