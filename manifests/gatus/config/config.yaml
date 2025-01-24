@@ -80,21 +80,17 @@ endpoints:
     <<: *defaults
     group: Home Assistant
     url: http://192.168.1.91:5000/api/version
-  - name: Scrypted
-    group: Home Assistant
-    <<: *defaults
-    url: http://192.168.1.91:11080
   # Internal
   - name: Grafana
     <<: *defaults
     url: http://192.168.1.242/api/health
     conditions:
       - "[BODY].database == ok"
-  # - name: Immich
-  #   <<: *defaults
-  #   url: http://192.168.1.93:2283/api/server-info/ping
-  #   conditions:
-  #     - "[BODY].res == pong"
+  - name: Immich
+    <<: *defaults
+    url: http://192.168.1.93:2283/api/server-info/ping
+    conditions:
+      - "[BODY].res == pong"
   # Media Server
   - name: Calibre-Web
     group: Media Server
@@ -106,18 +102,18 @@ endpoints:
     url: http://192.168.1.93:8096/health
     conditions:
       - "[BODY] == Healthy"
-  # - name: Kavita
-  #   group: Media Server
-  #   <<: *defaults
-  #   url: http://192.168.1.93:5000/api/health
-  #   conditions:
-  #     - "[BODY] == Ok"
-  # - name: Miniflux
-  #   group: Media Server
-  #   <<: *defaults
-  #   url: http://192.168.1.93:8089/healthcheck
-  #   conditions:
-  #     - "[BODY] == OK"
+  - name: Kavita
+    group: Media Server
+    <<: *defaults
+    url: http://192.168.1.93:5000/api/health
+    conditions:
+      - "[BODY] == Ok"
+  - name: Miniflux
+    group: Media Server
+    <<: *defaults
+    url: http://192.168.1.93:8089/healthcheck
+    conditions:
+      - "[BODY] == OK"
   - name: qBittorrent
     group: Media Server
     <<: *defaults
