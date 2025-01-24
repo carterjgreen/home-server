@@ -12,8 +12,8 @@ spec:
   project: default
   sources:
     - repoURL: https://grafana.github.io/helm-charts
-      chart: grafana-agent
-      targetRevision: 0.42.0
+      chart: alloy
+      targetRevision: 0.11.0
       helm:
         valuesObject:
           agent:
@@ -66,9 +66,9 @@ spec:
             enableReporting: false
             envFrom:
               - secretRef:
-                  name: grafana-agent
+                  name: grafana-alloy
     - repoURL: "https://github.com/carterjgreen/home-server.git"
-      path: manifests/grafana-agent
+      path: manifests/grafana-alloy
       targetRevision: HEAD
   destination:
     server: "https://kubernetes.default.svc"
