@@ -32,3 +32,5 @@ spec:
     automated:
       prune: true
       selfHeal: false
+    syncOptions:
+      - RespectIgnoreDifferences=true
