@@ -6,7 +6,6 @@ metadata:
   namespace: default
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.middlewares: default-crowdsec@kubernetescrd
 spec:
   ingressClassName: traefik
   tls:

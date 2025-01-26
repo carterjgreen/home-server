@@ -80,7 +80,7 @@ spec:
               classNme: traefik
               annotations:
                 traefik.ingress.kubernetes.io/router.entrypoints: websecure
-                traefik.ingress.kubernetes.io/router.middlewares: default-crowdsec-authelia@kubernetescrd
+                traefik.ingress.kubernetes.io/router.middlewares: default-authelia-2fa@kubernetescrd
               hosts:
                 - host: &host status.juicewizerd.com
                   paths:

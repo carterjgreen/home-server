@@ -48,7 +48,6 @@ curl -sfL https://get.k3s.io | K3S_URL=https://1.2.3.4:6443 sh -s - agent --toke
 
 ```bash
 helm repo add argo https://argoproj.github.io/argo-helm
-helm repo add crowdsec https://crowdsecurity.github.io/helm-charts
 helm repo update
 ```
 
