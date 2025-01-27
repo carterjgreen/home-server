@@ -6,13 +6,14 @@ metadata:
 spec:
   resyncInterval: 60
   authentication:
-    serviceToken:
-      serviceTokenSecretReference:
-        secretName: service-token
-        secretNamespace: default
+    universalAuth:
       secretsScope:
+        projectSlug: k3s
         envSlug: dev
         secretsPath: "/gatus"
+      credentialsRef:
+        secretName: universal-auth-credentials
+        secretNamespace: default
   managedSecretReference:
     secretName: gatus-secret
     secretNamespace: monitoring

@@ -5,13 +5,14 @@ metadata:
 spec:
   resyncInterval: 60
   authentication:
-    serviceToken:
-      serviceTokenSecretReference:
-        secretName: service-token
-        secretNamespace: default
+    universalAuth:
       secretsScope:
+        projectSlug: k3s
         envSlug: dev
         secretsPath: "/adguard"
+      credentialsRef:
+        secretName: universal-auth-credentials
+        secretNamespace: default
   managedSecretReference:
     secretName: adguard
     secretNamespace: default
