@@ -13,5 +13,5 @@ spec:
         envSlug: dev
         secretsPath: "/adguard"
   managedKubeSecretReferences:
-    - secretName: adguard
-      secretNamespace: default
+    secretName: adguard
+    secretNamespace: default
