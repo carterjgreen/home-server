@@ -12,6 +12,6 @@ spec:
       secretsScope:
         envSlug: dev
         secretsPath: "/grafana"
-  managedSecretReference:
+  managedKubeSecretReferences:
     secretName: grafana
     secretNamespace: default

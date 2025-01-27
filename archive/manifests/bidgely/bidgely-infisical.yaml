@@ -12,6 +12,6 @@ spec:
       secretsScope:
         envSlug: dev
         secretsPath: "/bidgely"
-  managedSecretReference:
+  managedKubeSecretReferences:
     secretName: bidgely
     secretNamespace: default

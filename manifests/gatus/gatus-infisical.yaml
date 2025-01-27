@@ -13,6 +13,6 @@ spec:
       secretsScope:
         envSlug: dev
         secretsPath: "/gatus"
-  managedSecretReference:
+  managedKubeSecretReferences:
     secretName: gatus-secret
     secretNamespace: monitoring

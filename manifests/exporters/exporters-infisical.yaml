@@ -12,6 +12,6 @@ spec:
       secretsScope:
         envSlug: dev
         secretsPath: "/exporter"
-  managedSecretReference:
+  managedKubeSecretReferences:
     secretName: exporter
     secretNamespace: default
