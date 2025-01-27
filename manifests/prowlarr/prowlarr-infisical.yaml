@@ -13,5 +13,5 @@ spec:
         envSlug: dev
         secretsPath: "/prowlarr"
   managedKubeSecretReferences:
-    secretName: prowlarr
-    secretNamespace: default
+    - secretName: prowlarr
+      secretNamespace: default

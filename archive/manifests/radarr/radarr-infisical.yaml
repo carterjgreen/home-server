@@ -13,5 +13,5 @@ spec:
         envSlug: dev
         secretsPath: "/radarr"
   managedKubeSecretReferences:
-    secretName: radarr
-    secretNamespace: default
+    - secretName: radarr
+      secretNamespace: default
