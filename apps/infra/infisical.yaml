@@ -13,7 +13,7 @@ spec:
   sources:
     - repoURL: https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/
       chart: secrets-operator
-      targetRevision: 0.8.5
+      targetRevision: 0.7.0
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
