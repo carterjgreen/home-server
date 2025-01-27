@@ -12,6 +12,6 @@ spec:
       secretsScope:
         envSlug: dev
         secretsPath: "/ntfy"
-  managedKubeSecretReferences:
+  managedSecretReference:
     secretName: ntfy
     secretNamespace: default

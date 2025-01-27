@@ -13,6 +13,6 @@ spec:
       secretsScope:
         envSlug: dev
         secretsPath: "/cert-manager"
-  managedKubeSecretReferences:
+  managedSecretReference:
     secretName: cloudflare-token-secret
     secretNamespace: cert-manager

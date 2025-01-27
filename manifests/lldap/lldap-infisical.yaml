@@ -13,6 +13,6 @@ spec:
       secretsScope:
         envSlug: dev
         secretsPath: "/lldap"
-  managedKubeSecretReferences:
+  managedSecretReference:
     secretName: lldap-credentials
     secretNamespace: lldap

@@ -13,6 +13,6 @@ spec:
       credentialsRef:
         secretName: universal-auth-credentials
         secretNamespace: default
-  managedKubeSecretReferences:
+  managedSecretReference:
     secretName: hydro-ottawa
     secretNamespace: default
