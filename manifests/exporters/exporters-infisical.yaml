@@ -7,7 +7,7 @@ spec:
   authentication:
     universalAuth:
       secretsScope:
-        projectSlug: k3s
+        projectSlug: k3s-f6-lw
         envSlug: dev
         secretsPath: "/exporter"
       credentialsRef:
