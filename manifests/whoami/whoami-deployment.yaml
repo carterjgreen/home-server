@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: whoami
-          image: traefik/whoami
+          image: docker pull ghcr.io/traefik/whoami:v1.10.4@sha256:02d8fe035f170f91cbb5e458a57f4cefab747436f8244a0eb2d66785fe5e565f
           env:
             - name: TZ
               value: America/Toronto
