@@ -12,6 +12,7 @@ spec:
   project: default
   sources:
     - repoURL: https://github.com/rancher/system-upgrade-controller.git
+      path: manifests
       targetRevision: v0.14.2
     - repoURL: https://github.com/carterjgreen/home-server.git
       path: manifests/system-upgrade-controller
