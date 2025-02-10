@@ -1,19 +1,24 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: system-upgrade-controller
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "6"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
-  destination:
-    namespace: system-upgrade
-    server: https://kubernetes.default.svc
   project: default
   sources:
     - repoURL: https://github.com/rancher/system-upgrade-controller.git
-      path: manifests
+      path: /
       targetRevision: v0.14.2
     - repoURL: https://github.com/carterjgreen/home-server.git
       path: manifests/system-upgrade-controller
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: system-upgrade
   syncPolicy:
     automated:
       prune: true
