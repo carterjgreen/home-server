@@ -47,3 +47,7 @@ install-argocd:
 [group('ci')]
 lint:
     yamllint . --no-warnings
+
+[group('ci')]
+renovate:
+    npx --yes --package renovate -- renovate-config-validator
