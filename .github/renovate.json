@@ -1,7 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    ":semanticCommits",
+    ":timezone(America/Toronto)"
   ],
   "ignorePaths": [
     "**/archive/**"
@@ -32,6 +34,10 @@
         "digest"
       ],
       "automerge": true
+    },
+    {
+      "description": "Github Releases",
+      "matchDatasources": ["github-releases"]
     }
   ]
 }
