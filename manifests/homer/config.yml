@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bastienwirtz/homer/main/.schema/config-schema.json
 ---
 # Homepage configuration
 # See https://fontawesome.com/v5/search for icons options
