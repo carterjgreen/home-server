@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: sonarr-exporter
-          image: ghcr.io/onedr0p/exportarr:v2.1.0
+          image: ghcr.io/onedr0p/exportarr:v2.2.0
           args:
             - sonarr
           env:
@@ -77,7 +77,7 @@ spec:
     spec:
       containers:
         - name: radarr-exporter
-          image: ghcr.io/onedr0p/exportarr:v2.1.0
+          image: ghcr.io/onedr0p/exportarr:v2.2.0
           args:
             - radarr
           env:
@@ -134,7 +134,7 @@ spec:
     spec:
       containers:
         - name: prowlarr-exporter
-          image: ghcr.io/onedr0p/exportarr:v2.1.0
+          image: ghcr.io/onedr0p/exportarr:v2.2.0
           args:
             - prowlarr
           env:
@@ -191,7 +191,7 @@ spec:
     spec:
       containers:
         - name: sabnzbd-exporter
-          image: ghcr.io/onedr0p/exportarr:v2.1.0
+          image: ghcr.io/onedr0p/exportarr:v2.2.0
           args:
             - sabnzbd
           env:
