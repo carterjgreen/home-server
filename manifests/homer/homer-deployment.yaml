@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: homer
-          image: b4bz/homer:v25.04.1
+          image: b4bz/homer:v25.05.1
           env:
             - name: TZ
               value: America/Toronto
