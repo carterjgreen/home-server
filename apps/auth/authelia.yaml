@@ -13,7 +13,7 @@ spec:
   sources:
     - repoURL: https://charts.authelia.com/
       chart: authelia
-      targetRevision: 0.10.22
+      targetRevision: 0.10.27
       helm:
         releaseName: authelia
         valuesObject:
