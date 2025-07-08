@@ -24,7 +24,7 @@ spec:
                 main:
                   image:
                     repository: ghcr.io/twin/gatus
-                    tag: v5.18.1
+                    tag: v5.20.0
                   envFrom: &envFrom
                     - secretRef:
                         name: "gatus-secret"
