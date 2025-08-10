@@ -1,7 +1,7 @@
 ---
-## Repository: authelia https://charts.authelia.com
-## Chart: authelia
-
+# yaml-language-server: $schema=https://raw.githubusercontent.com/authelia/chartrepo/refs/heads/master/charts/authelia/values.schema.json
+annotations:
+  reloader.stakater.com/auto: "true"
 ingress:
   enabled: true
   annotations:
@@ -12,7 +12,6 @@ ingress:
     enabled: true
     entryPoints:
       - websecure
-
 pod:
   kind: DaemonSet
   env:
@@ -25,71 +24,45 @@ pod:
     requests:
       cpu: "0.25"
       memory: 50Mi
-
 secret:
   existingSecret: authelia
-
+  additionalSecrets:
+    authelia:
+      items:
+        - key: "oidc.jwk.RS256.pem"
 configMap:
-  enabled: true
-  key: configuration.yaml
   server:
-    host: 0.0.0.0
     buffers:
       read: 10485760 # Large for calibre web
       write: 8192
-    timeouts:
-      read: 6s
-      write: 6s
-  telemtry:
-    enabled: true
-    serviceMonitor:
+  log:
+    format: json
+  telemetry:
+    metrics:
       enabled: true
+      serviceMonitor:
+        enabled: true
   theme: auto
   totp:
     issuer: &domain juicewizerd.com
   authentication_backend:
-    password_reset:
-      disable: false
-    refresh_interval: 1m
     ldap:
       enabled: true
       implementation: custom
-      url: ldap://lldap-service.lldap.svc.cluster.local:3890
+      address: ldap://lldap-service.lldap.svc.cluster.local:3890
       timeout: 5s
       start_tls: false
       base_dn: dc=juicewizerd,dc=com
-      username_attribute: uid
       additional_users_dn: ou=people
       users_filter: "(&(|({username_attribute}={input})({mail_attribute}={input}))(objectClass=person))"
       additional_groups_dn: ou=groups
       groups_filter: "(member={dn})"
-      group_name_attribute: cn
-      mail_attribute: mail
-      display_name_attribute: displayName
+      attributes:
+        username: uid
+        group_name: cn
+        mail: mail
+        display_name: displayName
       user: uid=admin,ou=people,dc=juicewizerd,dc=com
-  identity_providers:
-    oidc:
-      enabled: true
-      cors:
-        endpoints: ["authorization", "token", "revocation", "introspection"]
-        allowed_origins_from_client_redirect_uris: true
-      clients:
-        - client_id: grafana
-          description: Grafana
-          client_secret: "$argon2id$v=19$m=65536,t=3,p=4$FLt03HU9Jc8771XThBjsxA$Jqb+Op0qM+FzuMZHnfvARqElHeW6Rr07XS5Z0KUu6W4"
-          public: false
-          authorization_policy: "two_factor"
-          require_pkce: true
-          pkce_challenge_method: "S256"
-          redirect_uris: ["https://graf.juicewizerd.com/login/generic_oauth"]
-          scopes:
-            - openid
-            - profile
-            - groups
-            - email
-          userinfo_signed_response_alg: "none"
-          token_endpoint_auth_method: "client_secret_basic"
-
   access_control:
     default_policy: two_factor
     rules:
@@ -114,33 +87,49 @@ configMap:
           - "^/local.*"
           - "^/hacsfiles.*"
           - "^/frontend_latest.*"
-
   session:
-    domain: *domain
-    expiration: 1h
-    inactivity: 2h
     redis:
       enabled: true
       host: redis-headless.database.svc.cluster.local
     cookies:
       - domain: *domain
         subdomain: auth
-        default_redirection_url: https://auth.juicewizerd.com
-
   storage:
     postgres:
       enabled: true
-      host: postgres-rw.database.svc.cluster.local
-
+      address: postgres-rw.database.svc.cluster.local
   notifier:
-    filesystem:
-      enabled: false
     smtp:
       enabled: true
-      enabledSecret: true
-      host: smtp.gmail.com
-      port: 465
+      address: smtp://smtp.gmail.com:587
       timeout: 20s
       username: juicewizerd@gmail.com
       sender: juicewizerd@gmail.com
       identifier: *domain
+  identity_providers:
+    oidc:
+      enabled: true
+      jwks:
+        - key:
+            path: "/secrets/authelia/oidc.jwk.RS256.pem"
+      cors:
+        endpoints: ["authorization", "token", "revocation", "introspection"]
+        allowed_origins_from_client_redirect_uris: true
+      clients:
+        - client_id: grafana
+          description: Grafana
+          client_secret: "$argon2id$v=19$m=65536,t=3,p=4$FLt03HU9Jc8771XThBjsxA$Jqb+Op0qM+FzuMZHnfvARqElHeW6Rr07XS5Z0KUu6W4"
+          public: false
+          authorization_policy: "two_factor"
+          require_pkce: true
+          pkce_challenge_method: "S256"
+          redirect_uris:
+            - "https://graf.juicewizerd.com/login/generic_oauth"
+          scopes:
+            - openid
+            - profile
+            - groups
+            - email
+          userinfo_signed_response_alg: "none"
+          token_endpoint_auth_method: "client_secret_basic"
+          allow_multiple_auth_methods: true

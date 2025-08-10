@@ -47,8 +47,6 @@ spec:
               authelia:
                 items:
                   - key: "oidc.jwk.RS256.pem"
-            certificates:
-              existingSecret: authelia
           configMap:
             server:
               buffers:
@@ -72,14 +70,15 @@ spec:
                 timeout: 5s
                 start_tls: false
                 base_dn: dc=juicewizerd,dc=com
-                username_attribute: uid
                 additional_users_dn: ou=people
                 users_filter: "(&(|({username_attribute}={input})({mail_attribute}={input}))(objectClass=person))"
                 additional_groups_dn: ou=groups
                 groups_filter: "(member={dn})"
-                group_name_attribute: cn
-                mail_attribute: mail
-                display_name_attribute: displayName
+                attributes:
+                  username: uid
+                  group_name: cn
+                  mail: mail
+                  display_name: displayName
                 user: uid=admin,ou=people,dc=juicewizerd,dc=com
             access_control:
               default_policy: two_factor
@@ -119,7 +118,6 @@ spec:
             notifier:
               smtp:
                 enabled: true
-                enabledSecret: true
                 address: smtp://smtp.gmail.com:587
                 timeout: 20s
                 username: juicewizerd@gmail.com
