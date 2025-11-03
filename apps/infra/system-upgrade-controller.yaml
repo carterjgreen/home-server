@@ -13,7 +13,7 @@ spec:
   sources:
     - repoURL: https://github.com/rancher/system-upgrade-controller.git
       path: .
-      targetRevision: v0.16.0
+      targetRevision: v0.16.3
     - repoURL: https://github.com/carterjgreen/home-server.git
       path: manifests/system-upgrade-controller
   destination:
