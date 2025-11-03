@@ -118,7 +118,7 @@ spec:
               auto_login: true
               allow_assign_grafana_admin: true
               role_attribute_path: |
-                contains(groups[*], 'GrafanaAdmin') && 'GrafanaAdmin' || groups[*], 'admin') && 'Admin' || contains(groups[*], 'people') && 'Viewer'
+                contains(groups[*], 'GrafanaAdmin') && 'GrafanaAdmin' || contains(groups[*], 'admin') && 'Admin' || contains(groups[*], 'people') && 'Viewer'
             analytics:
               enabled: false
               reporting_enabled: false
