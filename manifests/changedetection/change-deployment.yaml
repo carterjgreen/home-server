@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: change
-          image: ghcr.io/dgtlmoon/changedetection.io:0.50.16
+          image: ghcr.io/dgtlmoon/changedetection.io:0.50.38
           env:
             - name: TZ
               value: America/Toronto
