@@ -37,10 +37,10 @@ spec:
             resources:
               limits:
                 cpu: "4.00"
-                memory: 125Mi
+                memory: 512Mi
               requests:
                 cpu: "0.25"
-                memory: 50Mi
+                memory: 100Mi
           secret:
             existingSecret: authelia
             additionalSecrets:
