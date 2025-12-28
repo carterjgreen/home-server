@@ -226,46 +226,46 @@ spec:
             limits:
               cpu: 500m
               memory: 256Mi
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nuts-exporter
-  labels:
-    app: nuts-exporter
-spec:
-  revisionHistoryLimit: 3
-  replicas: 1
-  selector:
-    matchLabels:
-      app: nuts-exporter
-  template:
-    metadata:
-      labels:
-        app: nuts-exporter
-    spec:
-      containers:
-        - name: nuts-exporter
-          image: ghcr.io/druggeri/nut_exporter:3.2.3
-          env:
-            - name: NUT_EXPORTER_SERVER
-              value: "192.168.1.97"
-            - name: NUT_EXPORTER_USERNAME
-              value: "upsadmin"
-            - name: NUT_EXPORTER_VARIABLES
-              value: "battery.charge,battery.runtime,battery.voltage,input.voltage,ups.load,ups.status"
-            - name: NUT_EXPORTER_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: exporter
-                  key: NUTS_PASSWORD
-          ports:
-            - containerPort: 9199
-              name: nuts-prom
-          resources:
-            requests:
-              memory: 64Mi
-              cpu: 100m
-            limits:
-              cpu: 500m
-              memory: 256Mi
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: nuts-exporter
+#   labels:
+#     app: nuts-exporter
+# spec:
+#   revisionHistoryLimit: 3
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: nuts-exporter
+#   template:
+#     metadata:
+#       labels:
+#         app: nuts-exporter
+#     spec:
+#       containers:
+#         - name: nuts-exporter
+#           image: ghcr.io/druggeri/nut_exporter:3.2.3
+#           env:
+#             - name: NUT_EXPORTER_SERVER
+#               value: "192.168.1.97"
+#             - name: NUT_EXPORTER_USERNAME
+#               value: "upsadmin"
+#             - name: NUT_EXPORTER_VARIABLES
+#               value: "battery.charge,battery.runtime,battery.voltage,input.voltage,ups.load,ups.status"
+#             - name: NUT_EXPORTER_PASSWORD
+#               valueFrom:
+#                 secretKeyRef:
+#                   name: exporter
+#                   key: NUTS_PASSWORD
+#           ports:
+#             - containerPort: 9199
+#               name: nuts-prom
+#           resources:
+#             requests:
+#               memory: 64Mi
+#               cpu: 100m
+#             limits:
+#               cpu: 500m
+#               memory: 256Mi

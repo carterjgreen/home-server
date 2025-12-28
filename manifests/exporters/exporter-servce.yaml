@@ -42,15 +42,15 @@ spec:
       app: sabnzbd-exporter
   podMetricsEndpoints:
     - port: sabnzbd-prom
----
-apiVersion: monitoring.coreos.com/v1
-kind: PodMonitor
-metadata:
-  name: nuts-exporter
-spec:
-  selector:
-    matchLabels:
-      app: nuts-exporter
-  podMetricsEndpoints:
-    - port: nuts-prom
-      path: /ups_metrics
+# ---
+# apiVersion: monitoring.coreos.com/v1
+# kind: PodMonitor
+# metadata:
+#   name: nuts-exporter
+# spec:
+#   selector:
+#     matchLabels:
+#       app: nuts-exporter
+#   podMetricsEndpoints:
+#     - port: nuts-prom
+#       path: /ups_metrics
