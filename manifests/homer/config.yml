@@ -53,12 +53,6 @@ links:
   - name: "Wiki"
     icon: "fas fa-book"
     url: "https://www.wikipedia.org/"
-  #   this will link to a second homer page that will load config from
-  #   additional-page.yml and keep default config values as in config.yml file
-  #   see url field and assets/additional-page.yml.dist used in this example:
-  # - name: "another page!"
-  #   icon: "fas fa-file-alt"
-  #   url: "#additional-page"
 
 # Services
 services:
@@ -91,13 +85,6 @@ services:
         keywords: "books"
         url: "https://kavita.juicewizerd.com"
         target: "_blank"
-      - name: "Immich"
-        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/immich.svg"
-        subtitle: "Photo backups"
-        tag: "app"
-        keywords: "photos"
-        url: "http://192.168.1.93:2283"
-        target: "_blank"
 
   - name: Media
     icon: "fas fa-film"
@@ -108,12 +95,6 @@ services:
         tag: "video"
         url: "http://192.168.1.93:8096/"
         target: "_blank"
-      # - name: "Jellyseerr"
-      #   logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/jellyseerr.svg"
-      #   tag: "requests"
-      #   subtitle: "Media Requests"
-      #   url: "https://jellyseerr.juicewizerd.com"
-      #   target: "_blank"
       - name: "Radarr"
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/radarr.svg"
         tag: "movies"
@@ -220,14 +201,13 @@ services:
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/proxmox.png"
         subtitle: "Virtual Machines"
         tag: "virtual-machines"
-        url: "https://192.168.1.98:8006"
+        url: "https://192.168.1.97:8006"
         target: "_blank"
       - name: "Grafana"
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/grafana.svg"
         subtitle: "Monitoring Dashboards"
         tag: "monitoring"
-        # url: "http://192.168.1.93:3000"
-        url: "http://graf.juicewizerd.com/d/SH5hMcX7k/home-assistant?orgId=1"
+        url: "http://graf.juicewizerd.com"
         target: "_blank"
       - name: "Authelia"
         logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/authelia.png"
