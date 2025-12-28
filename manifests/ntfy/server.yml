@@ -19,6 +19,7 @@ auth-file: "/var/cache/ntfy/user.db"
 auth-default-access: "deny-all"
 
 behind-proxy: true
+require-login: true
 
 attachment-cache-dir: "/var/cache/ntfy/attachments"
 attachment-total-size-limit: "5G"
