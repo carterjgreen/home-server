@@ -97,12 +97,6 @@ endpoints:
     url: http://192.168.1.93:8096/health
     conditions:
       - "[BODY] == Healthy"
-  - name: Kavita
-    group: Media Server
-    <<: *defaults
-    url: http://192.168.1.93:5000/api/health
-    conditions:
-      - "[BODY] == Ok"
   - name: qBittorrent
     group: Media Server
     <<: *defaults
