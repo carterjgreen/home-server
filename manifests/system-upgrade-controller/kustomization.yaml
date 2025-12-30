@@ -5,4 +5,5 @@ namespace: system-upgrade
 resources:
   - agent.yaml
   - system.yaml
+  # renovate: datasource=github-releases depName=rancher/system-upgrade-controller
   - https://github.com/rancher/system-upgrade-controller/releases/download/v0.18.0/crd.yaml
