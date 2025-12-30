@@ -130,13 +130,6 @@ endpoints:
     url: http://192.168.1.93:9090/-/healthy
     conditions:
       - "[BODY] == Prometheus Server is Healthy."
-  - name: InfluxDB - HAOS
-    group: Databases
-    <<: *defaults
-    url: http://192.168.1.86:8086/health
-    conditions:
-      - "[BODY].status == pass"
-      - "[BODY].message == ready for queries and writes"
   - name: InfluxDB - Main
     group: Databases
     <<: *defaults
