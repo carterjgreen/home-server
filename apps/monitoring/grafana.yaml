@@ -84,9 +84,6 @@ spec:
                     sslmode: "disable"
                     postgresVersion: 15
                     timescaledb: true
-                - name: Loki
-                  type: loki
-                  url: http://loki-headless:3100
           grafana.ini:
             server:
               root_url: https://graf.juicewizerd.com
